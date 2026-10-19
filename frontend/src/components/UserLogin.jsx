@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserGraduate } from "react-icons/fa";
 import GradientText from "./ui/GradientText";
-import { api } from "../lib/api";
+import { api, getErrorMessage } from "../lib/api";
 
 function UserLogin() {
   const [credentials, setCredentials] = useState({
@@ -26,14 +26,13 @@ function UserLogin() {
         username: credentials.username,
         password: credentials.password,
       });
-      
+
       if (response.data.token) {
         localStorage.setItem("userToken", response.data.token);
         navigate("/");
       }
     } catch (err) {
-      console.log(err);
-      setError("Invalid credentials");
+      setError(err.response?.status === 401 ? "Invalid credentials" : getErrorMessage(err));
     }
   };
 
@@ -46,7 +45,7 @@ function UserLogin() {
             User Login
           </GradientText>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6 mt-8">
           {error && (
             <div className="text-red-500 text-center text-sm">{error}</div>

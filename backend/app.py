@@ -1,307 +1,143 @@
 """
-Student Chatbot Application
-A professional Flask application for student query resolution using RAG and AI.
+Student Chatbot Application (being adapted into USIUBOT).
+
+Flask application factory. Start locally with ``python app.py``; in
+production run ``gunicorn wsgi:app``.
 """
 
+import logging
 import os
-import sys
-import time
-from datetime import datetime
+from datetime import datetime, timezone
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
-from flask_mail import Mail
 from werkzeug.middleware.proxy_fix import ProxyFix
-import cloudinary
 
-# Import configurations
-from config.config import config
+from config.config import ConfigurationError, ProductionConfig, config, validate_config
 from config.database import db_instance
-
-# Import services
-from services.email_service import EmailService
-
-# Import routes
-from routes.admin_routes import create_admin_routes
+from controllers.admin_controller import AdminController
+from middleware.middleware import ErrorHandlingMiddleware, configure_tracing, register_security_headers
+from routes.admin_routes import create_admin_routes, create_legacy_admin_routes
 from routes.auth_routes import create_auth_routes
 from routes.chat_routes import create_chat_routes
-from routes.admin_routes import create_legacy_admin_routes
 from routes.pdf_routes import create_pdf_routes
+from services.cloudinary_service import CloudinaryService
+from services.email_service import EmailService
+from services.knowledge_base import KnowledgeBase
+from utils.auth import admin_required
+from utils.logging_utils import configure_logging
 
-# Import middleware
-from middleware.middleware import (
-    CORSMiddleware, 
-    EnvironmentMiddleware, 
-    ErrorHandlingMiddleware
-)
+logger = logging.getLogger(__name__)
 
-# Import utilities
-from utils.pdf_utils import create_embeddings, embeddings_exist
 
-from pinecone import Pinecone
-from langchain_pinecone import PineconeVectorStore
+def create_app(config_name=None, overrides=None, db_client=None, knowledge_base=None, storage=None):
+    """Application factory.
 
-def create_app(config_name='default'):
-    """Application factory pattern"""
+    ``overrides``, ``db_client``, ``knowledge_base`` and ``storage`` let tests
+    run the real application against in-memory or fake services.
+    """
+    config_name = config_name or os.getenv("FLASK_ENV", "production")
     app = Flask(__name__)
-    
-    # Load configuration
-    app.config.from_object(config[config_name])
-    
-    # Initialize extensions
-    # Get CORS origins from environment variable - supports multiple comma-separated origins
-    cors_origins_env = os.environ.get('CORS_ORIGINS', '')
-    
-    if cors_origins_env:
-        cors_origins = [origin.strip() for origin in cors_origins_env.split(',') if origin.strip()]
-    else:
-        # Fallback origins for development and common deployment platforms
-        cors_origins = [
-            'http://localhost:3000',
-            'http://localhost:5173', 
-            'http://127.0.0.1:3000',
-            'http://127.0.0.1:5173',
-            'https://*.vercel.app',
-            'https://*.netlify.app'
-        ]
-    
-    print(f"CORS Origins configured: {cors_origins}")
-    
-    cors = CORS(
-        app, 
-        resources={
-            r"/api/*": {
-                "origins": cors_origins,
-                "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-                "allow_headers": ["Content-Type", "Authorization"],
-                "supports_credentials": True
-            }
-        },
-        supports_credentials=True
-    )
-    mail = Mail(app)
-    
-    # Initialize Cloudinary
-    cloudinary.config(
-        cloud_name=app.config["CLOUDINARY_CLOUD_NAME"],
-        api_key=app.config["CLOUDINARY_API_KEY"],
-        api_secret=app.config["CLOUDINARY_API_SECRET"]
-    )
-    
-    # Initialize middleware
-    EnvironmentMiddleware(app)
-    CORSMiddleware(app)
-    ErrorHandlingMiddleware(app)
-    
-    # Initialize database
-    if not db_instance.connect():
-        raise Exception("Failed to connect to database")
-    
-    # Initialize email service
-    email_service = EmailService()
-    email_service.init_app(app)
-    
-    # Store email service in app config for global access
-    app.config['EMAIL_SERVICE'] = email_service
+    app.config.from_object(config.get(config_name, ProductionConfig))
+    if overrides:
+        app.config.update(overrides)
 
-     # Initialize Pinecone
-    print("Initializing Pinecone...")
-    try:
-        # Using Pinecone v3 client API
-        pc = Pinecone(api_key=app.config.get('PINECONE_API_KEY'))
-        print("Pinecone initialized successfully!")
-    except Exception as e:
-        print(f"Error initializing Pinecone: {str(e)}")
-        raise
-    
-    # Initialize Cloudinary
-    print("Initializing Cloudinary...")
-    try:
-        from services.cloudinary_service import CloudinaryService
-        cloudinary_service = CloudinaryService()
-        print("Cloudinary initialized successfully!")
-    except Exception as e:
-        print(f"Error initializing Cloudinary: {str(e)}")
-        raise
-    
-    # Create embeddings and vectorstore
-    print("Initializing embeddings...")
-    try:
-        # Check if embeddings already exist in Pinecone
-        if embeddings_exist():
-            print("Embeddings already exist in Pinecone, skipping creation")
-            from langchain_huggingface import HuggingFaceEmbeddings
-            from langchain_pinecone import PineconeVectorStore
-            embeddings = HuggingFaceEmbeddings(
-                model_name="sentence-transformers/all-MiniLM-L6-v2",
-                model_kwargs={'device': 'cpu'},
-                encode_kwargs={'normalize_embeddings': True}
-            )
-            vectorstore_global = PineconeVectorStore(
-                index_name=app.config.get('PINECONE_INDEX_NAME'),
-                embedding=embeddings,
-                namespace="course_materials"
-            )
-        else:
-            print("No embeddings found in Pinecone, creating new embeddings")
-            vectorstore_global = create_embeddings()
-        
-        print("Embeddings initialized successfully!")
-    except Exception as e:
-        print(f"Error initializing embeddings: {str(e)}")
-        # Create a fallback vectorstore with minimal default content
-        print("Creating fallback vectorstore with default content")
-        # Use a simple default text for embedding
-        default_text = ["This is a student query chatbot for academic assistance."]
-        try:
-            # Try to create a minimal vectorstore
-            from utils.pdf_utils import get_vector_store
-            vectorstore_global = get_vector_store(default_text)
-            print("Fallback vectorstore created successfully")
-        except Exception as fallback_error:
-            print(f"Error creating fallback vectorstore: {str(fallback_error)}")
-            # If all else fails, set to None and handle in routes
-            vectorstore_global = None
-            print("WARNING: No vectorstore available, chat functionality will be limited")
-    
-    # Register blueprints (routes)
-    app.register_blueprint(create_auth_routes(app))
-    app.register_blueprint(create_chat_routes(vectorstore_global))
-    app.register_blueprint(create_admin_routes(email_service))
-    app.register_blueprint(create_legacy_admin_routes(email_service))  # For backward compatibility
-    app.register_blueprint(create_pdf_routes())
-    
-    # Health check endpoint
+    configure_logging(app.config["LOG_LEVEL"])
+
+    problems = validate_config(app.config)
+    if problems:
+        raise ConfigurationError("Invalid configuration: " + " ".join(problems))
+
+    if app.config["TRUST_PROXY_HOPS"]:
+        hops = app.config["TRUST_PROXY_HOPS"]
+        app.wsgi_app = ProxyFix(app.wsgi_app, x_for=hops, x_proto=hops, x_host=hops)
+
+    # Bearer tokens are sent in the Authorization header, so credentialed CORS is not needed.
+    CORS(
+        app,
+        resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
+        supports_credentials=False,
+    )
+
+    configure_tracing(app.config)
+    ErrorHandlingMiddleware(app)
+    register_security_headers(app)
+
+    if not db_instance.connect(app.config["MONGODB_URI"], app.config["MONGO_DB_NAME"], client=db_client):
+        raise RuntimeError("Failed to connect to database")
+
+    email_service = EmailService(app.config)
+    storage = storage or CloudinaryService(app.config)
+    # The knowledge base connects lazily on first use, so startup never writes
+    # to the vector index or downloads documents.
+    knowledge_base = knowledge_base or KnowledgeBase(app.config)
+    app.extensions["email_service"] = email_service
+    app.extensions["storage"] = storage
+    app.extensions["knowledge_base"] = knowledge_base
+
+    admin_controller = AdminController(email_service, storage)
+    app.register_blueprint(create_auth_routes(app, email_service))
+    app.register_blueprint(create_chat_routes(knowledge_base, app.config))
+    app.register_blueprint(create_admin_routes(admin_controller))
+    app.register_blueprint(create_legacy_admin_routes(admin_controller))
+    app.register_blueprint(create_pdf_routes(storage, knowledge_base))
+
     @app.route('/health', methods=['GET'])
-    @app.route('/api/health', methods=['GET'])  # Adding API prefix for Render health checks
+    @app.route('/api/health', methods=['GET'])
     def health_check():
         return jsonify({
             "status": "healthy",
-            "message": "Student Chatbot API is running", 
-            "timestamp": datetime.now().isoformat(),
-            "environment": os.environ.get("FLASK_ENV", "development")
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }), 200
-    
-    # Debug endpoint to list all routes
-    @app.route('/debug/routes', methods=['GET'])
-    def list_routes():
-        routes = []
-        for rule in app.url_map.iter_rules():
-            routes.append({
-                "endpoint": rule.endpoint,
-                "methods": list(rule.methods),
-                "url": str(rule)
-            })
-        return {"routes": routes}, 200
-    
-    # Debug endpoint to test CORS and environment
-    @app.route('/debug/cors', methods=['GET', 'OPTIONS'])
-    def test_cors():
-        return jsonify({
-            "status": "CORS test successful",
-            "cors_origins": cors_origins,
-            "request_origin": request.headers.get('Origin'),
-            "method": request.method,
-            "environment": os.environ.get("FLASK_ENV", "development")
-        }), 200
-    
-    # Debug endpoint to test query endpoint without AI processing
-    @app.route('/debug/query', methods=['POST', 'OPTIONS'])
-    def test_query():
-        if request.method == 'OPTIONS':
-            return '', 200
-        
-        try:
-            data = request.json
-            question = data.get("question", "test question")
-            
-            return jsonify({
-                "status": "Query endpoint test successful",
-                "received_question": question,
-                "mock_answer": f"This is a mock response to: {question}",
-                "vectorstore_available": vectorstore_global is not None,
-                "timestamp": datetime.now().isoformat()
-            }), 200
-        except Exception as e:
-            return jsonify({
-                "error": f"Query test failed: {str(e)}",
-                "timestamp": datetime.now().isoformat()
-            }), 500
-    
 
-    
-    # Debug endpoint to test email service
-    @app.route('/debug/email', methods=['GET'])
-    def test_email():
-        email_service = app.config.get('EMAIL_SERVICE')
-        if not email_service:
-            return {"error": "Email service not found"}, 500
-        
-        if not email_service.mail:
-            return {"error": "Mail instance not initialized"}, 500
-        
-        return {
-            "status": "Email service is working",
-            "mail_server": app.config.get('MAIL_SERVER'),
-            "mail_username": app.config.get('MAIL_USERNAME'),
-            "mail_configured": email_service.mail is not None
-        }, 200
-    
-    # Test endpoint to send a test email
-    @app.route('/debug/send-test-email', methods=['POST'])
-    def send_test_email():
-        email_service = app.config.get('EMAIL_SERVICE')
-        if not email_service or not email_service.mail:
-            return {"error": "Email service not available"}, 500
-        
-        try:
-            # Send test email to the configured email address
-            from flask_mail import Message
-            msg = Message(
-                subject="Test Email from Chatbot",
-                sender=app.config.get('MAIL_USERNAME'),
-                recipients=[app.config.get('MAIL_USERNAME')],  # Send to self
-                body="This is a test email to verify email service is working."
-            )
-            email_service.mail.send(msg)
-            return {"status": "Test email sent successfully"}, 200
-        except Exception as e:
-            return {"error": f"Failed to send test email: {str(e)}"}, 500
-    
-    # Root endpoint
     @app.route('/', methods=['GET'])
     def root():
-        return {
-            "message": "Welcome to Student Chatbot API",
-            "version": "2.0.0",
-            "endpoints": {
-                "auth": "/api/signup, /api/login, /api/admin/login",
-                "chat": "/api/query, /api/chat-history, /api/add-response",
-                "admin": "/api/admin/stats, /api/admin/chat-history, /api/admin/query-analytics"
-            }
-        }, 200
-    
+        return jsonify({"message": "Student Chatbot API"}), 200
+
+    if app.config["ENABLE_DEBUG_ROUTES"] and config_name != "production":
+        _register_debug_routes(app, email_service)
+        logger.warning("Debug routes are enabled (admin token required)")
+
     return app
 
-def main():
-    """Main function to run the application"""
-    # Get environment
-    env = os.getenv('FLASK_ENV', 'development')
-    
-    # Create app
-    app = create_app(env)
-    
-    # Run app
-    debug_mode = env == 'development'
-    port = int(os.getenv('PORT', 5000))
-    
-    print(f"Starting Student Chatbot API in {env} mode...")
-    print(f"Server running on http://localhost:{port}")
-    
-    app.run(host='0.0.0.0', port=port, debug=debug_mode)
 
-# Create a global app object for Gunicorn to use
-app = create_app(os.getenv('FLASK_ENV', 'production'))
+def _register_debug_routes(app, email_service):
+    """Diagnostic endpoints. Never registered in production; admin-only."""
+
+    @app.route('/debug/routes', methods=['GET'])
+    @admin_required
+    def list_routes():
+        routes = [
+            {"endpoint": rule.endpoint, "methods": sorted(rule.methods), "url": str(rule)}
+            for rule in app.url_map.iter_rules()
+        ]
+        return jsonify({"routes": routes}), 200
+
+    @app.route('/debug/email', methods=['GET'])
+    @admin_required
+    def email_status():
+        return jsonify({"mail_configured": email_service.is_configured()}), 200
+
+    @app.route('/debug/send-test-email', methods=['POST'])
+    @admin_required
+    def send_test_email():
+        sender = app.config.get("MAIL_USERNAME")
+        if not sender or not email_service.send(sender, "Test email", "SMTP test from the chatbot."):
+            return jsonify({"error": "Test email could not be sent"}), 502
+        return jsonify({"status": "Test email sent"}), 200
+
+
+def main():
+    """Run the development server."""
+    env = os.getenv("FLASK_ENV", "development")
+    app = create_app(env)
+    host = os.getenv("HOST", "127.0.0.1")
+    port = int(os.getenv("PORT", 5000))
+    logger.info("Starting API in %s mode on http://%s:%d", env, host, port)
+    app.run(host=host, port=port, debug=app.config.get("DEBUG", False))
+
 
 if __name__ == "__main__":
     main()

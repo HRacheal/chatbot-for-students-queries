@@ -1,57 +1,57 @@
-from flask import request, jsonify
+from flask import jsonify
+
 from services.auth_service import AuthService
+from utils.validation import (
+    ValidationError,
+    get_json_object,
+    require_string,
+    validate_email,
+    validate_password,
+    validate_username,
+)
+
 
 class AuthController:
     """Controller for handling authentication endpoints"""
-    
-    def __init__(self, app):
-        self.auth_service = AuthService(app)
-    
+
+    def __init__(self, app, email_service=None):
+        self.auth_service = AuthService(app, email_service)
+
     def signup(self):
         """Handle user signup"""
         try:
-            data = request.json
-            username = data.get("username")
-            email = data.get("email")
-            password = data.get("password")
+            data = get_json_object()
+            username = validate_username(require_string(data, "username", 30, "Username"))
+            email = validate_email(require_string(data, "email", 254, "Email"))
+            password = validate_password(
+                require_string(data, "password", 200, "Password", strip=False)
+            )
+        except ValidationError as e:
+            return jsonify({"error": str(e)}), 400
 
-            if not username or not email or not password:
-                return jsonify({"error": "All fields are required"}), 400
+        result, status_code = self.auth_service.register_user(username, email, password)
+        return jsonify(result), status_code
 
-            result, status_code = self.auth_service.register_user(username, email, password)
-            return jsonify(result), status_code
-            
-        except Exception as e:
-            return jsonify({"error": f"Signup failed: {str(e)}"}), 500
-    
     def login(self):
         """Handle user login"""
         try:
-            data = request.json
-            username = data.get("username")
-            password = data.get("password")
-            
-            if not username or not password:
-                return jsonify({"error": "Username and password are required"}), 400
-            
-            result, status_code = self.auth_service.login_user(username, password)
-            return jsonify(result), status_code
-            
-        except Exception as e:
-            return jsonify({"error": f"Login failed: {str(e)}"}), 500
-    
+            data = get_json_object()
+            username = require_string(data, "username", 100, "Username")
+            password = require_string(data, "password", 200, "Password", strip=False)
+        except ValidationError:
+            return jsonify({"error": "Username and password are required"}), 400
+
+        result, status_code = self.auth_service.login_user(username, password)
+        return jsonify(result), status_code
+
     def admin_login(self):
         """Handle admin login"""
         try:
-            data = request.json
-            email = data.get('email')
-            password = data.get('password')
-            
-            if not email or not password:
-                return jsonify({"error": "Email and password are required"}), 400
-            
-            result, status_code = self.auth_service.login_admin(email, password)
-            return jsonify(result), status_code
-            
-        except Exception as e:
-            return jsonify({"error": f"Admin login failed: {str(e)}"}), 500
+            data = get_json_object()
+            email = require_string(data, "email", 254, "Email")
+            password = require_string(data, "password", 200, "Password", strip=False)
+        except ValidationError:
+            return jsonify({"error": "Email and password are required"}), 400
+
+        result, status_code = self.auth_service.login_admin(email, password)
+        return jsonify(result), status_code

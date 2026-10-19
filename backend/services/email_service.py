@@ -1,142 +1,78 @@
-from flask_mail import Mail, Message
+"""Outgoing email over SMTP.
+
+Every send returns True/False instead of raising, so callers can report a
+clear notification status. Messages never include passwords, tokens or
+uploaded documents.
+"""
+
+import logging
+import smtplib
+from email.message import EmailMessage
+
 from models.models import User
-from config.config import Config
+
+logger = logging.getLogger(__name__)
+
 
 class EmailService:
     """Service for handling email operations"""
-    
-    def __init__(self, app=None):
-        self.mail = None
-        if app:
-            self.init_app(app)
+
+    def __init__(self, settings):
+        self.settings = settings
         self.user_model = User()
-    
-    def init_app(self, app):
-        """Initialize email service with Flask app"""
-        self.mail = Mail(app)
-    
+
+    def is_configured(self):
+        s = self.settings
+        return bool(s.get("MAIL_SERVER") and s.get("MAIL_USERNAME") and s.get("MAIL_PASSWORD"))
+
+    def send(self, recipient, subject, body):
+        """Send a plain-text email. Returns True on success."""
+        if not self.is_configured():
+            logger.warning("Email not sent: SMTP is not configured")
+            return False
+        s = self.settings
+        message = EmailMessage()
+        message["Subject"] = subject
+        message["From"] = s.get("MAIL_DEFAULT_SENDER") or s["MAIL_USERNAME"]
+        message["To"] = recipient
+        message.set_content(body)
+        try:
+            smtp_class = smtplib.SMTP_SSL if s.get("MAIL_USE_SSL") else smtplib.SMTP
+            with smtp_class(s["MAIL_SERVER"], s["MAIL_PORT"], timeout=s.get("MAIL_TIMEOUT", 15)) as server:
+                if s.get("MAIL_USE_TLS") and not s.get("MAIL_USE_SSL"):
+                    server.starttls()
+                server.login(s["MAIL_USERNAME"], s["MAIL_PASSWORD"])
+                server.send_message(message)
+            logger.info("Email sent: %s", subject)
+            return True
+        except (smtplib.SMTPException, OSError) as e:
+            logger.error("Email sending failed (%s)", type(e).__name__)
+            return False
+
     def send_query_response_notification(self, user_id, question, response):
-        """Send email notification when query is answered using direct SMTP"""
-        try:
-            user = self.user_model.find_by_id(user_id)
-            if not user or not user.get("email"):
-                print("User or email not found")
-                return False
-            
-            email = user["email"]
-            
-            # Simple text cleaning
-            def clean_text(text):
-                if not text:
-                    return ""
-                text = str(text)
-                # Replace non-breaking spaces and other common Unicode issues
-                text = text.replace('\xa0', ' ').replace('\u00a0', ' ')
-                text = text.replace('\u2019', "'").replace('\u2018', "'")
-                text = text.replace('\u201c', '"').replace('\u201d', '"')
-                text = text.replace('\u2013', '-').replace('\u2014', '-')
-                # Force ASCII encoding
-                return text.encode('ascii', errors='replace').decode('ascii').strip()
-            
-            question_str = clean_text(question)
-            response_str = clean_text(response)
-            
-            # Create email body
-            email_body = f"""Hello,
-
-Your question: "{question_str}"
-Has been answered: "{response_str}"
-
-Thank you for your patience!
-
-- Sahayak: The Support Team
-"""
-            
-            # Use direct SMTP to send email
-            import smtplib
-            from email.mime.text import MIMEText
-            
-            try:
-                # Create email using standard library
-                smtp_msg = MIMEText(email_body, 'plain', 'ascii')
-                smtp_msg['Subject'] = "Your query has been answered!"
-                smtp_msg['From'] = Config.MAIL_USERNAME
-                smtp_msg['To'] = email
-                
-                # Send using SMTP
-                server = smtplib.SMTP(Config.MAIL_SERVER, Config.MAIL_PORT)
-                server.starttls()
-                server.login(Config.MAIL_USERNAME, Config.MAIL_PASSWORD)
-                server.send_message(smtp_msg)
-                server.quit()
-                
-                return True
-                
-            except Exception as smtp_error:
-                print(f"✗ SMTP failed: {smtp_error}")
-                return False
-            
-        except Exception as e:
-            print(f"Error sending email: {str(e)}")
+        """Tell a registered user that their question has been answered."""
+        user = self.user_model.find_by_id(user_id)
+        if not user or not user.get("email"):
+            logger.info("Answer notification skipped: no email address on file")
             return False
-    
+        body = (
+            "Hello,\n\n"
+            f"Your question: \"{question}\"\n\n"
+            f"Has been answered: \"{response}\"\n\n"
+            "Thank you for your patience!\n\n"
+            "- The Support Team\n"
+        )
+        return self.send(user["email"], "Your query has been answered", body)
+
     def send_welcome_email(self, user_email, username):
-        """Send welcome email to new users using direct SMTP"""
-        try:
-            # Simple text cleaning
-            def clean_text(text):
-                if not text:
-                    return ""
-                text = str(text)
-                # Replace non-breaking spaces and other common Unicode issues
-                text = text.replace('\xa0', ' ').replace('\u00a0', ' ')
-                text = text.replace('\u2019', "'").replace('\u2018', "'")
-                text = text.replace('\u201c', '"').replace('\u201d', '"')
-                text = text.replace('\u2013', '-').replace('\u2014', '-')
-                # Force ASCII encoding
-                return text.encode('ascii', errors='replace').decode('ascii').strip()
-            
-            clean_username = clean_text(username)
-            
-            email_body = f"""Hello {clean_username},
-
-Welcome aboard! we are excited to have you join the Student Query Chatbot platform - your personal assisstant for all academic queries.
-
-Here is what you can do now:
-- Ask academic questions anytime, anywhere
-- Get instant, accurate responses
-- Access your chat history
-- Receive email notifications
-
-Thank you for joining us!
-
-- The Support Team
-"""
-            
-            # Use direct SMTP to send email
-            import smtplib
-            from email.mime.text import MIMEText
-            
-            try:
-                # Create email using standard library
-                smtp_msg = MIMEText(email_body, 'plain', 'ascii')
-                smtp_msg['Subject'] = "Welcome to Student Chatbot!"
-                smtp_msg['From'] = Config.MAIL_USERNAME
-                smtp_msg['To'] = user_email
-                
-                # Send using SMTP
-                server = smtplib.SMTP(Config.MAIL_SERVER, Config.MAIL_PORT)
-                server.starttls()
-                server.login(Config.MAIL_USERNAME, Config.MAIL_PASSWORD)
-                server.send_message(smtp_msg)
-                server.quit()
-                
-                return True
-                
-            except Exception as smtp_error:
-                print(f"✗ Welcome email SMTP failed: {smtp_error}")
-                return False
-            
-        except Exception as e:
-            print(f"Error sending welcome email: {str(e)}")
-            return False
+        """Send welcome email to new users"""
+        body = (
+            f"Hello {username},\n\n"
+            "Welcome! Your account for the student query assistant has been created.\n\n"
+            "You can now:\n"
+            "- Ask questions at any time\n"
+            "- Access your chat history\n"
+            "- Receive email notifications when staff answer your questions\n\n"
+            "- The Support Team\n"
+        )
+        return self.send(user_email, "Welcome to the student query assistant", body)

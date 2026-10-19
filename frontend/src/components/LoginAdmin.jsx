@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RiAdminLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import GradientText from "./ui/GradientText";
-import { api } from "../lib/api";
+import { api, getErrorMessage } from "../lib/api";
 
 function LoginAdmin() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function LoginAdmin() {
         navigate("/admin/dashboard");
       }
     } catch (err) {
-      setError("Invalid credentials");
+      setError(err.response?.status === 401 ? "Invalid credentials" : getErrorMessage(err));
     }
   };
 

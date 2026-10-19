@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { RiDashboardLine, RiLogoutBoxLine, RiMessage2Line, RiDeleteBin6Line, RiBarChart2Line, RiFileTextLine, RiRefreshLine } from 'react-icons/ri'
 import QueryAnalytics from './QueryAnalytics';
 import PDFManagement from './PDFManagement';
-import { rebuildEmbeddings } from '../lib/api';
+import { rebuildEmbeddings, getErrorMessage } from '../lib/api';
 import { api } from "../lib/api";
+import SafeMarkdown from "./SafeMarkdown";
 
 function Admin() {
   const navigate = useNavigate();
@@ -62,14 +63,21 @@ function Admin() {
 
   const handleResponseSubmit = async (id) => {
     try {
-      await api.post("/api/add-response", {
+      const res = await api.post("/api/add-response", {
         id,
-        response: response[id],
+        response: response[id] || "",
       });
       setUnansweredQueries((prev) => prev.filter((query) => query._id !== id));
-      alert("Response submitted successfully!");
+      const emailStatus = res.data.email_notification;
+      let message = "Response saved.";
+      if (emailStatus === "sent") message += " The user was notified by email.";
+      if (emailStatus === "failed") message += " WARNING: the email notification could not be sent; please contact the user another way.";
+      if (res.data.knowledge_base_document_updated === false) {
+        message += " The answer was not added to the knowledge-base document.";
+      }
+      alert(message);
     } catch (error) {
-      console.error("Error submitting response:", error);
+      alert(getErrorMessage(error, "Failed to submit response"));
     }
   };
 
@@ -79,8 +87,7 @@ function Admin() {
         await api.delete(`/api/delete-query/${id}`);
         setUnansweredQueries((prev) => prev.filter((query) => query._id !== id));
       } catch (error) {
-        console.error("Error deleting query:", error);
-        alert("Failed to delete query");
+        alert(getErrorMessage(error, "Failed to delete query"));
       }
     }
   };
@@ -89,15 +96,15 @@ function Admin() {
     localStorage.removeItem('adminToken');
     navigate('/admin');
   };
-  
+
   const handleRebuildEmbeddings = async () => {
     setRebuilding(true);
     try {
-      await rebuildEmbeddings();
-      alert('Embeddings rebuilt successfully');
+      const result = await rebuildEmbeddings();
+      const s = result.summary || {};
+      alert(`Knowledge base rebuilt: ${s.documents_indexed ?? 0} documents, ${s.chunks_indexed ?? 0} chunks indexed, ${s.stale_vectors_removed ?? 0} obsolete entries removed.`);
     } catch (error) {
-      console.error('Error rebuilding embeddings:', error);
-      alert('Failed to rebuild embeddings');
+      alert(getErrorMessage(error, 'Failed to rebuild the knowledge base'));
     } finally {
       setRebuilding(false);
     }
@@ -111,18 +118,18 @@ function Admin() {
           <div className="flex items-center justify-center h-20 border-b border-gray-700">
             <h1 className="text-white text-2xl font-bold">Admin Dashboard</h1>
           </div>
-          
+
           <nav className="flex-grow py-4">
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'dashboard' ? 'bg-gray-700' : ''}`}
               onClick={() => setActiveTab('dashboard')}
             >
               <RiDashboardLine className="mr-3" />
               Dashboard
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'chat-history' ? 'bg-gray-700' : ''}`}
               onClick={() => {
                 setActiveTab('chat-history');
@@ -132,16 +139,16 @@ function Admin() {
               <RiMessage2Line className="mr-3" />
               Chat History
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'analytics' ? 'bg-gray-700' : ''}`}
               onClick={() => setActiveTab('analytics')}
             >
               <RiBarChart2Line className="mr-3" />
               Analytics
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'pdfs' ? 'bg-gray-700' : ''}`}
               onClick={() => setActiveTab('pdfs')}
             >
@@ -170,7 +177,7 @@ function Admin() {
             {/* Header with title and rebuild button */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl text-white">Welcome, Admin</h2>
-              
+
               {/* Rebuild Embeddings Button - moved to right side */}
               <button
                 onClick={handleRebuildEmbeddings}
@@ -181,7 +188,7 @@ function Admin() {
                 {rebuilding ? "Rebuilding..." : "Rebuild Embeddings"}
               </button>
             </div>
-            
+
             {/* Info cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="bg-gray-700 p-4 rounded-lg">
@@ -197,7 +204,7 @@ function Admin() {
                 <p className="text-purple-400 text-2xl font-bold">{stats.unanswered_queries}</p>
               </div>
             </div>
-            
+
             {/* Embeddings info text */}
             <p className="text-gray-400 text-sm mt-4">
               Remember to rebuild embeddings after answering questions to update the AI knowledge base.
@@ -254,9 +261,9 @@ function Admin() {
                     </div>
                     <div>
                       <span className="text-green-400 font-medium">Answer: </span>
-                      <span 
+                      <SafeMarkdown
                         className="text-white chat-response"
-                        dangerouslySetInnerHTML={{ __html: chat.answer }}
+                        text={chat.answer}
                       />
                     </div>
                   </div>
@@ -269,7 +276,7 @@ function Admin() {
         {activeTab === 'analytics' && (
           <QueryAnalytics />
         )}
-        
+
         {activeTab === 'pdfs' && (
           <div className="bg-gray-800 rounded-lg p-6">
             <PDFManagement />

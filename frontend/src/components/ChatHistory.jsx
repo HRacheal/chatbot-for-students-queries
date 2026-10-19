@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from "../lib/api";
 import { format } from 'date-fns';
 import SpotlightCard from './ui/SpotlightCard';
+import SafeMarkdown from './SafeMarkdown';
 
 function ChatHistory() {
   const [chatHistory, setChatHistory] = useState([]);
@@ -46,9 +47,9 @@ function ChatHistory() {
               </div>
               <div>
                 <span className="text-green-400 font-medium">Answer: </span>
-                <span 
+                <SafeMarkdown
                   className="text-white chat-response"
-                  dangerouslySetInnerHTML={{ __html: chat.answer }}
+                  text={chat.answer}
                 />
               </div>
             </div>

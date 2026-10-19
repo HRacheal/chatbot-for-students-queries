@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserGraduate } from "react-icons/fa";
 import GradientText from "./ui/GradientText";
-import { api } from "@/lib/api";
+import { api, getErrorMessage } from "@/lib/api";
 
 function UserSignUp() {
   const [userData, setUserData] = useState({
@@ -29,7 +29,7 @@ function UserSignUp() {
     }
 
     try {
-      const data = await api.post("/api/signup", {
+      await api.post("/api/signup", {
         username: userData.username,
         email: userData.email,
         password: userData.password,
@@ -38,14 +38,8 @@ function UserSignUp() {
       // Success - navigate to login
       navigate("/login");
     } catch (err) {
-      console.error("Signup error:", err);
-      // Handle conflict (409) errors - typically means username/email already exists
-      if (err.status === 409) {
-        setError(err.data?.error || "Username or email already exists");
-      } else {
-        // For other errors
-        setError(err.data?.error || "Something went wrong. Please try again.");
-      }
+      // Show the server's validation message (e.g. password rules, duplicate account)
+      setError(getErrorMessage(err));
     }
   };
 

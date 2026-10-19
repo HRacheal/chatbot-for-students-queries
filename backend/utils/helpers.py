@@ -8,59 +8,63 @@ def similar(a, b):
     """Calculate similarity ratio between two strings"""
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
+# Small-talk messages answered without calling the AI. A message only counts as
+# small talk when the *entire* message is one of these phrases, so genuine
+# questions that merely contain a greeting ("Hi, what are the entry
+# requirements?") or a common word ("Is it ok to defer?") are never intercepted.
+SMALL_TALK = [
+    (
+        {"hi", "hello", "hey", "hiya", "greetings", "good morning", "good afternoon",
+         "good evening", "hi there", "hello there", "hey there"},
+        "Hello! How can I help you today?",
+    ),
+    (
+        {"bye", "goodbye", "bye bye", "see you", "see you later", "good night"},
+        "Goodbye! Have a great day!",
+    ),
+    (
+        {"thanks", "thank you", "thank you so much", "thank you very much", "thanks a lot",
+         "many thanks", "appreciate it", "thx", "ok thanks", "okay thanks", "ok thank you",
+         "okay thank you"},
+        "You're welcome! Let me know if you need anything else.",
+    ),
+    (
+        {"ok", "okay", "nice", "great", "good", "understood", "alright", "cool", "noted"},
+        "Is there anything specific you'd like to know?",
+    ),
+    (
+        {"how are you", "how are you doing", "how do you do", "how's it going", "hows it going"},
+        "I'm functioning well, thank you! How can I assist you today?",
+    ),
+]
+_MAX_SMALL_TALK_LENGTH = 40
+
+
+def _normalise_small_talk(text):
+    text = text.lower().replace("’", "'")
+    text = re.sub(r"[^a-z' ]+", " ", text)
+    return " ".join(text.split())
+
+
 def is_general_chat(text):
-    """Detect if the input is general chat with improved matching"""
-    general_phrases = {
-        'greetings': {
-            'patterns': ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-            'response': 'Hello! How can I help you today?'
-        },
-        'farewell': {
-            'patterns': ['bye', 'goodbye', 'see you', 'good night'],
-            'response': 'Goodbye! Have a great day!'
-        },
-        'thanks': {
-            'patterns': ['thanks', 'thank you', 'appreciate it', 'thx'],
-            'response': 'You\'re welcome! Let me know if you need anything else.'
-        },
-        'acknowledgment': {
-            'patterns': ['nice', 'ok', 'okay', 'great', 'good', 'understood', 'alright'],
-            'response': 'Is there anything specific you\'d like to know?'
-        },
-        'well_being': {
-            'patterns': ['how are you', 'how do you do', 'how\'s it going'],
-            'response': 'I\'m functioning well, thank you! How can I assist you today?'
-        }
-    }
-    
-    text_lower = text.lower().strip()
-    
-    # Check for matches with word boundaries
-    for category in general_phrases.values():
-        for pattern in category['patterns']:
-            # For single words, use word boundaries to avoid partial matches
-            if ' ' not in pattern:
-                # Use regex word boundary for single words
-                if re.search(r'\b' + re.escape(pattern) + r'\b', text_lower):
-                    return category['response']
-            else:
-                # For phrases, check if the entire phrase is present
-                if pattern in text_lower:
-                    return category['response']
-            
-            # Only check similarity for very short inputs (1-3 words)
-            words = text_lower.split()
-            if len(words) <= 3 and len(text_lower) <= 20:
-                if similar(text_lower, pattern) > 0.85:
-                    return category['response']
-    
-    # Special check for standalone greetings
-    words = text_lower.split()
-    if len(words) == 1 and words[0] in ['hi', 'hello', 'hey', 'bye']:
-        for category in general_phrases.values():
-            if words[0] in category['patterns']:
-                return category['response']
-    
+    """Return a canned reply if the whole message is small talk, otherwise ``None``."""
+    if not isinstance(text, str):
+        return None
+    normalised = _normalise_small_talk(text)
+    if not normalised or len(normalised) > _MAX_SMALL_TALK_LENGTH:
+        return None
+
+    for phrases, response in SMALL_TALK:
+        if normalised in phrases:
+            return response
+
+    # Tolerate small typos in single-word greetings ("helo", "thnks").
+    if " " not in normalised and len(normalised) >= 4:
+        for phrases, response in SMALL_TALK:
+            for phrase in phrases:
+                if " " not in phrase and len(phrase) >= 4 and similar(normalised, phrase) >= 0.85:
+                    return response
+
     return None
 
 def analyze_sentiment_and_topics(queries):

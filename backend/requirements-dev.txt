@@ -1,0 +1,7 @@
+# Dependencies needed to run the automated tests.
+# The tests replace MongoDB, Pinecone, Cloudinary, SMTP and the LLM with fakes,
+# so the heavy AI libraries (PyTorch, sentence-transformers) are not required.
+-r requirements-core.txt
+langchain-core==1.6.12
+pytest==9.1.1
+mongomock==4.3.0

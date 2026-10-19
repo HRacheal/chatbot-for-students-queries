@@ -13,3 +13,8 @@ chatbotEnv/
 README.md
 *.log
 *.egg-info/
+.venv/
+tests/
+pytest.ini
+requirements-dev.txt
+.env.example

@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
-COPY requirements.txt ./
+COPY requirements.txt requirements-core.txt ./
 
 # Install dependencies
 RUN pip install --upgrade pip \
@@ -17,8 +17,12 @@ RUN pip install --upgrade pip \
 # Copy the rest of the backend code
 COPY . .
 
+# Run as an unprivileged user
+RUN useradd --create-home appuser
+USER appuser
+
 # Expose the port Flask runs on
 EXPOSE 8080
 
-# Start Gunicorn
-CMD ["gunicorn", "--workers=1", "--threads=1", "--timeout=300", "--bind=0.0.0.0:8080", "app:app"]
+# Start Gunicorn. Configuration (including SECRET_KEY) comes from environment variables.
+CMD ["gunicorn", "--workers=1", "--threads=4", "--timeout=300", "--bind=0.0.0.0:8080", "wsgi:app"]

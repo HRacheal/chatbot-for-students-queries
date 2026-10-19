@@ -1,242 +1,91 @@
 import axios from 'axios';
 
-// Create axios instance with base URL from environment variable
+// Base URL of the backend. Empty in development, where Vite proxies /api.
 const baseURL = import.meta.env.VITE_API_BASE_URL || '';
-console.log('API Service initialized with baseURL:', baseURL);
 
+// Authentication uses bearer tokens in the Authorization header (not cookies),
+// so requests are sent without credentials.
 const api = axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Important for CORS with credentials
-  timeout: 600000, // 10 minutes timeout for AI processing
+  timeout: 120000, // 2 minutes for AI processing
 });
 
-// Add request interceptor to include token with every request
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('adminToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    console.error('Request interceptor error:', error);
-    return Promise.reject(error);
-  }
-);
+// Endpoints that require the administrator token.
+const ADMIN_PATHS = ['/api/admin/', '/api/pdfs', '/api/unanswered-queries', '/api/add-response', '/api/delete-query'];
+const isAdminPath = (url = '') => ADMIN_PATHS.some((path) => url.startsWith(path)) && url !== '/api/admin/login';
 
-// Add response interceptor to handle errors
+// Attach the admin token to admin endpoints only, unless a header was set explicitly.
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('adminToken');
+  if (token && isAdminPath(config.url) && !config.headers.Authorization) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// An expired or invalid admin token sends the administrator back to the login page.
 api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
-    // Log detailed error information
-    console.error('API Error:', {
-      message: error.message,
-      endpoint: error.config?.url,
-      method: error.config?.method,
-      status: error.response?.status,
-      data: error.response?.data,
-    });
-    
+    if (error.response?.status === 401 && isAdminPath(error.config?.url)) {
+      localStorage.removeItem('adminToken');
+      if (window.location.pathname.startsWith('/admin/')) {
+        window.location.href = '/admin';
+      }
+    }
     return Promise.reject(error);
   }
 );
 
-// Export the configured axios instance for direct use in components
 export { api };
 
-// Get auth token from localStorage
-export const getAuthToken = () => {
-  const token = localStorage.getItem('adminToken');
-  console.log('Auth token retrieved:', token ? 'Token exists' : 'No token found');
-  return token;
+// Extract a user-friendly message from an API error.
+export const getErrorMessage = (error, fallback = 'Something went wrong. Please try again.') => {
+  if (!error?.response) return 'Network error. Please check your connection and try again.';
+  return error.response.data?.error || fallback;
 };
 
-// PDF Management endpoints
-export const fetchPDFs = async () => {
-  const token = getAuthToken();
-  try {
-    console.log('Fetching PDFs with token:', token ? 'Token exists' : 'No token found');
-    const response = await api.get('/api/pdfs/', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    console.log('PDFs fetch successful:', response.data);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching PDFs:', error);
-    throw error;
-  }
-};
+export const getAuthToken = () => localStorage.getItem('adminToken');
+
+const userAuthHeader = (token) => (token ? { Authorization: `Bearer ${token}` } : {});
+
+// PDF Management endpoints (admin)
+export const fetchPDFs = async () => (await api.get('/api/pdfs/')).data;
 
 export const uploadPDF = async (file) => {
-  const token = getAuthToken();
   const formData = new FormData();
   formData.append('file', file);
-  
-  try {
-    const response = await api.post('/api/pdfs/upload', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error uploading PDF:', error);
-    throw error;
-  }
+  const response = await api.post('/api/pdfs/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return response.data;
 };
 
-export const deletePDF = async (publicId) => {
-  const token = getAuthToken();
-  try {
-    const response = await api.delete(`/api/pdfs/${encodeURIComponent(publicId)}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error deleting PDF:', error);
-    throw error;
-  }
-};
+export const deletePDF = async (publicId) =>
+  (await api.delete(`/api/pdfs/${publicId.split('/').map(encodeURIComponent).join('/')}`)).data;
 
-export const rebuildEmbeddings = async () => {
-  const token = getAuthToken();
-  try {
-    const response = await api.post('/api/pdfs/rebuild-embeddings', {}, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error rebuilding embeddings:', error);
-    throw error;
-  }
-};
+export const rebuildEmbeddings = async () =>
+  (await api.post('/api/pdfs/rebuild-embeddings', {}, { timeout: 600000 })).data;
 
-// Chat endpoints
-export const getChatHistory = async (token) => {
-  try {
-    const response = await api.get('/api/chat-history', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching chat history:', error);
-    throw error;
-  }
-};
+// Chat endpoints (anonymous or logged-in user)
+export const getChatHistory = async (token) =>
+  (await api.get('/api/chat-history', { headers: userAuthHeader(token) })).data;
 
-export const submitQuery = async (query, token) => {
-  try {
-    const response = await api.post('/api/query', query, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error submitting query:', error);
-    throw error;
-  }
-};
+export const submitQuery = async (query, token) =>
+  (await api.post('/api/query', query, { headers: userAuthHeader(token) })).data;
 
 // Admin endpoints
-export const getUnansweredQueries = async () => {
-  try {
-    const response = await api.get("/api/unanswered-queries");
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching unanswered queries:', error);
-    throw error;
-  }
-};
-
-export const getAdminStats = async (token) => {
-  try {
-    const response = await api.get('/api/admin/stats', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching admin stats:', error);
-    throw error;
-  }
-};
-
-export const getAdminChatHistory = async (token) => {
-  try {
-    const response = await api.get('/api/admin/chat-history', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching admin chat history:', error);
-    throw error;
-  }
-};
-
-export const addResponse = async (data) => {
-  try {
-    const response = await api.post("/api/add-response", data);
-    return response.data;
-  } catch (error) {
-    console.error('Error adding response:', error);
-    throw error;
-  }
-};
-
-export const deleteQuery = async (id) => {
-  try {
-    const response = await api.delete(`/api/delete-query/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error deleting query:', error);
-    throw error;
-  }
-};
-
-export const getQueryAnalytics = async (token) => {
-  try {
-    const response = await api.get('/api/admin/query-analytics', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching query analytics:', error);
-    throw error;
-  }
-};
+export const getUnansweredQueries = async () => (await api.get('/api/unanswered-queries')).data;
+export const getAdminStats = async () => (await api.get('/api/admin/stats')).data;
+export const getAdminChatHistory = async () => (await api.get('/api/admin/chat-history')).data;
+export const addResponse = async (data) => (await api.post('/api/add-response', data)).data;
+export const deleteQuery = async (id) => (await api.delete(`/api/delete-query/${id}`)).data;
+export const getQueryAnalytics = async () => (await api.get('/api/admin/query-analytics')).data;
 
 // Auth endpoints
-export const adminLogin = async (credentials) => {
-  try {
-    const response = await api.post("/api/admin/login", credentials);
-    return response.data;
-  } catch (error) {
-    console.error('Error during admin login:', error);
-    throw error;
-  }
-};
-
-export const userLogin = async (credentials) => {
-  try {
-    const response = await api.post("/api/login", credentials);
-    return response.data;
-  } catch (error) {
-    console.error('Error during user login:', error);
-    throw error;
-  }
-};
-
-export const userSignup = async (userData) => {
-  try {
-    const response = await api.post("/api/signup", userData);
-    return response.data;
-  } catch (error) {
-    console.error('Error during user signup:', error);
-    throw error;
-  }
-};
+export const adminLogin = async (credentials) => (await api.post('/api/admin/login', credentials)).data;
+export const userLogin = async (credentials) => (await api.post('/api/login', credentials)).data;
+export const userSignup = async (userData) => (await api.post('/api/signup', userData)).data;

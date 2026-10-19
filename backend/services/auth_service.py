@@ -1,69 +1,66 @@
+import hmac
+import logging
+
 from flask_bcrypt import Bcrypt
+from pymongo.errors import DuplicateKeyError
+
 from models.models import User
-from utils.auth import generate_user_token
-from config.config import Config
+from utils.auth import generate_admin_token, generate_user_token
+
+logger = logging.getLogger(__name__)
+
 
 class AuthService:
     """Service for handling authentication operations"""
-    
-    def __init__(self, app):
+
+    def __init__(self, app, email_service=None):
         self.bcrypt = Bcrypt(app)
         self.user_model = User()
-    
-    def register_user(self, username, email, password):
-        """Register a new user"""
-        try:
-            # Check if user already exists
-            if self.user_model.find_by_email(email):
-                return {"error": "User already exists"}, 409
-            
-            # Hash password
-            hashed_password = self.bcrypt.generate_password_hash(password).decode("utf-8")
-            
-            # Create user
-            user_id = self.user_model.create_user(username, email, hashed_password)
+        self.email_service = email_service
+        self.settings = app.config
+        # Used to keep login timing similar whether or not the username exists.
+        self._dummy_hash = self.bcrypt.generate_password_hash("timing-equaliser").decode("utf-8")
 
-            # Send email notification if user exists
-            if user_id:
-                try:
-                    from flask import current_app
-                    email_service = current_app.config.get('EMAIL_SERVICE')
-                    if email_service:
-                        email_service.send_welcome_email(email, username)
-                        print("Email sent successfully")
-                    else:
-                        print("Email service not found in app config")
-                except Exception as e:
-                    print(f"Error sending email: {str(e)}")
-            
-            return {"message": "User registered successfully", "user_id": str(user_id)}, 201
-            
-        except Exception as e:
-            return {"error": f"Registration failed: {str(e)}"}, 500
-    
+    def register_user(self, username, email, password):
+        """Register a new user (inputs are already validated)."""
+        if self.user_model.find_by_email(email) or self.user_model.find_by_username(username):
+            return {"error": "An account with that username or email already exists"}, 409
+
+        hashed_password = self.bcrypt.generate_password_hash(password).decode("utf-8")
+        try:
+            user_id = self.user_model.create_user(username, email, hashed_password)
+        except DuplicateKeyError:
+            return {"error": "An account with that username or email already exists"}, 409
+        logger.info("User registered: %s", user_id)
+
+        if self.email_service:
+            self.email_service.send_welcome_email(email, username)
+
+        return {"message": "User registered successfully", "user_id": str(user_id)}, 201
+
     def login_user(self, username, password):
         """Authenticate user login"""
-        try:
-            user = self.user_model.find_by_username(username)
-            
-            if user and self.bcrypt.check_password_hash(user["password"], password):
-                token = generate_user_token(user["_id"])
-                return {"token": token, "user_id": str(user["_id"])}, 200
-            
-            return {"error": "Invalid credentials"}, 401
-            
-        except Exception as e:
-            return {"error": f"Login failed: {str(e)}"}, 500
-    
+        user = self.user_model.find_by_username(username)
+        password_hash = user["password"] if user else self._dummy_hash
+        password_ok = self.bcrypt.check_password_hash(password_hash, password)
+        if user and password_ok:
+            return {"token": generate_user_token(user["_id"]), "user_id": str(user["_id"])}, 200
+        return {"error": "Invalid credentials"}, 401
+
     def login_admin(self, email, password):
-        """Authenticate admin login"""
-        try:
-            if email == Config.ADMIN_EMAIL and password == Config.ADMIN_PASSWORD:
-                from utils.auth import generate_admin_token
-                token = generate_admin_token()
-                return {"token": token}, 200
-            
+        """Authenticate the bootstrap administrator configured in the environment."""
+        admin_email = self.settings.get("ADMIN_EMAIL")
+        admin_password = self.settings.get("ADMIN_PASSWORD")
+        if not admin_email or not admin_password:
+            logger.warning("Admin login attempted but ADMIN_EMAIL/ADMIN_PASSWORD are not configured")
             return {"error": "Invalid credentials"}, 401
-            
-        except Exception as e:
-            return {"error": f"Admin login failed: {str(e)}"}, 500
+
+        email_ok = hmac.compare_digest(
+            email.strip().lower().encode("utf-8"), admin_email.strip().lower().encode("utf-8")
+        )
+        password_ok = hmac.compare_digest(password.encode("utf-8"), admin_password.encode("utf-8"))
+        if email_ok and password_ok:
+            logger.info("Admin login succeeded")
+            return {"token": generate_admin_token()}, 200
+        logger.warning("Admin login failed")
+        return {"error": "Invalid credentials"}, 401

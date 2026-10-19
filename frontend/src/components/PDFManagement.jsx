@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RiUpload2Line, RiDeleteBinLine, RiRefreshLine, RiFileTextLine, RiEyeLine } from 'react-icons/ri';
-import { fetchPDFs, deletePDF, rebuildEmbeddings } from '../lib/api';
+import { fetchPDFs, deletePDF, rebuildEmbeddings, uploadPDF, getErrorMessage } from '../lib/api';
 import PDFPreview from './PDFPreview';
 
 function PDFManagement() {
@@ -22,14 +22,9 @@ function PDFManagement() {
       const response = await fetchPDFs();
       setPdfs(response.pdfs || []);
     } catch (error) {
-      console.error('Failed to load PDFs:', error);
-      // Check if this is an auth error
-      if (error.response && error.response.status === 401) {
-        // Handle authentication error - possibly redirect to login
-        alert('Authentication error. Please log in again.');
-        // Clear the token and redirect to admin login
-        localStorage.removeItem('adminToken');
-        window.location.href = '/admin';
+      // 401 responses are handled centrally in lib/api.js (redirect to login).
+      if (error.response?.status !== 401) {
+        alert(getErrorMessage(error, 'Failed to load documents'));
       }
     } finally {
       setLoading(false);
@@ -40,6 +35,7 @@ function PDFManagement() {
     const file = event.target.files[0];
     if (!file) return;
 
+    event.target.value = ''; // allow re-selecting the same file
     if (file.type !== 'application/pdf') {
       alert('Only PDF files are allowed!');
       return;
@@ -47,26 +43,11 @@ function PDFManagement() {
 
     setUploading(true);
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/pdfs/upload', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
-
-      alert('PDF uploaded successfully!');
+      const result = await uploadPDF(file);
+      alert(result.message || 'PDF uploaded successfully!');
       loadPDFs(); // Refresh the list
     } catch (error) {
-      alert('Failed to upload PDF: ' + error.message);
+      alert('Failed to upload PDF: ' + getErrorMessage(error));
     } finally {
       setUploading(false);
     }
@@ -76,23 +57,24 @@ function PDFManagement() {
     if (!confirm('Are you sure you want to delete this PDF?')) {
       return;
     }
-    
+
     try {
-      await deletePDF(publicId);
-      alert('PDF deleted successfully');
+      const result = await deletePDF(publicId);
+      alert(result.warning ? `PDF deleted. ${result.warning}` : 'PDF deleted and removed from search results');
       loadPDFs(); // Refresh the list
     } catch (error) {
-      alert('Failed to delete PDF');
+      alert('Failed to delete PDF: ' + getErrorMessage(error));
     }
   };
 
   const handleRebuildEmbeddings = async () => {
     setRebuilding(true);
     try {
-      await rebuildEmbeddings();
-      alert('Embeddings rebuilt successfully');
+      const result = await rebuildEmbeddings();
+      const s = result.summary || {};
+      alert(`Knowledge base rebuilt: ${s.documents_indexed ?? 0} documents, ${s.chunks_indexed ?? 0} chunks indexed, ${s.stale_vectors_removed ?? 0} obsolete entries removed.`);
     } catch (error) {
-      alert('Failed to rebuild embeddings');
+      alert('Failed to rebuild the knowledge base: ' + getErrorMessage(error));
     } finally {
       setRebuilding(false);
     }
@@ -107,7 +89,7 @@ function PDFManagement() {
     <div className="text-white">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">PDF Management</h2>
-        
+
         {/* Upload and Rebuild section */}
         <div className="flex gap-4">
           <div className="relative">
@@ -166,6 +148,14 @@ function PDFManagement() {
                         {/* Extract and display the best possible name */}
                         {pdf.filename || pdf.public_id.split('/').pop()}
                       </span>
+                      {pdf.is_public && (
+                        <span
+                          className="ml-2 text-xs bg-yellow-700 text-yellow-100 px-2 py-0.5 rounded"
+                          title="Uploaded by an earlier version as a public file. Re-upload and delete this copy to make it private."
+                        >
+                          Public (legacy)
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">

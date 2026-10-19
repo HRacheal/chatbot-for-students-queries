@@ -12,6 +12,7 @@ import { FaHistory, FaCalendarAlt, FaChevronDown, FaChevronUp } from "react-icon
 import { BiExpandAlt, BiCollapseAlt } from "react-icons/bi"; // Added resize icons
 import { FiLogOut, FiLogIn } from "react-icons/fi"; // More distinct login/logout icons
 import { getChatHistory, submitQuery } from "../lib/api";
+import SafeMarkdown from "./SafeMarkdown";
 import { format } from "date-fns";
 
 function ChatBox({ onClose }) {
@@ -26,6 +27,7 @@ function ChatBox({ onClose }) {
   const [isTyping, setIsTyping] = useState(false); // Add loading state
   const [typingText, setTypingText] = useState({}); // Add state for typing text animation
   const [expandedChat, setExpandedChat] = useState(null); // Track expanded history item
+  const [sessionId, setSessionId] = useState(null); // Server-issued conversation id
   const conversationRef = useRef(null);
   const chatBoxRef = useRef(null);
   const messagesEndRef = useRef(null); // New ref for scroll target
@@ -201,14 +203,16 @@ function ChatBox({ onClose }) {
     try {
       const token = localStorage.getItem("userToken");
       const response = await submitQuery(
-        {
-          question: currentMessage,
-        },
+        sessionId ? { question: currentMessage, session_id: sessionId } : { question: currentMessage },
         token
       );
+      if (response.session_id) setSessionId(response.session_id);
 
-      // Get the response text
-      const responseText = response.answer || "No answer found";
+      // Answers are plain text; unanswered questions are logged by the backend.
+      let responseText = response.answer || "No answer found";
+      if (response.status === "unanswered" && token) {
+        responseText += " You'll be notified by email when staff respond.";
+      }
       
       // Update the last message with the response
       setChatHistory((prev) => {
@@ -233,9 +237,7 @@ function ChatBox({ onClose }) {
       let errorResponse;
       
       if (error.response) {
-        if (error.response.status === 404) {
-          errorResponse = "We couldn't find an answer to your question at the moment. Don't worry — your query has been logged, and if you're logged in, you'll be notified as soon as we have a response.";
-        } else if (error.response.status === 503 && error.response.data && error.response.data.error) {
+        if ([400, 429, 503].includes(error.response.status) && error.response.data?.error) {
           // Use the user-friendly error message from the backend
           errorResponse = error.response.data.error;
         } else {
@@ -500,9 +502,9 @@ function ChatBox({ onClose }) {
                                 </div>
                                 <div>
                                   <div className="text-green-400 text-sm font-medium mb-1">Answer:</div>
-                                  <div 
+                                  <SafeMarkdown
                                     className="text-white bg-gray-700/50 p-2 rounded-md chat-response"
-                                    dangerouslySetInnerHTML={{ __html: chat.answer }}
+                                    text={chat.answer}
                                   />
                                 </div>
                               </div>
@@ -568,15 +570,15 @@ function ChatBox({ onClose }) {
                         {/* Show typing animation if this message has an ID and is in typingText state */}
                         {chat.id && typingText[chat.id] ? (
                           <>
-                            <span dangerouslySetInnerHTML={{ 
-                              __html: typingText[chat.id].text.substring(0, typingText[chat.id].displayedChars) 
-                            }} />
+                            <SafeMarkdown
+                              text={typingText[chat.id].text.substring(0, typingText[chat.id].displayedChars)}
+                            />
                             {!typingText[chat.id].completed && (
                               <span className="inline-block w-2 h-4 bg-blue-400 ml-1 animate-pulse"></span>
                             )}
                           </>
                         ) : (
-                          <span dangerouslySetInnerHTML={{ __html: chat.response }} />
+                          <SafeMarkdown text={chat.response} />
                         )}
                       </div>
                     </div>

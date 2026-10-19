@@ -1,119 +1,58 @@
-# Student Query Chatbot - Backend
+# Backend (Flask API)
 
-This directory contains the Flask backend for the Student Query Chatbot system. The backend powers the RAG (Retrieval Augmented Generation) system, PDF processing, and admin features.
+See the [root README](../README.md) for setup, the technology stack and the API overview.
 
-## 🚀 Key Features
-
-- **RAG-based Query Processing**: Combines Pinecone vector search with Google AI generation
-- **PDF Management**: Cloudinary-based PDF storage and processing
-- **Admin API**: Comprehensive admin controls for query management
-- **Email Notifications**: Automated alerts for query responses
-
-## 📂 Directory Structure
+## Structure
 
 ```
-backend/
-├── app.py                 # Main application entry point
-├── config/                # Configuration settings
-│   ├── config.py          # Environment and application settings
-│   └── database.py        # MongoDB connection handling
-├── controllers/           # API controllers (request handling)
-│   ├── admin_controller.py
-│   ├── auth_controller.py
-│   ├── chat_controller.py
-│   └── pdf_controller.py
-├── middleware/            # Request middleware
-│   ├── auth_middleware.py # Authentication middleware
-│   └── middleware.py      # General middleware functions
-├── models/                # Data models
-│   └── models.py          # MongoDB data models
-├── routes/                # API route definitions
-│   ├── admin_routes.py
-│   ├── auth_routes.py
-│   ├── chat_routes.py
-│   └── pdf_routes.py
-├── services/              # Business logic
-│   ├── admin_service.py
-│   ├── auth_service.py
-│   ├── chat_service.py
-│   ├── cloudinary_service.py
-│   └── email_service.py
-└── utils/                 # Utility functions
-    ├── auth.py            # Authentication utilities
-    ├── cloudinary_utils.py# Cloudinary integration
-    ├── helpers.py         # General helper functions
-    └── pdf_utils.py       # PDF processing utilities
+app.py                  create_app(): config validation, CORS, error handling, blueprints
+wsgi.py                 Production entry point: gunicorn wsgi:app
+config/config.py        All settings, read from environment variables (see .env.example)
+config/database.py      MongoDB connection and indexes
+routes/                 URL → controller wiring; authentication decorators are applied here
+controllers/            Input validation and HTTP responses
+services/
+  chat_service.py       Small-talk handling, RAG answer generation, unanswered-query logging
+  knowledge_base.py     Pinecone index: per-document chunking, deterministic IDs, rebuild/delete
+  cloudinary_service.py PDF storage (private by default), signed URLs, size-limited downloads
+  admin_service.py      Dashboard data and admin answers
+  auth_service.py       Signup/login (bcrypt) and bootstrap admin login
+  email_service.py      SMTP notifications with explicit success/failure results
+models/models.py        MongoDB access for users, queries, chat history; PDF view model
+middleware/middleware.py JSON error handling, security headers, opt-in tracing
+utils/
+  auth.py               JWT creation/verification; login_required and admin_required
+  validation.py         Request validation helpers
+  rate_limit.py         In-memory per-client rate limiting
+  logging_utils.py      Logging setup with redaction of personal data
+  pdf_utils.py          PDF validation, text extraction (pypdf), admin Q&A document
+  helpers.py            Small-talk detection, analytics helpers
+tests/                  pytest suite (external services replaced with fakes)
 ```
 
-## 🌟 Key Components
+## Knowledge-base indexing
 
-### RAG System
-- **Embeddings**: Google Generative AI embeddings for semantic search
-- **Vector Storage**: Pinecone for production-ready vector storage
-- **PDF Processing**: Extraction, chunking, and metadata handling
+- Every PDF is chunked separately (`RecursiveCharacterTextSplitter`, 1000 characters, 150 overlap).
+- Each chunk's vector ID is `<cloudinary public_id>#chunk-<n>`, and its metadata records `source_id` and `title`.
+- **Rebuild** re-indexes every stored PDF, then deletes vectors that don't belong to a current document. That covers deleted documents, documents that got shorter, and duplicates with random IDs left by earlier versions.
+  - Vectors of a document that failed to download are kept.
+  - If no text can be extracted at all, the index is left unchanged.
+- **Deleting** a PDF also deletes its vectors.
+- Text is extracted with `pypdf`. Scanned (image-only) PDFs produce no text; OCR is planned for a later phase.
+- Prefix listing (`index.list`) requires a Pinecone **serverless** index. The app creates one automatically using `PINECONE_CLOUD`/`PINECONE_REGION` if the index doesn't exist.
 
-### Cloudinary Integration
-- PDF storage with public/private access control
-- Original filename preservation
-- Secure URL generation and management
+## Admin answers
 
-### Admin Features
-- Dashboard statistics and analytics
-- Query management and response handling
-- PDF management (upload, list, delete)
-- Embedding rebuilding for knowledge base updates
+When an administrator answers an unanswered query:
+1. The answer is saved on the query.
+2. It is appended to a generated "extra" Q&A PDF in the knowledge-base folder. It becomes searchable after the next rebuild.
+3. A registered user is emailed.
 
-## 🛠️ Setup Instructions
+The response reports `email_notification` (`sent`/`failed`/`not_applicable`) and whether the Q&A document was updated. This mechanism is temporary and will be replaced by a reviewed enquiry/FAQ workflow.
 
-1. **Create a virtual environment**:
-   ```bash
-   python -m venv chatbotEnv
-   source chatbotEnv/bin/activate  # On Windows: chatbotEnv\\Scripts\\activate
-   ```
+## Tests
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up environment variables**:
-   Create a `.env` file with the following variables:
-   ```
-   MONGODB_URI=mongodb://localhost:27017
-   MONGODB_DB_NAME=student_chatbot
-   SECRET_KEY=your_secret_key
-   GOOGLE_API_KEY=your_google_api_key
-   PINECONE_API_KEY=your_pinecone_api_key
-   PINECONE_INDEX_NAME=your_pinecone_index
-   CLOUDINARY_CLOUD_NAME=your_cloud_name
-   CLOUDINARY_API_KEY=your_api_key
-   CLOUDINARY_API_SECRET=your_api_secret
-   PDF_FOLDER=pdfs
-   ```
-
-4. **Run the application**:
-   ```bash
-   flask run
-   ```
-
-
-
-## 📦 Embedding Management
-
-Embeddings for the RAG system are:
-1. Created on initial startup if they don't exist
-2. Only updated manually via the "Rebuild Embeddings" endpoint
-3. Not automatically updated with each admin answer (to improve performance)
-4. Stored in Pinecone for production-ready retrieval
-
-## 📧 Email Configuration
-
-Configure the email settings in `config.py` to enable email notifications:
-```python
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 587
-MAIL_USE_TLS = True
-MAIL_USERNAME = 'your_email@gmail.com'
-MAIL_PASSWORD = 'your_app_password'
-MAIL_DEFAULT_SENDER = 'your_email@gmail.com'
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
 ```

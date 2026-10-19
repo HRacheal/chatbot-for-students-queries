@@ -54,7 +54,7 @@ frontend/
 ### PDF Management
 - PDF upload with Cloudinary integration
 - List and manage uploaded PDFs
-- PDF preview with Google Docs viewer
+- PDF preview in the browser's built-in viewer (files are not sent to third-party viewers)
 - Delete PDFs with confirmation
 - Rebuild embeddings functionality
 
@@ -66,14 +66,10 @@ frontend/
    ```
 
 2. **Configure environment**:
-   Create a `.env.local` file with:
-   ```
-   # Development
-   VITE_API_BASE_URL=http://localhost:5000
-   
-   # Production (uncomment when deploying)
-   # VITE_API_BASE_URL=https://your-backend-url.onrender.com
-   ```
+   Copy `.env.example` to `.env.local`. In development leave `VITE_API_BASE_URL`
+   empty: Vite proxies `/api` to the backend on `http://127.0.0.1:5000`.
+   In production set it to the backend URL, and add the frontend's origin to the
+   backend's `CORS_ORIGINS`.
 
 3. **Run development server**:
    ```bash
@@ -85,13 +81,17 @@ frontend/
    npm run build
    ```
 
+5. **Run the tests and linter**:
+   ```bash
+   npm test        # Vitest: safe Markdown rendering / XSS tests
+   npm run lint    # ESLint (pre-existing warnings are still being cleaned up)
+   ```
+
 ## 📄 PDF Preview Features
 
 The system includes a PDF preview component that:
-- Uses Google Docs Viewer for reliable PDF rendering
-- Provides fallback to direct iframe embedding
-- Includes loading indicators and error handling
-- Supports switching between viewer types
+- Uses the browser's built-in PDF viewer; documents are never sent to Google Docs or other third-party viewers
+- Includes a loading indicator and an "open in new tab" option
 
 
 
