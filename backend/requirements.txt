@@ -1,0 +1,50 @@
+# Using pre-built wheels when possible
+--prefer-binary
+
+# Core Flask dependencies
+Flask==2.3.3
+flask-cors==4.0.0
+flask-bcrypt==1.0.1
+flask-mail==0.9.1
+
+# Database
+pymongo==4.5.0
+
+# AI and ML dependencies - Using a combination that works together with Python 3.10
+# Removing specific versions and letting pip resolve dependencies
+langchain
+langchain-classic
+langchain-community
+langchain-core
+langchain-groq
+langchain-huggingface
+pinecone-client>=2.2.0
+langchain-pinecone
+textblob==0.15.3
+sentence-transformers
+
+# PDF processing
+PyPDF2==3.0.1
+reportlab==4.0.4
+cryptography>=40.0.0
+cffi>=1.15.1
+
+# Authentication
+PyJWT==2.8.0
+
+# Environment and utilities
+python-dotenv==1.0.0
+python-multipart==0.0.6
+cloudinary==1.36.0
+# flask-cloudinary==1.0.0  # This package might not exist, using only cloudinary is sufficient
+Flask-Uploads==0.2.1
+Werkzeug==2.3.7 
+
+# Production server
+gunicorn==21.2.0
+# No gevent due to Python 3.12 compatibility issues
+# Using sync worker type for gunicorn by default
+
+# Development dependencies (optional)
+pytest==7.4.2
+pytest-flask==1.2.0

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+chatbotEnv/
+.env
+*.env
+*.sqlite3
+*.db
+.DS_Store
+.git
+.gitignore
+README.md
+*.log
+*.egg-info/

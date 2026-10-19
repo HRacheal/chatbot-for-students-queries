@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+chatbotEnv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Flask
+instance/
+.webassets-cache
+flask_session/
+
+# Virtual Environment
+venv/
+virtualenv/
+venvs/
+.env
+.venv
+env/
+
+# MongoDB
+*.mongodb
+
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+package-lock.json
+
+# React/Vite
+dist/
+dist-ssr/
+coverage/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Project specific
+.env
+*.log
+.coverage
+htmlcov/
+.pytest_cache/
+backend/resources/*.pdf
+!backend/resources/sample.pdf
+
+# Render specific
+__render_build__/
+.render/
+
+# FAISS index files
+faiss_index/
+faiss_index_*
+
+# Pinecone
+pinecone_api_key.txt
+pinecone_keys.json
+
+# LangChain & LangSmith
+.langchain.db
+.langchain/
+langchain.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
