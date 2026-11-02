@@ -25,6 +25,17 @@ ADMIN_ROUTES = [
     ("post", "/api/pdfs/upload"),
     ("post", "/api/pdfs/rebuild-embeddings"),
     ("delete", "/api/pdfs/student_chatbot/pdfs/doc_1"),
+    ("get", "/api/admin/sources"),
+    ("post", "/api/admin/sources"),
+    ("get", "/api/admin/sources/650000000000000000000000"),
+    ("put", "/api/admin/sources/650000000000000000000000"),
+    ("post", "/api/admin/sources/650000000000000000000000/status"),
+    ("post", "/api/admin/sources/rebuild-index"),
+    ("get", "/api/admin/official-links"),
+    ("post", "/api/admin/official-links"),
+    ("get", "/api/admin/official-links/preview?q=fees"),
+    ("get", "/api/admin/enquiries"),
+    ("get", "/api/admin/live-retrieval"),
 ]
 
 

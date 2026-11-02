@@ -1,0 +1,112 @@
+{
+  "category_id": "01",
+  "category_name": "General University Information",
+  "folder": "01_general_university_information",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_academic_calendar_2026_2027",
+    "usiu_student_handbook"
+  ],
+  "section_records": 98,
+  "knowledge_chunks": 157,
+  "structured_files": {
+    "calendar_events.csv": 36,
+    "semester_terms.csv": 3,
+    "university_profile.csv": 16,
+    "service_hours.csv": 12,
+    "library_loan_periods.csv": 7
+  },
+  "coverage": [
+    {
+      "information": "University history",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Only brief statements: one of the oldest private, secular universities in East Africa; dual accreditation; Alumni Association registered April 1990. No founding history."
+    },
+    {
+      "information": "Location",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "P.O. Box and 'USIU Road, Off Thika Road (Exit 7) Nairobi' (handbook p60); P.O. Box (calendar p7)."
+    },
+    {
+      "information": "Campus information",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Buildings and facilities are named across sections (Freida Brown Student Center, Lillian K Beam Building, hostels, sports facilities). No campus map or campus list."
+    },
+    {
+      "information": "Contact information",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "See 06_department_contacts_and_query_routing."
+    },
+    {
+      "information": "University leadership",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Vice Chancellor and Deputy Vice Chancellor, Student Life only; undated (issue V25)."
+    },
+    {
+      "information": "Facilities",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Library, ICT labs, sports, health centre, catering, transport, hostels."
+    },
+    {
+      "information": "Library",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Rules, loan periods, opening hours, contacts (handbook section 7)."
+    },
+    {
+      "information": "Accommodation",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "On-campus hostel description and capacity; hostel check-in/out dates. No hostel fees."
+    },
+    {
+      "information": "Student services",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Counselling, career services, disability inclusion, gender equity, health, insurance, transport, catering."
+    },
+    {
+      "information": "Academic calendar",
+      "status": "Extracted",
+      "documents": [
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Full 2026-2027 calendar (semester_terms.csv and calendar_events.csv)."
+    },
+    {
+      "information": "Frequently asked questions",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Neither document contains an FAQ."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

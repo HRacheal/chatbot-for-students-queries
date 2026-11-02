@@ -7,6 +7,7 @@ replaced with in-memory fakes.
 
 import os
 import sys
+from types import SimpleNamespace
 
 # Configure the environment *before* application modules are imported, and
 # blank out external credentials so a developer's real backend/.env is never used.
@@ -28,6 +29,19 @@ os.environ.update({
     "LANGSMITH_API_KEY": "",
     "ENABLE_DEBUG_ROUTES": "false",
     "CORS_ORIGINS": "http://localhost:5173",
+    # Live retrieval stays off unless a test enables it with a fake transport.
+    "LIVE_RETRIEVAL_ENABLED": "false",
+    "TRUSTED_SOURCE_HOSTS": "www.usiu.ac.ke",
+    "OFFICIAL_PAGES_FILE": "",
+    "ENQUIRY_EMAIL_ADMISSIONS": "",
+    "ENQUIRY_EMAIL_REGISTRAR": "",
+    "ENQUIRY_EMAIL_MARKETING": "",
+    # Rate limits for the new endpoints are tested explicitly; keep them out of the way elsewhere.
+    "ENQUIRY_RATE_LIMIT_PER_MINUTE": "1000",
+    "GUIDANCE_RATE_LIMIT_PER_MINUTE": "1000",
+    # Fast password hashing for tests only (production default is 12).
+    "STAFF_BCRYPT_ROUNDS": "4",
+    "STAFF_MAX_FAILED_LOGINS": "5",
 })
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -126,17 +140,96 @@ class FakeStorage:
         return resource["_bytes"]
 
 
-class FakeChain:
-    def __init__(self, answer=None, error=None):
+class FakeLLM:
+    """Stand-in for the chat model. Records the questions it was asked."""
+
+    def __init__(self, answer="Applications are submitted online [1].", error=None, scope_answer="OUT_OF_SCOPE"):
         self.answer = answer
         self.error = error
+        self.scope_answer = scope_answer
         self.questions = []
+        self.prompts = []
+        self.scope_checks = []
 
-    def invoke(self, inputs):
-        self.questions.append(inputs["question"])
+    def invoke(self, messages):
+        human = messages[-1].content
+        if human.startswith("<message>"):  # scope check for a question with no matching source
+            self.scope_checks.append(human.split("\n")[1])
+            return SimpleNamespace(content=self.scope_answer)
+        self.prompts.append(human)
+        self.questions.append(human.split("<question>\n", 1)[1].split("\n</question>", 1)[0])
         if self.error:
             raise self.error
-        return {"answer": self.answer}
+        return SimpleNamespace(content=self.answer)
+
+
+# Synthetic sources for tests only. They are NOT real USIU-Africa information.
+TEST_SOURCES = [
+    {
+        "url": "https://www.usiu.ac.ke/test-fixture/how-to-apply/",
+        "title": "TEST FIXTURE: How to Apply",
+        "department": "admissions",
+        "source_date": "2026-01",
+        "text": "TEST FIXTURE. Applications are submitted online through the applicant portal. "
+                "Each programme lists its entry requirements. Admitted applicants may ask to defer "
+                "their admission. Advisers explain which programmes suit different academic qualifications.",
+    },
+    {
+        "url": "https://www.usiu.ac.ke/test-fixture/registration/",
+        "title": "TEST FIXTURE: Registration Procedures",
+        "department": "registrar",
+        "source_date": "2026-02-01",
+        "text": "TEST FIXTURE. Registration opens online before each semester. Students request an "
+                "official transcript from the Registrar in writing.",
+    },
+]
+
+
+class FakeTransport:
+    """Stand-in for the HTTP client used by ``WebsiteAccess``.
+
+    ``routes`` maps a URL to ``(status, headers, body)`` or to an exception to raise.
+    Every requested URL is recorded, so tests can prove what was (not) fetched.
+    """
+
+    def __init__(self, routes=None):
+        self.routes = dict(routes or {})
+        self.requests = []
+
+    def get(self, url, headers=None, timeout=None, max_bytes=None):
+        self.requests.append((url, dict(headers or {})))
+        route = self.routes.get(url)
+        if route is None:
+            return 404, {"content-type": "text/html"}, b"<html><body>Not found</body></html>"
+        if isinstance(route, Exception):
+            raise route
+        status, response_headers, body = route
+        if max_bytes is not None and len(body) > max_bytes:
+            from services.web_access import TOO_LARGE, FetchError
+
+            raise FetchError(TOO_LARGE)
+        return status, {k.lower(): v for k, v in response_headers.items()}, body
+
+    def fetched(self, url):
+        return any(u == url for u, _ in self.requests)
+
+
+ROBOTS_ALLOW_USIUBOT = b"User-agent: USIUBOT\nAllow: /\n\nUser-agent: *\nDisallow: /\n"
+ROBOTS_DENY_ALL = b"User-agent: Googlebot\nAllow: /\n\nUser-agent: *\nDisallow: /\n"
+
+
+def html_page(title, body, published=None):
+    meta = f'<meta property="article:modified_time" content="{published}">' if published else ""
+    return (f"<html><head><title>{title}</title>{meta}</head><body><nav>Menu Home About</nav>"
+            f"<main><h1>{title}</h1>{body}</main><footer>Copyright</footer></body></html>").encode("utf-8")
+
+
+def add_source(registry, approve=True, **fields):
+    data = {**TEST_SOURCES[0], **fields}
+    source = registry.create(data)
+    if approve:
+        source = registry.set_status(str(source["_id"]), "approved")
+    return source
 
 
 # --- Fixtures ---------------------------------------------------------------------
@@ -152,7 +245,7 @@ def storage():
 
 @pytest.fixture
 def make_app(knowledge_base, storage):
-    def _make(config_name="testing", **overrides):
+    def _make(config_name="testing", website_access=None, **overrides):
         limiter.reset()
         return create_app(
             config_name,
@@ -160,6 +253,7 @@ def make_app(knowledge_base, storage):
             db_client=mongomock.MongoClient(),
             knowledge_base=knowledge_base,
             storage=storage,
+            website_access=website_access,
         )
 
     return _make
@@ -198,11 +292,20 @@ def user_headers(client):
 
 
 @pytest.fixture
-def fake_chain(app, monkeypatch):
-    """Replace the LangChain pipeline with a controllable fake."""
-    chain = FakeChain(answer="Applications are submitted online.")
-    chat_view = app.view_functions["chat.query"]
-    service = chat_view.__wrapped__.__self__.chat_service
-    monkeypatch.setattr(service, "get_conversation_chain", lambda session_id, store: chain)
-    chain.service = service
-    return chain
+def registry(app):
+    return app.extensions["source_registry"]
+
+
+@pytest.fixture
+def approved_sources(registry):
+    return [add_source(registry, **source) for source in TEST_SOURCES]
+
+
+@pytest.fixture
+def fake_llm(app, monkeypatch, approved_sources):
+    """Replace the language model with a controllable fake (approved test sources are loaded)."""
+    llm = FakeLLM()
+    service = app.extensions["chat_service"]
+    monkeypatch.setattr(service, "_get_llm", lambda: llm)
+    llm.service = service
+    return llm

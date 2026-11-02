@@ -2,6 +2,7 @@ import * as React from "react"
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 
 import { cn } from "@/lib/utils"
+import PropTypes from "prop-types"
 
 const HoverCard = HoverCardPrimitive.Root
 
@@ -18,6 +19,12 @@ const HoverCardContent = React.forwardRef(({ className, align = "center", sideOf
     )}
     {...props} />
 ))
+HoverCardContent.propTypes = {
+  className: PropTypes.string,
+  align: PropTypes.oneOf(["start", "center", "end"]),
+  sideOffset: PropTypes.number,
+}
+
 HoverCardContent.displayName = HoverCardPrimitive.Content.displayName
 
 export { HoverCard, HoverCardTrigger, HoverCardContent }

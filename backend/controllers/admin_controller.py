@@ -1,6 +1,7 @@
 from flask import current_app, jsonify
 
 from services.admin_service import AdminService
+from services.sources import DEPARTMENTS
 from utils.validation import ValidationError, get_json_object, require_string, validate_object_id
 
 
@@ -12,8 +13,8 @@ class AdminController:
     and returns a generic message.
     """
 
-    def __init__(self, email_service=None, storage=None):
-        self.admin_service = AdminService(email_service, storage)
+    def __init__(self, email_service=None, storage=None, source_registry=None, enquiry_service=None):
+        self.admin_service = AdminService(email_service, storage, source_registry, enquiry_service)
 
     def get_stats(self):
         result, status_code = self.admin_service.get_dashboard_stats()
@@ -46,8 +47,11 @@ class AdminController:
             response = require_string(
                 data, "response", current_app.config["MAX_RESPONSE_LENGTH"], "Response"
             )
+            department = data.get("department") or "general_university"
+            if department not in DEPARTMENTS:
+                raise ValidationError("Department must be one of: " + ", ".join(DEPARTMENTS))
         except ValidationError as e:
             return jsonify({"error": str(e)}), 400
 
-        result, status_code = self.admin_service.add_response_to_query(query_id, response)
+        result, status_code = self.admin_service.add_response_to_query(query_id, response, department)
         return jsonify(result), status_code

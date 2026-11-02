@@ -1,0 +1,431 @@
+{
+ "checked_at": "2026-11-02",
+ "user_agent": "USIUBOT-dataset-collector/1.0 (university student-query chatbot dataset; manual review)",
+ "results": [
+  {
+   "url": "https://clear.usiu.ac.ke/",
+   "permitted": false,
+   "reason": "host not on the allow-list"
+  },
+  {
+   "url": "https://itsweb.usiu.ac.ke/pls/prodi41/w99pkg.mi_login",
+   "permitted": false,
+   "reason": "host not on the allow-list"
+  },
+  {
+   "url": "https://kuccps.net/",
+   "permitted": true,
+   "reason": "allowed by robots.txt (read)"
+  },
+  {
+   "url": "https://kuccps.net/Placem",
+   "permitted": true,
+   "reason": "allowed by robots.txt (read)"
+  },
+  {
+   "url": "https://kuccps.net/frequently-asked-questions",
+   "permitted": true,
+   "reason": "allowed by robots.txt (read)"
+  },
+  {
+   "url": "https://www.cue.or.ke/",
+   "permitted": true,
+   "reason": "allowed by robots.txt (read)"
+  },
+  {
+   "url": "https://www.knqa.go.ke/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (HTTP 500)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/2026-48th-commencement/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/about-us/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/about-us/accreditations/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/about-us/contact-us/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/about-us/faq/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/about-us/vision-mission-values/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/academic-calendar/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/academic-catalog/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/doctoral-programs/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/library-and-e-resources/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/masters-programs/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/our-schools/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/short-courses/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/academics/undergraduate-programs/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/admission-fees/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/admission-fees/cbet-realignment/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/admission-fees/fee-payment-refunds/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/admission-requirements/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/disability-inclusion/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/documents/academic-calendar-2025-2026/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/documents/academic-calendar-2026-2027/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/documents/on-campus-programs-fee-structure/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/financial-aid/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/health-wellness/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/how-to-apply/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/intake/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/international-applicants/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/placement-careers/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/pre-registration-check/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-animation/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-criminal-justice-studies-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-criminal-justice-studies/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-film-production-and-directing/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-international-relations/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-arts-in-journalism/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-pharmacy/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-accounting/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-applied-computer-technology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-artificial-intelligence-ai-robotics/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-data-science-analytics-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-data-science-and-analytics/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-finance/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-hotel-and-restaurant-management/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-information-systems-technology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-international-business-administration/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-nursing/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-psychology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-software-engineering/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/doctor-of-business-administration/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/doctor-of-philosophy-in-information-systems-and-technology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/doctor-of-philosophy-in-international-relations/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/doctor-of-psychology-psy-d-clinical-psychology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-clinical-psychology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-communication-studies-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-communication-studies/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-counseling-psychology-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-counseling-psychology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-criminal-and-transitional-justice/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-international-relations-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-international-relations/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-arts-in-marriage-and-family-therapy/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-business-administration-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-business-administration/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-in-clinical-pharmacology-therapeutics/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-in-global-banking-and-finance/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-in-information-security/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-in-information-systems-and-technology/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-in-management-and-organizational-development/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/master-of-science-msc-in-data-science-and-analytics-online/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/mba-global-business-management/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/programs/mba-health-leadership-and-management/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/resource-downloads/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/student-life/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/student-life/housing-accommodation/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/tuition-fees/",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/webapp/defer-payment/",
+   "permitted": false,
+   "reason": "restricted system (login, portal or form) \u2014 never collected"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/webapp/tuition-refund/",
+   "permitted": false,
+   "reason": "restricted system (login, portal or form) \u2014 never collected"
+  },
+  {
+   "url": "https://www.usiu.ac.ke/wp-sitemap.xml",
+   "permitted": false,
+   "reason": "blocked by robots.txt (read)"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+[
+ {
+  "record_id": "WEB-P028-S01-c01",
+  "section_id": "WEB-P028-S01",
+  "category_id": "07",
+  "category_name": "Academic Documents, Results and Verified Eligibility",
+  "data_origin": "external",
+  "publisher": "Kenya Universities and Colleges Central Placement Service (KUCCPS)",
+  "document_id": "kuccps.net__Placem",
+  "document_title": "Placem | KUCCPS",
+  "source_url": "https://kuccps.net/Placem",
+  "source_file": "web_sources/snapshots/kuccps.net__Placem.md",
+  "publication_date": "Publication date not stated",
+  "academic_year": "Not stated",
+  "sitemap_lastmod": "",
+  "collection_date": "2026-11-01",
+  "last_checked": "2026-11-01",
+  "page": null,
+  "section_heading": "Placem | KUCCPS",
+  "heading_path": [
+   "Placem | KUCCPS"
+  ],
+  "content_fidelity": "relevant passages only, verbatim",
+  "review_status": "draft",
+  "verification_status": "pending_verification",
+  "approval_status": "not_approved",
+  "issue_ids": [],
+  "record_type": "knowledge_chunk",
+  "chunk_id": "WEB-P028-S01-c01",
+  "chunk_index": 1,
+  "chunk_count": 1,
+  "content": "Placem | KUCCPS\n\n(b) Placem page, \"Placement\" section:\n\"Kenya Universities and Colleges Central Placement Service (KUCCPS) coordinates the placement of students to universities, Teacher Training Colleges (TTCs), National Polytechnics, ...\"\n\nPlacem page, \"Minimum Requirements\" section (verbatim list):\n\"Degree: C+ and above\nDiploma/Level 6: C and C -\nCertificate/Level 5: D+ and D\nArtisan/Level 4: D - and E\"\n\nPlacem page, \"Applicant Eligibility\" section:\n\"2. Have sat for the Kenya Certificate of Secondary Education (KCSE) Examination.\n3. Meet the minimum requirements to apply for placement for degree, diploma, certificate and artisan courses.\"\nAlso: \"Candidates must meet the minimum admission requirements as published on the KUCCPS Student's Portal\" (Placement Criteria, item 2).",
+  "content_chars": 786,
+  "content_sha256": "823443f670b26943a676e3da989d3c022ba3101f0c04fceece568ec22e9a9b4d",
+  "flags": [
+   "external_source_not_usiu_policy"
+  ]
+ }
+]

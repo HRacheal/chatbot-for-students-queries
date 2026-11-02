@@ -1,0 +1,11 @@
+﻿record_id,document_id,data_origin,source_url,section_heading,heading_path,content_chars,chunk_count,issue_ids,review_status,verification_status
+WEB-P004-S01,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Contact Us,Contact Us,33,1,,draft,pending_verification
+WEB-P004-S02,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Admissions Office,Contact Us > Admissions Office,93,1,W05,draft,pending_verification
+WEB-P004-S03,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Library,Contact Us > Library,57,1,W04,draft,pending_verification
+WEB-P004-S04,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Registrar,Contact Us > Registrar,49,1,W04,draft,pending_verification
+WEB-P004-S05,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Placement and Careers,Contact Us > Placement and Careers,58,1,W01,draft,pending_verification
+WEB-P004-S06,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,IT Helpdesk,Contact Us > IT Helpdesk,77,1,,draft,pending_verification
+WEB-P004-S07,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Finance,Contact Us > Finance,47,1,W06,draft,pending_verification
+WEB-P004-S13,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Alumni Relations,Contact Us > Alumni Relations,65,1,,draft,pending_verification
+WEB-P004-S14,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Contact Form,Contact Us > Alumni Relations > Contact Form,176,1,,draft,pending_verification
+WEB-P004-S15,about-us__contact-us,official,https://www.usiu.ac.ke/about-us/contact-us/,Talk To Us,Contact Us > Alumni Relations > Talk To Us,274,1,,draft,pending_verification

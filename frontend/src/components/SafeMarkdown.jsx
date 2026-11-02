@@ -1,5 +1,6 @@
 import React from "react";
 import { parseBlocks, parseInline } from "../lib/markdown";
+import PropTypes from "prop-types";
 
 // Renders assistant answers safely. Never use dangerouslySetInnerHTML for
 // chatbot or user-supplied text: answers can contain text from documents or
@@ -67,5 +68,11 @@ function SafeMarkdown({ text, className = "", as: Wrapper = "div" }) {
     </Wrapper>
   );
 }
+
+SafeMarkdown.propTypes = {
+  text: PropTypes.string,
+  className: PropTypes.string,
+  as: PropTypes.elementType,
+};
 
 export default SafeMarkdown;

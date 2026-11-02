@@ -1,0 +1,23 @@
+<!-- snapshot of https://www.usiu.ac.ke/programs/bachelor-of-science-in-nursing/ | collected 2026-11-01 via Claude WebFetch (Claude-User) | source report: raw_collection_reports/a3144c3dc8e4d98af_0.md -->
+
+- HTTP outcome: 200 OK (first attempt)
+- H1: "Bachelor of Science in Nursing"
+- Overview (first paragraph): "The goal of the program is to cultivate life-long learners and innovative healthcare professionals who will provide comprehensive nursing care across all levels of the health system. Graduates will be equipped to deliver ethical, culturally competent, and evidence-based nursing services; engage in critical inquiry and research; assume leadership roles in nursing education and administration; and actively contribute to global health initiatives. The program emphasizes the development of critical thinking skills, social responsibility, and a commitment to continuous professional growth, preparing graduates to adapt to evolving healthcare challenges and make meaningful contributions to their communities and the nursing profession worldwide."
+- Duration: "4 Years"
+- Intake(s): "Intake: May (Summer), Sept (Fall)"
+- Mode of study: "On Campus"
+- School: "School of Pharmacy and Health Sciences"
+- Entry / admission requirements (verbatim, table flattened by conversion):
+  - "Applicants must have met the minimum entry requirements for the nursing degree course in Kenya as indicated below:"
+  - "a) KCSE System of Education"
+  - "KCSE: Mean grade of C+ (plus) or its equivalent and passed the cluster subject as indicated below:"
+  - Table, Option A | Option B:
+    - "Biology C+" | "Biological Sciences C+"
+    - "Chemistry C+" | "Physical Sciences C+"
+    - "Maths/Physics C+" | "Mathematics C+"
+    - "English/Kiswahili C+" | "English/Kiswahili C+"
+  - "b) A-Level" then "Principal passes in Biology and Chemistry and a subsidiary pass either in physics or Mathematics."
+  - "c) Holders of degree in Biological Sciences or equivalent from a recognised University."
+- Accreditation/approval: Not stated on page. No CUE, Nursing Council or other approval statement appears in the main content.
+- Career opportunities: "Graduates can pursue diverse careers, including becoming a Registered Nurse (RN) providing direct patient care in hospitals, clinics, nursing homes, and community health centers."
+- Contact (main content): "United States International University – Africa Off USIU Road, Off Thika Road (Exit 7), P. O. Box 14634 – 00800, Nairobi, Kenya, East Africa."; "+254 730 116 290 /291"; "admit@usiu.ac.ke"

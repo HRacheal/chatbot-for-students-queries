@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { RiUpload2Line, RiDeleteBinLine, RiRefreshLine, RiFileTextLine, RiEyeLine } from 'react-icons/ri';
 import { fetchPDFs, deletePDF, rebuildEmbeddings, uploadPDF, getErrorMessage } from '../lib/api';
 import PDFPreview from './PDFPreview';
@@ -87,6 +87,11 @@ function PDFManagement() {
 
   return (
     <div className="text-white">
+      <p className="mb-4 rounded bg-yellow-900/40 px-3 py-2 text-sm text-yellow-200">
+        Note: the chatbot currently answers only from <strong>Approved Sources</strong>. PDFs managed
+        here (Cloudinary + Pinecone) are not used for chat answers. To use an official PDF, add it under
+        Approved Sources.
+      </p>
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">PDF Management</h2>
 

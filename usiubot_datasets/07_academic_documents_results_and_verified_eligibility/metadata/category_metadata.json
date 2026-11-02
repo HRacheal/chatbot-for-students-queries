@@ -1,0 +1,44 @@
+{
+  "category_id": "07",
+  "category_name": "Academic Documents, Results and Verified Eligibility",
+  "folder": "07_academic_documents_results_and_verified_eligibility",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_student_handbook"
+  ],
+  "section_records": 0,
+  "knowledge_chunks": 0,
+  "structured_files": {
+    "english_proficiency_requirements.csv": 5
+  },
+  "coverage": [
+    {
+      "information": "KCSE entry requirements (minimum grades, required subjects)",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    },
+    {
+      "information": "International qualifications, diplomas, other qualifications",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    },
+    {
+      "information": "Qualification equivalencies",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "English language test minimums only (english_proficiency_requirements.csv; issue V16)."
+    },
+    {
+      "information": "Programme-specific admission conditions",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

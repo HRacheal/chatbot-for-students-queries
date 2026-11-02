@@ -1,290 +1,276 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RiDashboardLine, RiLogoutBoxLine, RiMessage2Line, RiDeleteBin6Line, RiBarChart2Line, RiFileTextLine, RiRefreshLine } from 'react-icons/ri'
+import PropTypes from 'prop-types'
+import {
+  RiDashboardLine, RiLogoutBoxLine, RiMessage2Line, RiDeleteBin6Line, RiBarChart2Line, RiFileTextLine,
+  RiQuestionAnswerLine, RiGraduationCapLine, RiLinksLine, RiRouteLine, RiTeamLine, RiHistoryLine,
+  RiUserStarLine, RiBuilding2Line, RiMenuLine, RiCloseLine, RiQuestionLine, RiBookOpenLine,
+} from 'react-icons/ri'
 import QueryAnalytics from './QueryAnalytics';
 import PDFManagement from './PDFManagement';
-import { rebuildEmbeddings, getErrorMessage } from '../lib/api';
-import { api } from "../lib/api";
+import SourceManagement from './SourceManagement';
+import EnquiryManagement from './EnquiryManagement';
+import ProgrammeRequirements from './ProgrammeRequirements';
+import OfficialLinks from './OfficialLinks';
+import RoutingManagement from './RoutingManagement';
+import DashboardOverview from './DashboardOverview';
+import StaffManagement from './StaffManagement';
+import AuditLog from './AuditLog';
+import {
+  api, clearStaffSession, getErrorMessage, getLiveRetrievalStatus, getStaffMe, getStaffProfile, saveStaffSession,
+  staffLogout,
+} from '../lib/api';
 import SafeMarkdown from "./SafeMarkdown";
+import Citations from "./Citations";
 
-function Admin() {
-  const navigate = useNavigate();
-  const [unansweredQueries, setUnansweredQueries] = useState([]);
+const panel = "rounded-xl border border-slate-700/70 bg-slate-800/60 p-4 md:p-6";
+
+// Questions USIUBOT could not answer (Super Administrators). Answers become draft sources
+// that are used only after review under Knowledge Sources.
+function UnansweredQueries() {
+  const [queries, setQueries] = useState([]);
   const [response, setResponse] = useState({});
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [adminChatHistory, setAdminChatHistory] = useState([]);
-  const [rebuilding, setRebuilding] = useState(false);
-  const [stats, setStats] = useState({
-    total_users: 0,
-    total_chats: 0,
-    unanswered_queries: 0
-  });
+  const [liveStatus, setLiveStatus] = useState(null);
 
-  // Fetch unanswered queries
   useEffect(() => {
-    const fetchUnansweredQueries = async () => {
-      try {
-        const res = await api.get("/api/unanswered-queries");
-        setUnansweredQueries(res.data.queries);
-      } catch (error) {
-        console.error("Error fetching unanswered queries:", error);
-      }
-    };
-    fetchUnansweredQueries();
+    api.get("/api/unanswered-queries").then((res) => setQueries(res.data.queries)).catch(() => setQueries([]));
+    getLiveRetrievalStatus().then(setLiveStatus).catch(() => setLiveStatus(null));
   }, []);
 
-  // Fetch stats
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const token = localStorage.getItem('adminToken');
-        const res = await api.get('/api/admin/stats', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        setStats(res.data);
-      } catch (error) {
-        console.error("Error fetching stats:", error);
-      }
-    };
-    fetchStats();
-  }, []);
-
-  const fetchAdminChatHistory = async () => {
+  const submit = async (id) => {
     try {
-      const token = localStorage.getItem('adminToken');
-      const res = await api.get('/api/admin/chat-history', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setAdminChatHistory(res.data.history);
-    } catch (error) {
-      console.error("Error fetching chat history:", error);
-    }
-  };
-
-  const handleResponseSubmit = async (id) => {
-    try {
-      const res = await api.post("/api/add-response", {
-        id,
-        response: response[id] || "",
-      });
-      setUnansweredQueries((prev) => prev.filter((query) => query._id !== id));
+      const res = await api.post("/api/add-response", { id, response: response[id] || "" });
+      setQueries((prev) => prev.filter((q) => q._id !== id));
       const emailStatus = res.data.email_notification;
       let message = "Response saved.";
       if (emailStatus === "sent") message += " The user was notified by email.";
       if (emailStatus === "failed") message += " WARNING: the email notification could not be sent; please contact the user another way.";
-      if (res.data.knowledge_base_document_updated === false) {
-        message += " The answer was not added to the knowledge-base document.";
-      }
+      message += res.data.draft_source_created
+        ? " It was saved as a draft source. USIUBOT will only use it after you review and approve it under Knowledge Sources."
+        : " WARNING: it could not be saved as a draft source.";
       alert(message);
     } catch (error) {
       alert(getErrorMessage(error, "Failed to submit response"));
     }
   };
 
-  const handleDeleteQuery = async (id) => {
-    if (window.confirm('Are you sure you want to delete this query?')) {
-      try {
-        await api.delete(`/api/delete-query/${id}`);
-        setUnansweredQueries((prev) => prev.filter((query) => query._id !== id));
-      } catch (error) {
-        alert(getErrorMessage(error, "Failed to delete query"));
-      }
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    navigate('/admin');
-  };
-
-  const handleRebuildEmbeddings = async () => {
-    setRebuilding(true);
+  const remove = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this question?')) return;
     try {
-      const result = await rebuildEmbeddings();
-      const s = result.summary || {};
-      alert(`Knowledge base rebuilt: ${s.documents_indexed ?? 0} documents, ${s.chunks_indexed ?? 0} chunks indexed, ${s.stale_vectors_removed ?? 0} obsolete entries removed.`);
+      await api.delete(`/api/delete-query/${id}`);
+      setQueries((prev) => prev.filter((q) => q._id !== id));
     } catch (error) {
-      alert(getErrorMessage(error, 'Failed to rebuild the knowledge base'));
-    } finally {
-      setRebuilding(false);
+      alert(getErrorMessage(error, "Failed to delete query"));
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Sidebar */}
-      <div className="fixed w-64 h-full bg-gray-800">
-        <div className="flex flex-col h-full">
-          <div className="flex items-center justify-center h-20 border-b border-gray-700">
-            <h1 className="text-white text-2xl font-bold">Admin Dashboard</h1>
-          </div>
-
-          <nav className="flex-grow py-4">
-            <a
-              href="#"
-              className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'dashboard' ? 'bg-gray-700' : ''}`}
-              onClick={() => setActiveTab('dashboard')}
-            >
-              <RiDashboardLine className="mr-3" />
-              Dashboard
-            </a>
-            <a
-              href="#"
-              className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'chat-history' ? 'bg-gray-700' : ''}`}
-              onClick={() => {
-                setActiveTab('chat-history');
-                fetchAdminChatHistory();
-              }}
-            >
-              <RiMessage2Line className="mr-3" />
-              Chat History
-            </a>
-            <a
-              href="#"
-              className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'analytics' ? 'bg-gray-700' : ''}`}
-              onClick={() => setActiveTab('analytics')}
-            >
-              <RiBarChart2Line className="mr-3" />
-              Analytics
-            </a>
-            <a
-              href="#"
-              className={`flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 ${activeTab === 'pdfs' ? 'bg-gray-700' : ''}`}
-              onClick={() => setActiveTab('pdfs')}
-            >
-              <RiFileTextLine className="mr-3" />
-              PDF Management
-            </a>
-          </nav>
-
-          <div className="p-4">
-            <button
-              onClick={handleLogout}
-              className="flex items-center w-full px-4 py-2 text-gray-300 hover:bg-gray-700 rounded"
-            >
-              <RiLogoutBoxLine className="mr-3" />
-              Logout
+    <div className="space-y-4 text-white">
+      <div>
+        <h2 className="text-2xl font-bold">Unresolved chatbot questions</h2>
+        <p className="mt-1 text-sm text-slate-400">
+          Questions USIUBOT could not answer from approved sources. Answers you write are saved on the question and as
+          draft sources; USIUBOT uses an answer only after it is approved under Knowledge Sources.
+        </p>
+        {liveStatus && (
+          <p className="mt-1 text-xs text-slate-400">
+            Live website retrieval: {liveStatus.enabled ? 'enabled' : 'disabled'} · {liveStatus.reviewed_pages ?? 0} of{' '}
+            {liveStatus.catalogue_pages ?? 0} catalogue pages reviewed
+          </p>
+        )}
+      </div>
+      {queries.length === 0 && <p className="text-slate-400">No unresolved questions.</p>}
+      {queries.map((query) => (
+        <div key={query._id} className="rounded-xl border border-slate-700 bg-slate-900 p-4">
+          <div className="flex items-start justify-between gap-2">
+            <p>Q: {query.question}</p>
+            <button onClick={() => remove(query._id)} className="p-1 text-red-400 hover:text-red-300" title="Delete question" aria-label="Delete question">
+              <RiDeleteBin6Line size={18} />
             </button>
           </div>
+          {query.department && <p className="text-xs text-slate-400">Suggested department: {query.department}</p>}
+          <textarea value={response[query._id] || ""} onChange={(e) => setResponse((prev) => ({ ...prev, [query._id]: e.target.value }))}
+            placeholder="Type your response" className="mt-2 w-full rounded-lg border border-slate-600 bg-slate-800 p-2 text-white" />
+          <button onClick={() => submit(query._id)} className="mt-2 rounded-lg bg-amber-400 px-4 py-1.5 font-semibold text-slate-950 hover:bg-amber-300">Submit</button>
         </div>
+      ))}
+    </div>
+  );
+}
+
+function ChatHistoryView() {
+  const [history, setHistory] = useState([]);
+  useEffect(() => {
+    api.get('/api/admin/chat-history').then((res) => setHistory(res.data.history)).catch(() => setHistory([]));
+  }, []);
+  return (
+    <div className="space-y-4 text-white">
+      <h2 className="text-2xl font-bold">User chat history</h2>
+      {history.length === 0 && <p className="text-slate-400">No chat history from registered users yet.</p>}
+      {history.map((chat) => (
+        <div key={chat._id} className="rounded-xl border border-slate-700 bg-slate-900 p-4">
+          <div className="mb-2 text-sm text-slate-400">{new Date(chat.timestamp).toLocaleString()} - {chat.username}</div>
+          <p><span className="font-medium text-sky-300">Question: </span>{chat.question}</p>
+          <div className="mt-2">
+            <span className="font-medium text-emerald-300">Answer: </span>
+            <SafeMarkdown className="text-white chat-response" text={chat.answer} />
+            <Citations citations={chat.citations} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function NavButton({ active, icon: Icon, label, onClick, badge = null }) {
+  return (
+    <button type="button" onClick={onClick}
+      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition ${
+        active ? 'bg-amber-400/15 font-medium text-amber-200 ring-1 ring-amber-400/40' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+      aria-current={active ? 'page' : undefined}>
+      <Icon className="shrink-0 text-base" aria-hidden="true" />
+      <span className="min-w-0 flex-1 truncate">{label}</span>
+      {badge}
+    </button>
+  );
+}
+
+NavButton.propTypes = {
+  active: PropTypes.bool.isRequired, icon: PropTypes.elementType.isRequired, label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired, badge: PropTypes.node,
+};
+
+// The USIUBOT staff dashboard. What appears depends on the signed-in person's role and departments,
+// as reported by the API (/api/staff/me); the API enforces the same rules on every request.
+function Admin() {
+  const navigate = useNavigate();
+  const [me, setMe] = useState(getStaffProfile());
+  const [view, setView] = useState({ tab: 'overview' });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    getStaffMe()
+      .then(({ staff }) => {
+        saveStaffSession(null, staff);
+        setMe(staff);
+        if (staff.must_change_password) navigate('/admin?change-password=1');
+      })
+      .catch((err) => {
+        if (err.response?.status !== 401) setError(getErrorMessage(err, 'Could not load your account.'));
+      });
+  }, [navigate]);
+
+  const go = (tab, extra = {}) => {
+    setView({ tab, ...extra, key: Date.now() });
+    setMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await staffLogout();
+    } catch {
+      // The session is cleared locally either way.
+    }
+    clearStaffSession();
+    navigate('/admin');
+  };
+
+  if (!me) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-300">
+        {error ? <p role="alert">{error}</p> : <p>Loading dashboard…</p>}
       </div>
+    );
+  }
 
-      {/* Main content */}
-      <div className="ml-64 p-8">
-            {/* Dashboard Tab */}
-        {activeTab === 'dashboard' && (
-          <div className="bg-gray-800 rounded-lg p-6">
-            {/* Header with title and rebuild button */}
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl text-white">Welcome, Admin</h2>
+  const p = me.permissions || {};
+  const departments = Object.entries(me.department_labels || {});
+  const openEnquiries = (filter) => (filter.department && !p.view_all_departments
+    ? go('department', { department: filter.department, initial: filter })
+    : go('enquiries', { initial: filter }));
 
-              {/* Rebuild Embeddings Button - moved to right side */}
-              <button
-                onClick={handleRebuildEmbeddings}
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded flex items-center"
-                disabled={rebuilding}
-              >
-                <RiRefreshLine className="mr-2" />
-                {rebuilding ? "Rebuilding..." : "Rebuild Embeddings"}
-              </button>
-            </div>
+  const sidebar = (
+    <nav className="flex h-full flex-col gap-1 overflow-y-auto p-3" aria-label="Dashboard">
+      <NavButton active={view.tab === 'overview'} icon={RiDashboardLine} label="Overview" onClick={() => go('overview')} />
+      <NavButton active={view.tab === 'mine'} icon={RiUserStarLine} label="Assigned to me" onClick={() => go('mine')} />
+      {p.view_all_departments && (
+        <NavButton active={view.tab === 'enquiries'} icon={RiQuestionAnswerLine} label="All enquiries" onClick={() => go('enquiries')} />
+      )}
 
-            {/* Info cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <h3 className="text-white text-lg mb-2">Total Chats</h3>
-                <p className="text-blue-400 text-2xl font-bold">{stats.total_chats}</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <h3 className="text-white text-lg mb-2">Active Users</h3>
-                <p className="text-green-400 text-2xl font-bold">{stats.total_users}</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <h3 className="text-white text-lg mb-2">Total Unanswered Queries</h3>
-                <p className="text-purple-400 text-2xl font-bold">{stats.unanswered_queries}</p>
-              </div>
-            </div>
+      <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Departments</p>
+      {departments.map(([key, label]) => (
+        <NavButton key={key} active={view.tab === 'department' && view.department === key} icon={RiBuilding2Line}
+          label={label} onClick={() => go('department', { department: key })} />
+      ))}
 
-            {/* Embeddings info text */}
-            <p className="text-gray-400 text-sm mt-4">
-              Remember to rebuild embeddings after answering questions to update the AI knowledge base.
-            </p>
+      {(p.manage_sources || p.manage_programmes || p.manage_department_settings || p.view_staff_directory) && (
+        <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Administration</p>
+      )}
+      {p.manage_sources && <NavButton active={view.tab === 'unanswered'} icon={RiQuestionLine} label="Unresolved questions" onClick={() => go('unanswered')} />}
+      {p.view_staff_directory && <NavButton active={view.tab === 'staff'} icon={RiTeamLine} label={p.manage_staff ? 'Staff accounts' : 'Department staff'} onClick={() => go('staff')} />}
+      {p.manage_sources && <NavButton active={view.tab === 'sources'} icon={RiBookOpenLine} label="Knowledge sources" onClick={() => go('sources')} />}
+      {p.manage_programmes && <NavButton active={view.tab === 'programmes'} icon={RiGraduationCapLine} label="Programme requirements" onClick={() => go('programmes')} />}
+      {p.manage_department_settings && <NavButton active={view.tab === 'routing'} icon={RiRouteLine} label={p.manage_routing ? 'Department routing' : 'Department settings'} onClick={() => go('routing')} />}
+      {p.manage_sources && <NavButton active={view.tab === 'links'} icon={RiLinksLine} label="Official links" onClick={() => go('links')} />}
+      {p.view_chat_history && <NavButton active={view.tab === 'chat-history'} icon={RiMessage2Line} label="Chat history" onClick={() => go('chat-history')} />}
+      {p.view_chat_history && <NavButton active={view.tab === 'analytics'} icon={RiBarChart2Line} label="Question analytics" onClick={() => go('analytics')} />}
+      {p.manage_sources && <NavButton active={view.tab === 'pdfs'} icon={RiFileTextLine} label="PDF management (legacy)" onClick={() => go('pdfs')} />}
+      {p.view_audit_log && <NavButton active={view.tab === 'audit'} icon={RiHistoryLine} label="System activity" onClick={() => go('audit')} />}
+    </nav>
+  );
 
-            {/* Unanswered Queries Section */}
-            <div className="mt-8 text-white">
-              <h2 className="text-xl font-bold mb-4">Unanswered Queries</h2>
-              {unansweredQueries.length > 0 ? (
-                unansweredQueries.map(query => (
-                  <div key={query._id} className="mb-4 bg-gray-800 p-4 rounded-lg">
-                    <p className="mb-2">Q: {query.question}</p>
-                    <button
-                      onClick={() => handleDeleteQuery(query._id)}
-                      className="text-red-500 hover:text-red-700 p-1"
-                      title="Delete query"
-                    >
-                      <RiDeleteBin6Line size={20} />
-                    </button>
-                    <textarea
-                      value={response[query._id] || ""}
-                      onChange={(e) => setResponse(prev => ({...prev, [query._id]: e.target.value}))}
-                      placeholder="Type your response"
-                      className="w-full bg-gray-700 text-white rounded p-2 mb-2"
-                    />
-                    <button
-                      onClick={() => handleResponseSubmit(query._id)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <div className="text-gray-400">No unanswered queries.</div>
-              )}
-            </div>
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-slate-800 bg-slate-950/95 px-4 backdrop-blur">
+        <button type="button" className="rounded p-1 text-slate-300 hover:bg-slate-800 md:hidden" onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
+          {menuOpen ? <RiCloseLine size={22} /> : <RiMenuLine size={22} />}
+        </button>
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-900 text-sm font-bold text-amber-300 ring-1 ring-amber-400/60">U</span>
+          <div className="leading-tight">
+            <p className="text-sm font-semibold">USIUBOT Staff Dashboard</p>
+            <p className="hidden text-xs text-slate-400 sm:block">USIU-Africa enquiry management</p>
           </div>
-        )}
-
-        {activeTab === 'chat-history' && (
-          <div className="bg-gray-800 rounded-lg p-6">
-            <h2 className="text-2xl text-white mb-4">User Chat History</h2>
-            <div className="space-y-4">
-              {adminChatHistory.map((chat) => (
-                <div key={chat._id} className="bg-gray-700 p-4 rounded-lg">
-                  <div className="text-gray-400 text-sm mb-2">
-                    {new Date(chat.timestamp).toLocaleString()} - {chat.username}
-                  </div>
-                  <div className="space-y-2">
-                    <div>
-                      <span className="text-blue-400 font-medium">Question: </span>
-                      <span className="text-white">{chat.question}</span>
-                    </div>
-                    <div>
-                      <span className="text-green-400 font-medium">Answer: </span>
-                      <SafeMarkdown
-                        className="text-white chat-response"
-                        text={chat.answer}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        </div>
+        <div className="ml-auto flex items-center gap-3">
+          <div className="hidden text-right text-xs sm:block">
+            <p className="font-medium text-slate-200">{me.name || me.email}</p>
+            <p className="text-slate-400">{me.role_label}</p>
           </div>
-        )}
+          <button type="button" onClick={handleLogout} className="flex items-center gap-1.5 rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-300 hover:bg-slate-800">
+            <RiLogoutBoxLine aria-hidden="true" /> Sign out
+          </button>
+        </div>
+      </header>
 
-        {activeTab === 'analytics' && (
-          <QueryAnalytics />
-        )}
+      <aside className={`fixed bottom-0 left-0 top-14 z-20 w-64 border-r border-slate-800 bg-slate-950 transition-transform md:translate-x-0 ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        {sidebar}
+      </aside>
+      {menuOpen && <div className="fixed inset-0 top-14 z-10 bg-black/50 md:hidden" onClick={() => setMenuOpen(false)} aria-hidden="true" />}
 
-        {activeTab === 'pdfs' && (
-          <div className="bg-gray-800 rounded-lg p-6">
-            <PDFManagement />
-          </div>
+      <main className="p-4 md:ml-64 md:p-8">
+        {error && <p className="mb-4 rounded-lg bg-red-900/50 p-3 text-red-200" role="alert">{error}</p>}
+        {view.tab === 'overview' && <DashboardOverview key={view.key} me={me} onOpenEnquiries={openEnquiries} />}
+        {view.tab === 'mine' && <div className={panel}><EnquiryManagement key={view.key} me={me} mine /></div>}
+        {view.tab === 'enquiries' && <div className={panel}><EnquiryManagement key={view.key} me={me} initial={view.initial} /></div>}
+        {view.tab === 'department' && (
+          <div className={panel}><EnquiryManagement key={view.key} me={me} department={view.department} initial={view.initial} /></div>
         )}
-      </div>
+        {view.tab === 'unanswered' && <div className={panel}><UnansweredQueries /></div>}
+        {view.tab === 'staff' && <div className={panel}><StaffManagement me={me} /></div>}
+        {view.tab === 'audit' && <div className={panel}><AuditLog /></div>}
+        {view.tab === 'chat-history' && <div className={panel}><ChatHistoryView /></div>}
+        {view.tab === 'analytics' && <QueryAnalytics />}
+        {view.tab === 'programmes' && <div className={panel}><ProgrammeRequirements /></div>}
+        {view.tab === 'links' && <div className={panel}><OfficialLinks /></div>}
+        {view.tab === 'routing' && <div className={panel}><RoutingManagement /></div>}
+        {view.tab === 'sources' && <div className={panel}><SourceManagement /></div>}
+        {view.tab === 'pdfs' && <div className={panel}><PDFManagement /></div>}
+      </main>
     </div>
   )
 }
 
-export default Admin;
+export default Admin

@@ -1,0 +1,710 @@
+{
+  "about": "Candidate official USIU-Africa pages: URLs and metadata only, no page text. Entries are NOT evidence. Only entries with reviewed=true are fetched live, and only when LIVE_RETRIEVAL_ENABLED=true, the host is in TRUSTED_SOURCE_HOSTS and robots.txt allows it. Any entry may be shown to users as an unverified 'place to look'. Seeded 2026-10-20 from resources/usiubot_knowledge/metadata/source_inventory.json.",
+  "review_instructions": "To review an entry: open the URL in a browser, confirm it is an official, current, public USIU-Africa page (not a form, login or personal-data page), correct title/department, optionally add keywords, then set reviewed to true.",
+  "pages": [
+    {
+      "url": "https://www.usiu.ac.ke/academics/academic-catalog/",
+      "title": "Academic Catalog",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/academic-catalog-2024-2026/",
+      "title": "Academic Catalog 2024-2026 (resource page)",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Most important programme document; the PDF URL itself was not discovered."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/academics/",
+      "title": "Academics",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-applied-computer-technology/",
+      "title": "Bachelor of Science in Applied Computer Technology",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/programs/bachelor-of-science-in-international-business-administration/",
+      "title": "Bachelor of Science in International Business Administration",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/816/catalog-2019-20/",
+      "title": "Catalog 2019-20",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/school/chandaria-school-of-business/",
+      "title": "Chandaria School of Business",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/academics/doctoral-programs/",
+      "title": "Doctoral Programs",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/executive-courses/",
+      "title": "Executive Courses",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/masters-programs/?schl=school-of-science-and-technology",
+      "title": "Master's Programs",
+      "department": "academic_programmes",
+      "keywords": [
+        "masters degrees",
+        "postgraduate"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/school/school-of-graduate-studies/school-dean/",
+      "title": "School of Graduate Studies - School Dean",
+      "department": "academic_programmes",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/academics/undergraduate-programs/",
+      "title": "Undergraduate Programs",
+      "department": "academic_programmes",
+      "keywords": [
+        "degrees",
+        "bachelor",
+        "undergraduate degrees"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/admission-requirements/",
+      "title": "Admission Requirements",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/537/admissions-overview/",
+      "title": "Admissions overview",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/851/application-information/",
+      "title": "Application Information",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified).",
+        "Search index shows intake deadlines that may be several years old."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/bsc-nursing-fee-schedule/",
+      "title": "BSc. Nursing Fee Schedule (resource page)",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/doctoral-admission-requirements/?schl=school-of-science-technology",
+      "title": "Doctoral Admission Requirements",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/286/entrance-requirements/",
+      "title": "Entrance Requirements",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified).",
+        "Search index suggests this page is several years old."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/94/externally-funded-scholarships-grants/",
+      "title": "Externally Funded Scholarships and Grants",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/360/faqs-admissions-office/",
+      "title": "FAQs - Admissions Office",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified).",
+        "English-test thresholds in the search snippet differ from the Admission Requirements page; confirm with Admissions."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/fee-schedule/",
+      "title": "Fee Schedule",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Fees are owned by the Finance office; placed here because prospective students ask about them."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/financial-aid/",
+      "title": "Financial Aid",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Owned by the Office of Financial Aid; scholarship figures conflict with the 2026 scholarship PDF in the search snippets."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/freida-brown-scholarship-fund/",
+      "title": "Freida Brown Scholarship Fund",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/how-to-apply/",
+      "title": "How to Apply",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/intake/",
+      "title": "Intake",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/international-applicants/",
+      "title": "International Applicants",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/mastercard-foundation-scholars-program/",
+      "title": "Mastercard Foundation Scholars Program",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Current status of the programme is unclear from the search snippets."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/116/masters-admissions-requirements/",
+      "title": "Masters Admissions Requirements",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/usiuonline/apply-to-usiu-africa-online-program/",
+      "title": "Program Application (USIU-Africa Online)",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/prospective-students/",
+      "title": "Prospective Students",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/tuition-fees/",
+      "title": "Tuition & Fees",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/undergraduate/",
+      "title": "Undergraduate",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/undergraduate-costs/?schl=sst",
+      "title": "Undergraduate Costs",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/about-us/",
+      "title": "About Us",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/webapp/campus-directory/",
+      "title": "Campus Directory - USIU-Africa WebApp",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/about-us/contact-us/",
+      "title": "Contact Us",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/970/contacts/",
+      "title": "Contacts",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Phone numbers differ between contact pages in the search snippets."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/webapp/contacts/",
+      "title": "Contacts - USIU-Africa WebApp",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/about-us/faq/",
+      "title": "FAQ",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/1752/faq-s/",
+      "title": "FAQ's",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/358/faqs-about-usiu-africa-general",
+      "title": "FAQs - About USIU-Africa (General)",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/361/faqs-ict-office",
+      "title": "FAQs - ICT Office",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/331/frequently-asked-questions-faqs/",
+      "title": "Frequently Asked Questions (FAQs)",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/968/frequently-asked-questions/",
+      "title": "Frequently asked questions",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/history/",
+      "title": "History",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/category/library-news/",
+      "title": "Library News",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/academics/library-and-e-resources/",
+      "title": "Library and E-Resources",
+      "department": "general_university",
+      "keywords": [
+        "library",
+        "e-resources"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/research-resources/",
+      "title": "Research Resources",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource-downloads/",
+      "title": "Resource Downloads",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Central index of official downloads (catalogue, calendars, forms, brochures). Best starting point for a manual download."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/webapp/",
+      "title": "USIU-Africa WebApp",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Search results indicate it lists SOPs (e.g. a Graduation and Degree Certificates procedure); not opened."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/",
+      "title": "USIU-Africa home page",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/76/where-find-us-contact/",
+      "title": "Where to find us / contact",
+      "department": "general_university",
+      "keywords": [
+        "location",
+        "located",
+        "directions",
+        "address",
+        "map"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/2024-annual-giving/",
+      "title": "2024 Annual Giving",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/about-the-association/",
+      "title": "About The Association (Alumni)",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/bachelor-of-arts-in-international-relations/?schl=shss",
+      "title": "Bachelor of Arts in International Relations (resource page)",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/bachelor-of-science-in-nursing-brochure/",
+      "title": "Bachelor of Science in Nursing Brochure (resource page)",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/brochures/",
+      "title": "Brochures",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/category/campus-news/",
+      "title": "Campus News",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/mastercard-foundation/",
+      "title": "Mastercard Foundation",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/masters-brochures/",
+      "title": "Masters Brochures",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/news-updates/",
+      "title": "News Updates",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "News changes often; better linked than indexed."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/partnerships/",
+      "title": "Partnerships",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/student-life/student-exchange-program/",
+      "title": "Student Exchange Program",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/student-life/",
+      "title": "Student Life",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/usiu-africa-alumni-nairobi-chapter-launched-under-the-theme-one-community-endless-possibilities/",
+      "title": "USIU-Africa Alumni Nairobi Chapter Launched",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/usiuonline/resources/",
+      "title": "USIU-Africa Online Resources",
+      "department": "general_university",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/academic-catalog-academic-calendar-fee-schedule/",
+      "title": "Academic Catalog, Academic Calendar & Fee Schedule",
+      "department": "registrar",
+      "keywords": [],
+      "reviewed": false,
+      "notes": []
+    },
+    {
+      "url": "https://www.usiu.ac.ke/749/registration-policies-procedures/",
+      "title": "Registration Policies and Procedures",
+      "department": "registrar",
+      "keywords": [
+        "register",
+        "course registration",
+        "courses",
+        "add",
+        "drop"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/request-transcript/",
+      "title": "Request Transcript",
+      "department": "registrar",
+      "keywords": [
+        "transcript",
+        "academic transcript"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Inventory marked this as likely outdated (from search snippets; not verified).",
+        "Search index suggests the page (and its fees) may be several years old.",
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/application-form-for-all-undergraduate-masters-programs/",
+      "title": "Application Form: For All Undergraduate & Masters Programs (resource page)",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: skipped_form)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/849/application-forms/",
+      "title": "Application Forms",
+      "department": "admissions",
+      "keywords": [
+        "forms",
+        "application form"
+      ],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: skipped_form).",
+        "Matching keywords added 2026-10-25, derived from the page title (not from page content)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/wp-content/uploads/2026/03/USIU-Africa-Fee-Structure-2025-2026.pdf",
+      "title": "Fee Schedule 2025 - 2026 Academic Year",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: site_unreachable)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/wp-content/uploads/2026/06/Financial-Aid-Scholarships-2026.pdf",
+      "title": "USIU-Africa Scholarships 2026",
+      "department": "admissions",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: site_unreachable)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/assets/file/bd747e5b-bachelor-science-in-information-syst.pdf",
+      "title": "Bachelor of Science in Information Systems and Technology brochure",
+      "department": "marketing",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: site_unreachable)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/wp-content/uploads/2025/09/9d172edd-2025-2026-academic-calendar-1.pdf",
+      "title": "Academic Calendar 2025-2026",
+      "department": "registrar",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: site_unreachable)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/resource/re-admission-application-form/",
+      "title": "Re-Admission Application Form (resource page)",
+      "department": "registrar",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: skipped_form)."
+      ]
+    },
+    {
+      "url": "https://www.usiu.ac.ke/assets/file/266ac45d-student-handbook.pdf",
+      "title": "Student Handbook - Nairobi",
+      "department": "registrar",
+      "keywords": [],
+      "reviewed": false,
+      "notes": [
+        "Added 2026-10-25 from metadata/source_inventory.json (link only: site_unreachable)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "category_id": "03",
+  "category_name": "Admissions and Applications",
+  "folder": "03_admissions_and_applications",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_academic_calendar_2026_2027",
+    "usiu_student_handbook"
+  ],
+  "section_records": 4,
+  "knowledge_chunks": 4,
+  "structured_files": {
+    "calendar_events.csv": 3,
+    "admission_conditions.csv": 8
+  },
+  "coverage": [
+    {
+      "information": "Undergraduate requirements / minimum academic qualifications / required subjects",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    },
+    {
+      "information": "Postgraduate requirements",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    },
+    {
+      "information": "International student requirements",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "English proficiency scores (5.2.1) and a pointer to the International Students Handbook (5.4.4)."
+    },
+    {
+      "information": "Application procedures",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Re-admission and returning-graduate rules only (5.2.2, 5.2.3)."
+    },
+    {
+      "information": "Application deadlines and intake periods",
+      "status": "Extracted",
+      "documents": [
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Application deadlines for Spring 2027, Summer 2027 and Fall 2027 (calendar_events.csv)."
+    },
+    {
+      "information": "Application fees",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "A 'non-refundable application processing fee' is mentioned (5.2.2, 5.2.3) and an M-PESA purpose code ADM exists; no amount."
+    },
+    {
+      "information": "Required documents",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not listed (conditional admission mentions 'necessary documents' only)."
+    },
+    {
+      "information": "Transfer requirements",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Credit transfers need Academic Dean approval (5.2.1); inter-campus transfer is a Registrar service (4.3)."
+    },
+    {
+      "information": "Scholarship information",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "See 04_fees_and_payments/official/financial_aid_programmes.csv."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

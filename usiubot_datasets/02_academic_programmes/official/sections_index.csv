@@ -1,0 +1,6 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-9.0,usiu_student_handbook,9.0,USIU-Online (introduction),35,35,833,1,,V07; V23,draft,pending_verification
+HB-9.1,usiu_student_handbook,9.1,Online Student’s Expectations:,35,35,266,1,,V07; V23,draft,pending_verification
+HB-9.2,usiu_student_handbook,9.2,Student Commitment:,35,35,493,1,,V07; V23,draft,pending_verification
+HB-9.3,usiu_student_handbook,9.3,Computer Requirements:,36,36,1125,2,,V07; V23,draft,pending_verification
+HB-9.4,usiu_student_handbook,9.4,Technology Support,36,36,642,1,,V07; V23,draft,pending_verification

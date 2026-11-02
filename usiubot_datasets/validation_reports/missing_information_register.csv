@@ -1,0 +1,39 @@
+﻿gap_id,category_id,information_required,status,where_found_or_why_missing,action_type,action_needed
+GAP-01,01,"University history (founding, milestones)",Partially available,About Us page; handbook statements. History page linked but not collected.,technical_work,"Collect https://www.usiu.ac.ke/about-us/history/ in a later run (it was linked, not fetched)."
+GAP-02,01,University leadership (current names),Partially available (possibly outdated),Undated handbook only (V25). Leadership pages not collected.,university_confirmation,Office of the Vice Chancellor / Marketing to confirm current officers.
+GAP-03,01,Accommodation cost on campus,"Available, conflicting","Tuition page 42,000 per semester vs Housing FAQ KES 30,000 (W13).",university_confirmation,Housing Office / Finance to confirm.
+GAP-04,01,"Campus map, facilities opening hours other than library and counselling",Unavailable,Not on the pages collected.,department_document,Facilities / Student Affairs.
+GAP-05,02,"Full programme catalogue: curricula, course lists, unit counts",Unavailable,Academic Catalog 2024-2026 PDF is linked but was not downloaded.,technical_work,Download and extract the Academic Catalog 2024-2026 PDF (same pipeline as the fee schedule).
+GAP-06,02,Programmes on the fee schedule without a programme page (W19),Partially available,Fee tables only.,university_confirmation,Schools / Admissions to confirm the programmes are offered.
+GAP-07,02,Short-course fees and schedules,Unavailable,Short Courses page gives descriptions only.,department_document,Relevant school / continuing education unit.
+GAP-08,02,CBET realignment outcome,Partially available (in progress),CBET page: submissions due July 2027.,newer_document,Quality Assurance (cbet@usiu.ac.ke) to publish the outcome.
+GAP-09,03,Doctoral and some master's admission requirements (W23),Unavailable,Programme pages say nothing.,department_document,Admissions / School of Graduate Studies.
+GAP-10,03,Application deadlines per intake,Unavailable,Only 'intake ongoing' banners; calendar has no application deadline.,university_confirmation,Admissions.
+GAP-11,03,Transfer-credit rule (W11),"Available, conflicting",Two official pages differ.,department_document,Registrar to confirm from the Academic Catalog 2024-2026.
+GAP-12,03,KUCCPS placement to USIU-Africa,Unavailable,External KUCCPS pages contradict each other and do not name USIU-Africa (W24).,university_confirmation,Admissions.
+GAP-13,03,Required documents checklist for international applicants (visa/Pupil's Pass steps),Partially available,Admission Requirements page.,department_document,International Students office.
+GAP-14,04,Tuition fees by programme 2026-2027,Available (draft),Tuition page and fee schedule PDF agree on TOTAL rows (see fee_table_checks.csv).,university_confirmation,Finance to confirm before release.
+GAP-15,04,Bank account details,"Available, conflicting across three sources","bank_details_comparison.csv; V01-V03, W26.",university_confirmation,Finance Office must confirm. Never present as confirmed.
+GAP-16,04,Course-drop refund / charge-waiver schedule (V04),Conflicting / incomplete,Handbook vs calendar; website silent.,university_confirmation,Finance / Registrar.
+GAP-17,04,Interest duration on balances (V28),Partially available,"Rate agreed, duration not.",university_confirmation,Finance.
+GAP-18,04,Examination fees and supplementary/special exam fees,Unavailable,Not on fee pages.,department_document,Finance / Registrar.
+GAP-19,04,Online payment portal steps and student account balance,Restricted,ITS student portal (login) - not accessed.,restricted_system,Student portal; out of scope for the dataset.
+GAP-20,04,Instalment (3Pay) and refund application forms,Restricted,webapp forms require student details - not accessed.,restricted_system,Finance; out of scope.
+GAP-21,05,Examination regulations and grading appeals,Unavailable,Not in the documents or pages collected.,department_document,Registrar / Academic Catalog 2024-2026.
+GAP-22,05,"Graduation requirements (units, GPA)",Unavailable,Commencement page gives logistics only.,department_document,Registrar / Academic Catalog.
+GAP-23,05,Transcript and certificate fees and procedure,Partially available,"Tuition page: transcript 1,000; handbook: procedure.",university_confirmation,Registrar.
+GAP-24,05,Pre-registration check (Fall 2026) content,Unavailable,Page shows a heading only.,technical_work,Re-check the page; content may be loaded by script.
+GAP-25,05,Results slips / individual results,Restricted,Student portal.,restricted_system,Out of scope (private data).
+GAP-26,06,Correct Library and Registrar telephone country code (W04),"Available, probably wrong",+257 printed.,university_confirmation,Registrar / Library / web team.
+GAP-27,06,Finance telephone numbers students should use (W06),"Available, conflicting",Four sets.,university_confirmation,Finance.
+GAP-28,06,"Office working hours (other than counselling, library, disability office)",Unavailable,,department_document,Each office.
+GAP-29,06,Escalation procedure for unresolved enquiries,Unavailable,,department_document,Student Affairs / Quality Assurance.
+GAP-30,06,"Academic advisors' contacts (CSOB, SST, SPHS, SHSS, SCCCA)",Partially available,Contact Us lists advisors without numbers.,university_confirmation,Schools.
+GAP-31,07,Foreign-qualification equation procedure (CUE),Unavailable,CUE site failed TLS (inaccessible).,technical_work,Retry https://www.cue.or.ke/ in a later run; label as external.
+GAP-32,07,National qualification levels (KNQA),Unavailable,KNQA returned HTTP 500.,technical_work,Retry later; external.
+GAP-33,07,English proficiency minimum (W14 / V16),"Available, conflicting (three versions)",,university_confirmation,Admissions.
+GAP-34,07,Programme cluster-subject requirements for every programme,Partially available,programme_entry_requirements.csv (some pages silent).,department_document,Schools / Admissions.
+GAP-35,08,"Real student questions, answers and enquiry references",Not collected (by design),No real enquiry logs were provided; none were invented.,restricted_system,"Would come from the live chatbot's enquiry records after deployment, under data-protection rules."
+GAP-36,all,Publication dates of web pages,Unavailable,No page states a publication date; sitemap lastmod is recorded separately and is not a publication date.,university_confirmation,Web team.
+GAP-37,all,"Dated, current Student Handbook (V07, V23)",Unavailable,Local handbook is undated; public URL 404.,newer_document,Dean of Students / Registrar to provide the current edition.
+GAP-38,04,Online programmes fee schedule document,Not collected,Linked from the Tuition & Fees page (https://www.usiu.ac.ke/documents/online-programs-fee-structure/); not fetched in this run.,technical_work,Fetch the document page and its PDF; cross-check online fee tables.

@@ -1,0 +1,376 @@
+{
+ "admissions": {
+  "label": "Admissions Office",
+  "usiubot_app_department": "admissions",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 16,
+    "section": "5.2",
+    "quote": "The department is responsible for the recruitment and admission of new students and administering the financial aid program."
+   },
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 16,
+    "section": "5.2.1",
+    "quote": "Admissions support new students in the admission process."
+   },
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 15,
+    "section": "5.0",
+    "quote": "To develop and execute student admission and enrolment strategy and financial aid."
+   }
+  ],
+  "contacts_web": [
+   "CON-WEB-01: Admissions Office — telephone +254 730 116 247 /300 /397 /503 /522 [W05 (inconsistency); W02 (document_quality)]",
+   "CON-WEB-02: Admissions Office — email admit@usiu.ac.ke",
+   "CON-WEB-03: Admissions Office — whatsapp +254 755 844 849",
+   "CON-WEB-34: Contact Admissions — telephone +254 730 116 290 / 291 / 247 / 300 / 397 / 503 / 522 [W05 (inconsistency)]",
+   "CON-WEB-35: Admissions Main Line — telephone +254 730 116 290 /291 [W05 (inconsistency); W02 (document_quality)]"
+  ],
+  "contacts_pdf": [
+   "CON-CAL-07: Admissions — email admit@usiu.ac.ke",
+   "CON-HB-03: Department of Admissions and Financial Aid — location ground floor of the Administration Block"
+  ],
+  "keywords_processing_aid": [
+   "apply",
+   "application",
+   "admission",
+   "intake",
+   "requirements",
+   "KCSE",
+   "transfer",
+   "international applicant",
+   "Pupil's Pass",
+   "placement test"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "registrar": {
+  "label": "Office of the Registrar",
+  "usiubot_app_department": "registrar",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 13,
+    "section": "4.0",
+    "quote": "The University Registrar is responsible for academic registration, processing, and safekeeping of all students’ academic records."
+   },
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 13,
+    "section": "4.1",
+    "quote": "To access the services of updating contact information, requesting transcripts, taking leave, applying for graduation, or obtaining clearance, students should contact the Registrar’s Office"
+   }
+  ],
+  "contacts_web": [
+   "CON-WEB-06: Registrar — telephone +257 730 116 786 [W04 (document_quality)]",
+   "CON-WEB-07: Registrar — email registrar@usiu.ac.ke [V26 (ambiguity)]",
+   "CON-WEB-28: Graduation Gown return (clearance) — telephone 0730116786/785/870",
+   "CON-WEB-29: Degree completion (clearance) — telephone 0730116785/870/786",
+   "CON-WEB-31: Office of the Registrar: Exit Form (clearance) — telephone 0730116783",
+   "CON-WEB-39: Graduation queries — email graduation@usiu.ac.ke"
+  ],
+  "contacts_pdf": [
+   "CON-CAL-08: Registrar — email registra@usiu.ac.ke",
+   "CON-HB-01: Registrar’s Office (Freida Brown Student Center) — extension Extensions 782-790"
+  ],
+  "keywords_processing_aid": [
+   "transcript",
+   "registration",
+   "add/drop",
+   "graduation",
+   "clearance",
+   "leave of absence",
+   "academic records",
+   "calendar",
+   "examination"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "finance": {
+  "label": "Finance Office (Student Accounts, Credit Control)",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "The app has no Finance department; until one is added (application change, not done), finance enquiries fall back to general_university with this routing note.",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-13: Finance — telephone +254 730 116 403 [W06 (inconsistency)]",
+   "CON-WEB-14: Finance — email finance@usiu.ac.ke [W01 (document_quality)]",
+   "CON-WEB-19: Contact Finance — telephone +254 730 116 175/217/189 [W06 (inconsistency)]",
+   "CON-WEB-20: Contact Finance — email finance@usiu.ac.ke",
+   "CON-WEB-21: Credit Control Office (instalment plans) — telephone +254 730 116 538 [W06 (inconsistency)]",
+   "CON-WEB-22: Credit Control Office (instalment plans) — email credit@usiu.ac.ke",
+   "CON-WEB-23: Finance Department (Student Accounts; refund status) — telephone 0730116509/221/538/224 [W06 (inconsistency)]"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "fees",
+   "tuition",
+   "payment",
+   "bank",
+   "M-PESA",
+   "paybill",
+   "refund",
+   "balance",
+   "instalment",
+   "3Pay",
+   "interest",
+   "receipt"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "financial_aid": {
+  "label": "Financial Aid Office",
+  "usiubot_app_department": "admissions",
+  "app_gap_note": "Handbook page 16: the Admissions department administers the financial aid program.",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-36: Financial Aid (EAC Scholarship enquiries) — email finaid@usiu.ac.ke",
+   "CON-WEB-37: Financial Aid (2026 scholarship call only) — email finaid26@usiu.ac.ke [W10 (outdated)]",
+   "CON-WEB-38: USIU-Africa Financial Aid Office — location Freida Brown Building"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "scholarship",
+   "grant",
+   "waiver",
+   "HELB",
+   "work study",
+   "CWOP",
+   "financial aid"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "academic_programmes": {
+  "label": "Schools and academic programmes (Deputy Vice Chancellor, Academic Affairs)",
+  "usiubot_app_department": "academic_programmes",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 13,
+    "section": "4.0",
+    "quote": "is responsible for all academic processes and services in the university"
+   }
+  ],
+  "contacts_web": [
+   "CON-WEB-53: Director, Quality Assurance Services (CBET) — email cbet@usiu.ac.ke"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "programme",
+   "course",
+   "school",
+   "curriculum",
+   "duration",
+   "mode of study",
+   "online programme",
+   "CBET"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "marketing": {
+  "label": "Marketing and Communications",
+  "usiubot_app_department": "marketing",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 57,
+    "section": "13.0",
+    "quote": "The division is responsible for managing its marketing and communications channels, including its website and corporate social media presence on various platforms."
+   },
+   {
+    "document_id": "usiu_student_handbook",
+    "page": 57,
+    "section": "13.0",
+    "quote": "Disseminate university information to the public, media, parents, and the general public through advertising, press statements, press releases, and a mix of traditional and new media."
+   }
+  ],
+  "contacts_web": [
+   "CON-WEB-40: Yearbook queries — email yearbook@usiu.ac.ke"
+  ],
+  "contacts_pdf": [
+   "CON-HB-35: The Strategic Marketing and Communications Team — email marketing@usiu.ac.ke",
+   "CON-HB-36: The Strategic Marketing and Communications Team — email pr@usiu.ac.ke",
+   "CON-HB-37: The Strategic Marketing and Communications Team — telephone +254-730 116 562"
+  ],
+  "keywords_processing_aid": [
+   "website",
+   "media",
+   "events",
+   "yearbook",
+   "social media"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "student_affairs": {
+  "label": "Student Affairs (Dean of Students, Housing, Counselling, Health, Disability, Student Life)",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "No Student Affairs department in the app.",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-25: Department of Housing: Housing Manager (clearance) — telephone 0730116265",
+   "CON-WEB-26: Student Life: Senior Student Life Officer (clearance) — telephone 0730116792/747",
+   "CON-WEB-27: Student Life: Dean of Students (clearance: disciplinary, student leaders) — telephone 0730116781/787",
+   "CON-WEB-30: Health Services: Principal Medical Officer (clearance) — telephone 0730116759",
+   "CON-WEB-33: Department of Hospitality: Cafeteria Manager (clearance) — telephone 0730116623",
+   "CON-WEB-42: Housing Officer — email housing@usiu.ac.ke",
+   "CON-WEB-43: Housing Officer — telephone +254 730 116 265",
+   "CON-WEB-45: Counseling Services — telephone +254-730 116 748/746/750/791/797/817 [V13 (inconsistency)]",
+   "CON-WEB-46: Counseling Services — email counsel@usiu.ac.ke",
+   "CON-WEB-47: Health Center (emergency) — telephone +254 730 116 760 /761 /762 /271 [V12 (inconsistency); W02 (document_quality)]",
+   "CON-WEB-48: Health Center (emergency) — telephone +254 798 294 538 [V12 (inconsistency); W02 (document_quality)]",
+   "CON-WEB-54: Disability Inclusion (Freida Brown Student Center, Ground Floor) — telephone +254 730 116 830 [W02 (document_quality)]"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "housing",
+   "hostel",
+   "room",
+   "counselling",
+   "health",
+   "clinic",
+   "disability",
+   "clubs",
+   "discipline",
+   "insurance"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "ict": {
+  "label": "ICT Helpdesk",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "No ICT department in the app.",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-10: IT Helpdesk — telephone +254 730 116 333",
+   "CON-WEB-11: IT Helpdesk — email helpdesk@usiu.ac.ke [W01 (document_quality)]",
+   "CON-WEB-12: IT Helpdesk — email multimedia@usiu.ac.ke [W01 (document_quality)]"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "email account",
+   "portal login",
+   "password",
+   "Wi-Fi",
+   "printing account",
+   "MyQ"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "library": {
+  "label": "Library and Information Center",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "No Library department in the app.",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-04: Library — telephone +257 730 116 429/254/549/294 [W04 (document_quality)]",
+   "CON-WEB-05: Library — whatsapp 0782 620 858",
+   "CON-WEB-24: Library & Information Center: Chief Librarian (clearance) — telephone 0730116294",
+   "CON-WEB-49: Director, Library and Information Center — email library@usiu.ac.ke",
+   "CON-WEB-50: Director, Library and Information Center — telephone 0730116429/430",
+   "CON-WEB-51: Ask a Librarian — email askalibrarian@usiu.ac.ke"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "library",
+   "books",
+   "loan",
+   "e-resources",
+   "library fines",
+   "membership"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "careers": {
+  "label": "Placement and Careers",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-08: Placement and Careers — telephone 0730 116 778 /779 /796 [V13 (inconsistency)]",
+   "CON-WEB-09: Placement and Careers — email careeroffice@usiu.ac.ke [W01 (document_quality)]",
+   "CON-WEB-52: Placement and Careers — email careeroffice@usiu.ac.ke"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "internship",
+   "jobs",
+   "career",
+   "attachment"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "alumni": {
+  "label": "Alumni Relations",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-15: Alumni Relations — telephone +254 730 116 417 / +254 730 116 895",
+   "CON-WEB-16: Alumni Relations — email alumni@usiu.ac.ke",
+   "CON-WEB-32: Office of Alumni Relations: Alumni Relations Officer (clearance) — telephone 0730116617/585"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "alumni",
+   "alumni card",
+   "legatee"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "security": {
+  "label": "University Security",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-41: University Security — telephone 0730 116 266 / 0730 116 461 [V14 (inconsistency)]",
+   "CON-WEB-44: Campus emergency (residents) — extension Ext. 262, 202, 327, 279, 266 [V14 (inconsistency)]"
+  ],
+  "contacts_pdf": [],
+  "keywords_processing_aid": [
+   "security",
+   "emergency",
+   "lost and found"
+  ],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ },
+ "general_university": {
+  "label": "General University Information (main lines)",
+  "usiubot_app_department": "general_university",
+  "app_gap_note": "",
+  "responsibilities_from_handbook": [],
+  "contacts_web": [
+   "CON-WEB-17: Main Lines — telephone +254 730 116 000 /290 /291 [W05 (inconsistency)]",
+   "CON-WEB-18: United States International University – Africa — postal_address USIU Road, Off Thika Road (Exit 7), P. O. Box 14634 – 00800, Nairobi, Kenya, East Africa."
+  ],
+  "contacts_pdf": [
+   "CON-CAL-04: United States International University-Africa — postal P .O. Box 14634-00800, Nairobi - Kenya",
+   "CON-CAL-05: United States International University-Africa — telephone +254 730 116 290/ 300/ 397",
+   "CON-CAL-06: United States International University-Africa — whatsapp +254 755 844 849",
+   "CON-HB-40: USIU-Africa (Contact Us) — postal P .O. Box 14634-00800 USIU Road, Off Thika Road (Exit 7) Nairobi, Kenya",
+   "CON-HB-41: USIU-Africa (Contact Us) — telephone +254 730 116 218 /500 /107 /148 /521 /303 /567",
+   "CON-HB-42: USIU-Africa (Contact Us) — website www.usiu.ac.ke"
+  ],
+  "keywords_processing_aid": [],
+  "keywords_note": "Keywords are a processing aid written for USIUBOT, not university text.",
+  "contact_status": "As printed on official sources; unverified. Do not send test enquiries."
+ }
+}

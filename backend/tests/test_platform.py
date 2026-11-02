@@ -30,8 +30,19 @@ def test_unhandled_exception_returns_generic_message(app, admin_headers):
 
 
 def test_health_does_not_expose_environment(client):
-    body = client.get("/health").get_json()
-    assert set(body) == {"status", "timestamp"}
+    response = client.get("/health")
+    body = response.get_json()
+    assert set(body) == {"status", "database", "timestamp"}
+    assert response.status_code == 200 and body["status"] == "healthy" and body["database"] == "ok"
+
+
+def test_health_reports_an_unavailable_database_without_details(client, monkeypatch):
+    from config.database import db_instance
+
+    monkeypatch.setattr(db_instance, "ping", lambda: False)
+    response = client.get("/api/health")
+    assert response.status_code == 503
+    assert response.get_json()["database"] == "unavailable" and "mongodb" not in response.get_data(as_text=True)
 
 
 def test_security_headers_present(client):

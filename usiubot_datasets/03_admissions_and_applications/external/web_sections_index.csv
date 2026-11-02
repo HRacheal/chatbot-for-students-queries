@@ -1,0 +1,3 @@
+﻿record_id,document_id,data_origin,source_url,section_heading,heading_path,content_chars,chunk_count,issue_ids,review_status,verification_status
+WEB-P029-S01,kuccps.net__frequently-asked-questions,external,https://kuccps.net/frequently-asked-questions,Frequently Asked Questions | KUCCPS,Frequently Asked Questions | KUCCPS,797,1,W24,draft,pending_verification
+WEB-P030-S01,kuccps.net__home,external,https://kuccps.net/,Homepage | KUCCPS,Homepage | KUCCPS,546,1,W24,draft,pending_verification

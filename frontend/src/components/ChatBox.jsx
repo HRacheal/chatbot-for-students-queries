@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SpotlightCard from "./ui/SpotlightCard";
 import { Textarea } from "./ui/textarea";
@@ -11,9 +11,15 @@ import { SkeletonDemo } from "./ui/SkeletonDemo";
 import { FaHistory, FaCalendarAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { BiExpandAlt, BiCollapseAlt } from "react-icons/bi"; // Added resize icons
 import { FiLogOut, FiLogIn } from "react-icons/fi"; // More distinct login/logout icons
-import { getChatHistory, submitQuery } from "../lib/api";
+import { chatErrorMessage, getChatHistory, submitQuery } from "../lib/api";
 import SafeMarkdown from "./SafeMarkdown";
+import Citations from "./Citations";
+import UnverifiedHelp from "./UnverifiedHelp";
+import GuidancePanel from "./GuidancePanel";
+import TrackEnquiry from "./TrackEnquiry";
+import { FaGraduationCap, FaClipboardList } from "react-icons/fa";
 import { format } from "date-fns";
+import PropTypes from "prop-types";
 
 function ChatBox({ onClose }) {
   const navigate = useNavigate();
@@ -28,6 +34,7 @@ function ChatBox({ onClose }) {
   const [typingText, setTypingText] = useState({}); // Add state for typing text animation
   const [expandedChat, setExpandedChat] = useState(null); // Track expanded history item
   const [sessionId, setSessionId] = useState(null); // Server-issued conversation id
+  const [panel, setPanel] = useState(null); // null | "guidance" | "track"
   const conversationRef = useRef(null);
   const chatBoxRef = useRef(null);
   const messagesEndRef = useRef(null); // New ref for scroll target
@@ -210,14 +217,23 @@ function ChatBox({ onClose }) {
 
       // Answers are plain text; unanswered questions are logged by the backend.
       let responseText = response.answer || "No answer found";
-      if (response.status === "unanswered" && token) {
+      if (response.status === "unanswered" && token && response.staff_reply_by_email) {
         responseText += " You'll be notified by email when staff respond.";
       }
       
-      // Update the last message with the response
+      // Update the last message with the response and its sources. Citations come
+      // from the backend's approved source records, never from the answer text.
       setChatHistory((prev) => {
         const updated = [...prev];
         updated[updated.length - 1].response = responseText;
+        updated[updated.length - 1].citations = Array.isArray(response.citations) ? response.citations : [];
+        updated[updated.length - 1].warnings = Array.isArray(response.warnings) ? response.warnings : [];
+        updated[updated.length - 1].status = response.status;
+        updated[updated.length - 1].partial = response.partial === true;
+        updated[updated.length - 1].placesToLook = Array.isArray(response.places_to_look) ? response.places_to_look : [];
+        updated[updated.length - 1].siteSearchUrl = response.site_search_url || null;
+        updated[updated.length - 1].enquiry = response.enquiry || null;
+        updated[updated.length - 1].actions = Array.isArray(response.actions) ? response.actions : [];
         return updated;
       });
       
@@ -234,18 +250,7 @@ function ChatBox({ onClose }) {
       // Force scroll after response is added
       setTimeout(scrollToBottom, 50);
     } catch (error) {
-      let errorResponse;
-      
-      if (error.response) {
-        if ([400, 429, 503].includes(error.response.status) && error.response.data?.error) {
-          // Use the user-friendly error message from the backend
-          errorResponse = error.response.data.error;
-        } else {
-          errorResponse = "Sorry, something went wrong. Please try again.";
-        }
-      } else {
-        errorResponse = "Network error. Please check your connection and try again.";
-      }
+      const errorResponse = chatErrorMessage(error);
       
       // Update the last message with the error response
       setChatHistory((prev) => {
@@ -310,7 +315,7 @@ function ChatBox({ onClose }) {
 
   const TypingIndicator = () => (
     <div className="bg-gray-800 rounded-lg p-3 animate-pulse">
-      <p className="text-blue-400 font-medium">Sahayak is thinking...</p>
+      <p className="text-blue-400 font-medium">USIUBOT is thinking...</p>
       <div className="flex space-x-1 mt-2">
         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -374,10 +379,28 @@ function ChatBox({ onClose }) {
             showBorder={false}
             className="custom-class text-3xl mb-3"
           >
-            Welcome to Sahayak
+            Welcome to USIUBOT
           </GradientText>
 
           <div className="flex items-center space-x-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setPanel(panel === "guidance" ? null : "guidance")}
+              className="text-green-500 hover:bg-green-800 hover:text-white"
+              title="Degree guidance from your results"
+            >
+              <FaGraduationCap className="h-5 w-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setPanel(panel === "track" ? null : "track")}
+              className="text-green-500 hover:bg-green-800 hover:text-white"
+              title="Track an enquiry"
+            >
+              <FaClipboardList className="h-5 w-5" />
+            </Button>
             {/* Resize buttons */}
             <Button
               variant="ghost"
@@ -441,7 +464,11 @@ function ChatBox({ onClose }) {
         </div>
 
         <div className="flex-1 overflow-y-auto p-4">
-          {showHistory ? (
+          {panel === "guidance" ? (
+            <GuidancePanel onClose={() => setPanel(null)} />
+          ) : panel === "track" ? (
+            <TrackEnquiry onClose={() => setPanel(null)} />
+          ) : showHistory ? (
             isLoggedIn ? (
               historyLoading ? (
                 <div className="flex justify-center items-center h-full">
@@ -506,6 +533,7 @@ function ChatBox({ onClose }) {
                                     className="text-white bg-gray-700/50 p-2 rounded-md chat-response"
                                     text={chat.answer}
                                   />
+                                  <Citations citations={chat.citations} />
                                 </div>
                               </div>
                             )}
@@ -552,7 +580,7 @@ function ChatBox({ onClose }) {
               {chatHistory.map((chat, index) => (
                 <div key={index} className="space-y-3">
                   {/* User message */}
-                  <div className="bg-blue-800 rounded-lg p-3 ml-28">
+                  <div className="bg-blue-800 rounded-lg p-3 ml-6 md:ml-28">
                     <p className="font-medium">
                       <span className="text-red-400 mr-1">You:</span>
                       <span className="text-white"> {chat.query}</span>
@@ -564,8 +592,8 @@ function ChatBox({ onClose }) {
                   
                   {/* Bot response or loading */}
                   {chat.response ? (
-                    <div className="bg-gray-800 rounded-lg p-3 mr-28">
-                      <p className="text-green-400 font-medium">Sahayak:</p>
+                    <div className="bg-gray-800 rounded-lg p-3 mr-2 md:mr-28">
+                      <p className="text-green-400 font-medium">USIUBOT:</p>
                       <div className="text-white mt-2 chat-response">
                         {/* Show typing animation if this message has an ID and is in typingText state */}
                         {chat.id && typingText[chat.id] ? (
@@ -579,6 +607,29 @@ function ChatBox({ onClose }) {
                           </>
                         ) : (
                           <SafeMarkdown text={chat.response} />
+                        )}
+                        {(!typingText[chat.id] || typingText[chat.id].completed) && (
+                          <>
+                            <Citations citations={chat.citations} warnings={chat.warnings} />
+                            {(chat.status === "unanswered" || chat.partial || (chat.status === "ai_unavailable" && chat.placesToLook?.length > 0)) && (
+                              <UnverifiedHelp
+                                partial={chat.partial === true}
+                                question={chat.query}
+                                placesToLook={chat.placesToLook}
+                                siteSearchUrl={chat.siteSearchUrl}
+                                enquiry={chat.enquiry}
+                              />
+                            )}
+                            {chat.actions?.includes("degree_guidance") && (
+                              <button
+                                type="button"
+                                onClick={() => setPanel("guidance")}
+                                className="mt-3 rounded border border-green-500 px-3 py-1 text-sm text-green-300 hover:bg-green-800 hover:text-white"
+                              >
+                                Get degree guidance from your results
+                              </button>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>
@@ -644,5 +695,9 @@ function ChatBox({ onClose }) {
     </div>
   );
 }
+
+ChatBox.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ChatBox;

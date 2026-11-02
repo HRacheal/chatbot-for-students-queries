@@ -1,0 +1,154 @@
+{
+ "validated_at": "2026-11-01",
+ "checks": [
+  {
+   "check": "expected files exist",
+   "result": "pass",
+   "blocking": true,
+   "detail": "36 files present"
+  },
+  {
+   "check": "all CSV and JSON files parse",
+   "result": "pass",
+   "blocking": true,
+   "detail": "56 CSV, 49 JSON"
+  },
+  {
+   "check": "record ids are unique",
+   "result": "pass",
+   "blocking": true,
+   "detail": "2470 ids"
+  },
+  {
+   "check": "no duplicate chunk content (body text, across Stage 2 and web)",
+   "result": "pass",
+   "blocking": false,
+   "detail": "817 chunks"
+  },
+  {
+   "check": "chunks do not exceed 1000 characters",
+   "result": "pass",
+   "blocking": false,
+   "detail": "[]"
+  },
+  {
+   "check": "every web chunk starts with its heading path",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "every record names its source",
+   "result": "pass",
+   "blocking": true,
+   "detail": "0 without: []"
+  },
+  {
+   "check": "every PDF record has a page number",
+   "result": "pass",
+   "blocking": true,
+   "detail": "0: []"
+  },
+  {
+   "check": "every web record has a URL",
+   "result": "pass",
+   "blocking": true,
+   "detail": "0: []"
+  },
+  {
+   "check": "all_records_index.csv: one row per record, every row has a source",
+   "result": "pass",
+   "blocking": true,
+   "detail": "1050 rows; duplicate ids []; without source []"
+  },
+  {
+   "check": "external sources are labelled and kept separate",
+   "result": "pass",
+   "blocking": true,
+   "detail": ""
+  },
+  {
+   "check": "every unresolved conflict/issue is in the register",
+   "result": "pass",
+   "blocking": true,
+   "detail": "51 unresolved of 54"
+  },
+  {
+   "check": "every unresolved issue is attached to at least one record or chunk",
+   "result": "warning",
+   "blocking": false,
+   "detail": "only in the register: ['V11', 'W15']"
+  },
+  {
+   "check": "conflict records keep the evidence of each version",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "original PDFs unchanged (SHA-256)",
+   "result": "pass",
+   "blocking": true,
+   "detail": "Academic-Calendar-2026-2027.pdf 618711f96eb9…, Student-Handbook.pdf 610a3da82992…"
+  },
+  {
+   "check": "downloaded fee schedule unchanged",
+   "result": "pass",
+   "blocking": true,
+   "detail": "33d8f0d58491c159"
+  },
+  {
+   "check": "application files compared with the pre-integration baseline (informational)",
+   "result": "pass",
+   "blocking": true,
+   "detail": "25 changed, 8 new since the baseline (dataset integration)"
+  },
+  {
+   "check": "no record is approved (all drafts)",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "web evidence quotes found in their snapshots",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "no secrets or connection strings in dataset files",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "restricted systems were not fetched",
+   "result": "pass",
+   "blocking": true,
+   "detail": "[]"
+  },
+  {
+   "check": "inaccessible / not-collected sources are recorded",
+   "result": "pass",
+   "blocking": true,
+   "detail": "8 recorded"
+  }
+ ],
+ "stats": {
+  "csv_files": 56,
+  "json_record_files": 28,
+  "records_in_csv_by_category": {
+   "01": 377,
+   "02": 116,
+   "03": 122,
+   "04": 723,
+   "05": 85,
+   "06": 118,
+   "07": 72,
+   "08": 50
+  },
+  "chunks_total": 817
+ },
+ "blocking_failures": 0,
+ "warnings": 1
+}

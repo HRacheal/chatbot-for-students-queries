@@ -1,0 +1,4 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-13.0,usiu_student_handbook,13.0,University Communication,57,57,2026,3,,V07; V23,draft,pending_verification
+HB-contact,usiu_student_handbook,not numbered,Contact Us,60,60,149,1,,V07; V23,draft,pending_verification
+CAL-p7,usiu_academic_calendar_2026_2027,not numbered (calendar page),Contacts,7,7,303,1,,V22; V26,draft,pending_verification

@@ -1,0 +1,38 @@
+﻿category_id,category_name,information,status,documents,notes
+01,General University Information,University history,Partially extracted,usiu_student_handbook,"Only brief statements: one of the oldest private, secular universities in East Africa; dual accreditation; Alumni Association registered April 1990. No founding history."
+01,General University Information,Campus information,Partially extracted,usiu_student_handbook,"Buildings and facilities are named across sections (Freida Brown Student Center, Lillian K Beam Building, hostels, sports facilities). No campus map or campus list."
+01,General University Information,University leadership,Partially extracted,usiu_student_handbook,"Vice Chancellor and Deputy Vice Chancellor, Student Life only; undated (issue V25)."
+01,General University Information,Accommodation,Partially extracted,usiu_student_handbook; usiu_academic_calendar_2026_2027,On-campus hostel description and capacity; hostel check-in/out dates. No hostel fees.
+01,General University Information,Frequently asked questions,Unavailable,,Neither document contains an FAQ.
+02,Academic Programmes,Programme list / programme ID / programme name,Unavailable,,No programmes are listed in either document.
+02,Academic Programmes,Degree level,Partially extracted,usiu_student_handbook,"Only the general statement that programmes are Undergraduate, Graduate or Short Professional courses (p5)."
+02,Academic Programmes,"Programme description, duration, specialisations, curriculum, career opportunities",Unavailable,,"Not in either document; the handbook refers to the Academic Catalog (2021-2023 link, issue V05)."
+02,Academic Programmes,Mode of study,Partially extracted,usiu_student_handbook,USIU-Online e-learning information (handbook section 9). No per-programme mode.
+02,Academic Programmes,Programme admission requirements,Unavailable,,Not in either document.
+02,Academic Programmes,Official programme source URL,Unavailable,,Only the outdated Academic Catalog 2021-2023 link.
+03,Admissions and Applications,Undergraduate requirements / minimum academic qualifications / required subjects,Unavailable,,Not in either document.
+03,Admissions and Applications,Postgraduate requirements,Unavailable,,Not in either document.
+03,Admissions and Applications,International student requirements,Partially extracted,usiu_student_handbook,English proficiency scores (5.2.1) and a pointer to the International Students Handbook (5.4.4).
+03,Admissions and Applications,Application procedures,Partially extracted,usiu_student_handbook,"Re-admission and returning-graduate rules only (5.2.2, 5.2.3)."
+03,Admissions and Applications,Application fees,Partially extracted,usiu_student_handbook; usiu_academic_calendar_2026_2027,"A 'non-refundable application processing fee' is mentioned (5.2.2, 5.2.3) and an M-PESA purpose code ADM exists; no amount."
+03,Admissions and Applications,Required documents,Unavailable,,Not listed (conditional admission mentions 'necessary documents' only).
+03,Admissions and Applications,Transfer requirements,Partially extracted,usiu_student_handbook,Credit transfers need Academic Dean approval (5.2.1); inter-campus transfer is a Registrar service (4.3).
+04,Fees and Payments,"Tuition fees (amounts, by programme, by semester)",Unavailable,,The handbook says fees are published in the University Fee Schedule (3.1); no amounts in either document.
+04,Fees and Payments,"Application fee, registration charges, examination fees (amounts)",Unavailable,,"Late registration and add/drop fees exist, but no amounts are given."
+04,Fees and Payments,Other compulsory charges,Partially extracted,usiu_student_handbook,"Returned-cheque charge, medical insurance, fines (conduct section) — mostly without amounts."
+05,Registrar and Academic Administration,Transcript requests,Partially extracted,usiu_student_handbook; usiu_academic_calendar_2026_2027,"The Registrar processes transcripts (4.1, 4.3); M-PESA code TSPT exists; no procedure or fee."
+05,Registrar and Academic Administration,Results slips,Unavailable,,Not mentioned.
+05,Registrar and Academic Administration,Examination regulations,Unavailable,,Only exam dates (calendar). No exam rules.
+05,Registrar and Academic Administration,Deferred / special examinations,Partially extracted,usiu_academic_calendar_2026_2027,Special exam dates only; no rules.
+05,Registrar and Academic Administration,Graduation requirements,Unavailable,,Not stated; the handbook refers to the Academic Catalog.
+05,Registrar and Academic Administration,Academic progression / probation,Partially extracted,usiu_student_handbook,Only financial-aid GPA probation (5.2.6).
+05,Registrar and Academic Administration,Deferment / leave of absence,Partially extracted,usiu_student_handbook,Leave of absence maximum one academic year (5.2.2); processed by the Registrar (4.3).
+05,Registrar and Academic Administration,Academic appeals,Unavailable,,Only non-academic disciplinary appeals (10.13).
+06,Department Contacts and Query Routing,Academic Programmes: responsibilities and contacts,Unavailable,,No such office is named and no contact is printed.
+06,Department Contacts and Query Routing,Working hours,Unavailable,,No office hours (library and health centre hours only).
+06,Department Contacts and Query Routing,Escalation procedure,Unavailable,,"Only disciplinary/grievance escalation (10.13, 10.16)."
+07,"Academic Documents, Results and Verified Eligibility","KCSE entry requirements (minimum grades, required subjects)",Unavailable,,Not in either document.
+07,"Academic Documents, Results and Verified Eligibility","International qualifications, diplomas, other qualifications",Unavailable,,Not in either document.
+07,"Academic Documents, Results and Verified Eligibility",Qualification equivalencies,Partially extracted,usiu_student_handbook,English language test minimums only (english_proficiency_requirements.csv; issue V16).
+07,"Academic Documents, Results and Verified Eligibility",Programme-specific admission conditions,Unavailable,,Not in either document.
+08,"Questions, Answers and Unresolved Enquiries","User questions, answers, sources, classification, enquiry references and statuses",Unavailable,,"Operational data. It is created by the running application, not extracted from documents. Nothing was imported in Stage 2."

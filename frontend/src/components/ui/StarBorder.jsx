@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const StarBorder = ({
     as: Component = "button",
     className = "",
@@ -29,6 +31,14 @@ const StarBorder = ({
     );
     };
     
+    StarBorder.propTypes = {
+      as: PropTypes.elementType,
+      className: PropTypes.string,
+      color: PropTypes.string,
+      speed: PropTypes.string,
+      children: PropTypes.node,
+    };
+
     export default StarBorder;
     
     // // tailwind.config.js

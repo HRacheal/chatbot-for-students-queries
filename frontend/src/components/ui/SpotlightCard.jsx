@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import PropTypes from "prop-types";
 
 const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 255, 255, 0.25)" }) => {
 const divRef = useRef(null);
@@ -51,6 +52,12 @@ return (
     {children}
   </div>
 );
+};
+
+SpotlightCard.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  spotlightColor: PropTypes.string,
 };
 
 export default SpotlightCard;

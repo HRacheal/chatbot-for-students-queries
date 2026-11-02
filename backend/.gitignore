@@ -75,6 +75,11 @@ htmlcov/
 .pytest_cache/
 backend/resources/*.pdf
 !backend/resources/sample.pdf
+# University documents and their extracted text stay local (copyright, possible personal data).
+# Only the folder placeholders, metadata and reports are tracked.
+resources/usiubot_knowledge/*/*
+!resources/usiubot_knowledge/*/.gitkeep
+!resources/usiubot_knowledge/metadata/*
 
 # Render specific
 __render_build__/

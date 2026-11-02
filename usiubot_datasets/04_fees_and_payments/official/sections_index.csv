@@ -1,0 +1,24 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-3.1,usiu_student_handbook,3.1,Tuition and Fees,9,9,214,1,,V07; V23,draft,pending_verification
+HB-3.2,usiu_student_handbook,3.2,Payments of Fees,9,9,843,1,,V07; V23; V28,draft,pending_verification
+HB-3.3,usiu_student_handbook,3.3,Checks/Cheques,9,9,324,1,,V07; V23,draft,pending_verification
+HB-3.4,usiu_student_handbook,3.4,Payment Information (valid as at May 2024 ),9,10,1664,2,reconstructed_from_two_column_layout,V01; V02; V03; V07; V23,draft,pending_verification
+HB-3.5,usiu_student_handbook,3.5,Online Card Payments,10,10,593,1,,V07; V23,draft,pending_verification
+HB-3.6,usiu_student_handbook,3.6,Financial Clearance,10,10,265,1,,V07; V23,draft,pending_verification
+HB-3.7,usiu_student_handbook,3.7,USIU–Africa Hostels Room & Board Payments,10,10,270,1,,V07; V23,draft,pending_verification
+HB-3.8,usiu_student_handbook,3.8,Institutional Charge Waiver/ Refund Policy,10,11,737,1,,V04; V07; V23,draft,pending_verification
+HB-3.9,usiu_student_handbook,3.9,Procedure for Withdrawing/Requesting a Charge Waiver,11,11,856,1,,V07; V23,draft,pending_verification
+HB-3.10,usiu_student_handbook,3.10,Installment Payments,11,11,871,1,,V07; V23; V29,draft,pending_verification
+HB-3.11,usiu_student_handbook,3.11,Interest Charge,11,11,203,1,,V07; V23; V28,draft,pending_verification
+HB-3.12,usiu_student_handbook,3.12,Tuition Refund,11,11,368,1,,V07; V23,draft,pending_verification
+HB-3.13,usiu_student_handbook,3.13,Debt Collection,12,12,164,1,,V07; V23,draft,pending_verification
+HB-3.14,usiu_student_handbook,3.14,Other services offered by the Finance Office,12,12,169,1,,V07; V23,draft,pending_verification
+HB-5.2.4,usiu_student_handbook,5.2.4,The Financial Aid Office,16,16,360,1,,V07; V23,draft,pending_verification
+HB-5.2.5,usiu_student_handbook,5.2.5,Eligibility Criteria,17,17,415,1,,V07; V23,draft,pending_verification
+HB-5.2.6,usiu_student_handbook,5.2.6,General Provisions on Financial Aid Policy and Regulations,17,17,1295,2,,V07; V23,draft,pending_verification
+HB-5.2.7,usiu_student_handbook,5.2.7,Financial Aid Programs for Undergraduate Students,17,17,316,1,,V07; V23,draft,pending_verification
+HB-5.2.8,usiu_student_handbook,5.2.8,Financial Aid Programs for Graduate Students,17,17,71,1,,V07; V23,draft,pending_verification
+HB-5.2.9,usiu_student_handbook,5.2.9,Financial Aid Programs for Undergraduate and Graduate Students,17,17,127,1,,V07; V23,draft,pending_verification
+HB-5.2.10,usiu_student_handbook,5.2.10,Externally Funded Financial Aid Programs,18,18,430,1,,V07; V23,draft,pending_verification
+CAL-p5,usiu_academic_calendar_2026_2027,not numbered (calendar page),Payment Information: wire transfer and bank deposit,5,5,1770,2,high_risk_payment_details,V02; V03; V22,draft,pending_verification
+CAL-p6,usiu_academic_calendar_2026_2027,not numbered (calendar page),Mobile Money Payments (M-PESA) and payment purpose codes,6,6,1993,2,high_risk_payment_details,V22; V32,draft,pending_verification

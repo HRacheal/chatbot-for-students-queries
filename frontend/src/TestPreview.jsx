@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import { useState } from 'react';
 import PDFPreview from './components/PDFPreview';
 import './index.css';
 
@@ -26,7 +25,7 @@ function TestPreview() {
   );
 }
 
-// You can uncomment this to test the component directly:
+// To test the component directly, import React and ReactDOM ('react-dom/client') and uncomment:
 // ReactDOM.createRoot(document.getElementById('root')).render(
 //   <React.StrictMode>
 //     <TestPreview />

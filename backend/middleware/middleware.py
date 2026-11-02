@@ -69,5 +69,11 @@ class ErrorHandlingMiddleware:
     def handle_exception(self, error):
         if isinstance(error, HTTPException):
             return self.handle_http_exception(error)
+        from pymongo.errors import PyMongoError
+
+        if isinstance(error, PyMongoError):
+            logger.error("Database error on %s %s (%s)", request.method, request.path, type(error).__name__)
+            return jsonify({"error": "The USIUBOT database is temporarily unavailable. Please try again shortly.",
+                            "code": "database_unavailable"}), 503
         logger.exception("Unhandled error on %s %s", request.method, request.path)
         return jsonify({"error": "An unexpected error occurred. Please try again later."}), 500

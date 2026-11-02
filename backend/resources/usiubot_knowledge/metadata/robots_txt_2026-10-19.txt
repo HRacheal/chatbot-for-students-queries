@@ -1,0 +1,42 @@
+Sitemap: https://www.usiu.ac.ke/smap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yahoo / DuckDuckGo (via Bing)
+User-agent: Slurp
+Allow: /
+
+# Block SEO & scraping bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# Block everything else by default
+User-agent: *
+Disallow: /

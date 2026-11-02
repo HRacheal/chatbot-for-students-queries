@@ -1,0 +1,20 @@
+{
+  "category_id": "08",
+  "category_name": "Questions, Answers and Unresolved Enquiries",
+  "folder": "08_questions_answers_and_unresolved_enquiries",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [],
+  "section_records": 0,
+  "knowledge_chunks": 0,
+  "structured_files": {},
+  "coverage": [
+    {
+      "information": "User questions, answers, sources, classification, enquiry references and statuses",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Operational data. It is created by the running application, not extracted from documents. Nothing was imported in Stage 2."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

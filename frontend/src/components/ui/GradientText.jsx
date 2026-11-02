@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function GradientText({
   children,
   className = "",
@@ -68,3 +70,11 @@ export default function GradientText({
   // },
   // plugins: [],
   // };
+
+GradientText.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  animationSpeed: PropTypes.number,
+  showBorder: PropTypes.bool,
+};

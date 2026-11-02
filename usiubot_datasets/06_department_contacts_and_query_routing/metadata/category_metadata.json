@@ -1,0 +1,72 @@
+{
+  "category_id": "06",
+  "category_name": "Department Contacts and Query Routing",
+  "folder": "06_department_contacts_and_query_routing",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_academic_calendar_2026_2027",
+    "usiu_student_handbook"
+  ],
+  "section_records": 3,
+  "knowledge_chunks": 5,
+  "structured_files": {
+    "department_contacts.csv": 51
+  },
+  "coverage": [
+    {
+      "information": "Admissions: responsibilities and contacts",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Email (calendar p7), location (handbook p16)."
+    },
+    {
+      "information": "Registrar: responsibilities and contacts",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Email (calendar p7, issue V26), extensions (handbook p13)."
+    },
+    {
+      "information": "Marketing: responsibilities and contacts",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Email and telephone (handbook p57)."
+    },
+    {
+      "information": "Academic Programmes: responsibilities and contacts",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "No such office is named and no contact is printed."
+    },
+    {
+      "information": "General University Information: contacts",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "General telephone, WhatsApp, postal address."
+    },
+    {
+      "information": "Working hours",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "No office hours (library and health centre hours only)."
+    },
+    {
+      "information": "Escalation procedure",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Only disciplinary/grievance escalation (10.13, 10.16)."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

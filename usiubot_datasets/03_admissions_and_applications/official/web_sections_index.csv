@@ -1,0 +1,81 @@
+﻿record_id,document_id,data_origin,source_url,section_heading,heading_path,content_chars,chunk_count,issue_ids,review_status,verification_status
+WEB-P015-S01,admission-fees,official,https://www.usiu.ac.ke/admission-fees/,Admission & Fees,Admission & Fees,812,1,,draft,pending_verification
+WEB-P015-S02,admission-fees,official,https://www.usiu.ac.ke/admission-fees/,Facts,Facts,136,1,,draft,pending_verification
+WEB-P015-S03,admission-fees,official,https://www.usiu.ac.ke/admission-fees/,Apply for May 2026!,Facts > Apply for May 2026!,254,1,W10,draft,pending_verification
+WEB-P015-S04,admission-fees,official,https://www.usiu.ac.ke/admission-fees/,Tuition & Fees,Facts > Tuition & Fees,281,1,,draft,pending_verification
+WEB-P015-S05,admission-fees,official,https://www.usiu.ac.ke/admission-fees/,Are you ready to take the next step toward your future career?,FORM > Are you ready to take the next step toward your future career?,42,1,,draft,pending_verification
+WEB-P018-S01,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Admission Requirements,Admission Requirements,476,1,,draft,pending_verification
+WEB-P018-S02,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Kenyan Applicants,Admission Requirements > Undergraduate Applicants > Kenyan Applicants,406,1,,draft,pending_verification
+WEB-P018-S03,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,International Applicants,Admission Requirements > Undergraduate Applicants > International Applicants,266,1,,draft,pending_verification
+WEB-P018-S04,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,English Language Proficiency,Admission Requirements > Undergraduate Applicants > English Language Proficiency,1200,2,W14,draft,pending_verification
+WEB-P018-S05,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Financial Guarantee for International Applicants,Admission Requirements > Undergraduate Applicants > Financial Guarantee for International Applicants,1199,2,,draft,pending_verification
+WEB-P018-S06,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Transfer Admissions,Admission Requirements > Undergraduate Applicants > Transfer Admissions,1524,3,,draft,pending_verification
+WEB-P018-S07,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Transfer Credit Limits,Admission Requirements > Undergraduate Applicants > Transfer Credit Limits,1584,3,W11,draft,pending_verification
+WEB-P018-S08,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Transcripts,Admission Requirements > Undergraduate Applicants > Transcripts,1745,2,,draft,pending_verification
+WEB-P018-S09,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Transfer Credits,Admission Requirements > Undergraduate Applicants > Transfer Credits,218,1,,draft,pending_verification
+WEB-P018-S10,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Grades Required for Transfer Credit,Admission Requirements > Undergraduate Applicants > Grades Required for Transfer Credit,416,1,,draft,pending_verification
+WEB-P018-S11,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Correspondence and Extension Courses,Admission Requirements > Undergraduate Applicants > Correspondence and Extension Courses,590,1,,draft,pending_verification
+WEB-P018-S12,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,U.S. Military Course Credit,Admission Requirements > Undergraduate Applicants > U.S. Military Course Credit,506,1,,draft,pending_verification
+WEB-P018-S13,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Applicants for Re-Admission,Admission Requirements > Undergraduate Applicants > Applicants for Re-Admission,479,1,,draft,pending_verification
+WEB-P018-S14,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Returning USIU-Africa Graduates,Admission Requirements > Undergraduate Applicants > Returning USIU-Africa Graduates,337,1,,draft,pending_verification
+WEB-P018-S15,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Returning USIU-Africa Graduates,Admission Requirements > Undergraduate Applicants > Returning USIU-Africa Graduates,337,0,,draft,pending_verification
+WEB-P018-S16,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Appeal Process,Admission Requirements > Undergraduate Applicants > Appeal Process,391,1,,draft,pending_verification
+WEB-P018-S17,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Conditional Admission,Admission Requirements > Undergraduate Applicants > Conditional Admission,1180,2,,draft,pending_verification
+WEB-P018-S18,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Placement Tests,Admission Requirements > Undergraduate Applicants > Placement Tests,348,1,,draft,pending_verification
+WEB-P018-S19,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Forged or Altered Documents,Admission Requirements > Undergraduate Applicants > Forged or Altered Documents,119,1,,draft,pending_verification
+WEB-P018-S20,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Graduate Admission Requirements,Admission Requirements > Graduate Applicants > Graduate Admission Requirements,579,1,,draft,pending_verification
+WEB-P018-S21,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Meeting Minimum Admission Requirements,Admission Requirements > Graduate Applicants > Meeting Minimum Admission Requirements,76,1,,draft,pending_verification
+WEB-P018-S22,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Transfer Credits,Admission Requirements > Graduate Applicants > Transfer Credits,75,1,,draft,pending_verification
+WEB-P018-S23,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Appeal Process,Admission Requirements > Graduate Applicants > Appeal Process,274,1,,draft,pending_verification
+WEB-P018-S24,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Special Status/Non-Degree Master's Applicants,Admission Requirements > Graduate Applicants > Special Status/Non-Degree Master's Applicants,773,1,,draft,pending_verification
+WEB-P018-S25,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Auditing Courses,Admission Requirements > Graduate Applicants > Auditing Courses,593,1,,draft,pending_verification
+WEB-P018-S26,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Applicants for Re-Admission,Admission Requirements > Graduate Applicants > Applicants for Re-Admission,442,1,,draft,pending_verification
+WEB-P018-S27,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Returning USIU-Africa Graduates,Admission Requirements > Graduate Applicants > Returning USIU-Africa Graduates,323,1,,draft,pending_verification
+WEB-P018-S28,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Change of Degree Program,Admission Requirements > Graduate Applicants > Change of Degree Program,203,1,,draft,pending_verification
+WEB-P018-S29,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Forged or Altered Documents,Admission Requirements > Graduate Applicants > Forged or Altered Documents,120,1,,draft,pending_verification
+WEB-P018-S30,admission-requirements,official,https://www.usiu.ac.ke/admission-requirements/,Contact Admissions,Admission Requirements > Graduate Applicants > Contact Admissions,255,1,W05,draft,pending_verification
+WEB-P025-S01,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,How to Apply,How to Apply,579,1,,draft,pending_verification
+WEB-P025-S02,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Confirm Course Information,How to Apply > Apply > Confirm Course Information,318,1,,draft,pending_verification
+WEB-P025-S03,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Confirmation of Admission Requirements,How to Apply > Apply > Confirmation of Admission Requirements,186,1,,draft,pending_verification
+WEB-P025-S04,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Filling The Application Form,How to Apply > Apply > Filling The Application Form,902,1,,draft,pending_verification
+WEB-P025-S05,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Application Fee Payment,How to Apply > Apply > Application Fee Payment,255,1,,draft,pending_verification
+WEB-P025-S06,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Application Review,How to Apply > Apply > Application Review,279,1,,draft,pending_verification
+WEB-P025-S07,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Undergraduate Application Forms,How to Apply > Apply > Application Documents > Undergraduate Application Forms,62,1,,draft,pending_verification
+WEB-P025-S08,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Masters Application Forms,How to Apply > Apply > Application Documents > Masters Application Forms,126,1,,draft,pending_verification
+WEB-P025-S09,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,Doctoral Application Forms,How to Apply > Doctoral Application Forms,274,1,,draft,pending_verification
+WEB-P025-S10,how-to-apply,official,https://www.usiu.ac.ke/how-to-apply/,International Applicants Forms,How to Apply > International Applicants Forms,55,1,,draft,pending_verification
+WEB-P026-S02,intake,official,https://www.usiu.ac.ke/intake/,January (Spring) Semester 2027 Intake Ongoing,January (Spring) Semester 2027 Intake Ongoing,189,1,,draft,pending_verification
+WEB-P026-S03,intake,official,https://www.usiu.ac.ke/intake/,1. Unique Programs,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 1. Unique Programs,117,1,,draft,pending_verification
+WEB-P026-S04,intake,official,https://www.usiu.ac.ke/intake/,2. World-Class Facilities,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 2. World-Class Facilities,108,1,,draft,pending_verification
+WEB-P026-S05,intake,official,https://www.usiu.ac.ke/intake/,3. Affordable,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 3. Affordable,105,1,,draft,pending_verification
+WEB-P026-S06,intake,official,https://www.usiu.ac.ke/intake/,4. Exchange Programs,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 4. Exchange Programs,97,1,,draft,pending_verification
+WEB-P026-S07,intake,official,https://www.usiu.ac.ke/intake/,5. Industry Partnerships,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 5. Industry Partnerships,106,1,,draft,pending_verification
+WEB-P026-S08,intake,official,https://www.usiu.ac.ke/intake/,6. Cultural Diversity,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 6. Cultural Diversity,97,1,W16,draft,pending_verification
+WEB-P026-S09,intake,official,https://www.usiu.ac.ke/intake/,7. IT Facilities,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 7. IT Facilities,85,1,,draft,pending_verification
+WEB-P026-S10,intake,official,https://www.usiu.ac.ke/intake/,8. Library Facilities,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 8. Library Facilities,90,1,,draft,pending_verification
+WEB-P026-S11,intake,official,https://www.usiu.ac.ke/intake/,9. Co-curricular Activities,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 9. Co-curricular Activities,87,1,,draft,pending_verification
+WEB-P026-S12,intake,official,https://www.usiu.ac.ke/intake/,10. Student/Faculty Ratio,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 10. Student/Faculty Ratio,90,1,,draft,pending_verification
+WEB-P026-S13,intake,official,https://www.usiu.ac.ke/intake/,11. Governance Representation,January (Spring) Semester 2027 Intake Ongoing > What Makes USIU-Africa Different? > 11. Governance Representation,303,1,,draft,pending_verification
+WEB-P026-S14,intake,official,https://www.usiu.ac.ke/intake/,Interested in Joining USIU-Africa?,January (Spring) Semester 2027 Intake Ongoing > Interested in Joining USIU-Africa?,354,1,,draft,pending_verification
+WEB-P026-S15,intake,official,https://www.usiu.ac.ke/intake/,Apply online,Application > Apply online,96,1,,draft,pending_verification
+WEB-P026-S16,intake,official,https://www.usiu.ac.ke/intake/,Payments,Application > Payments,164,1,,draft,pending_verification
+WEB-P026-S17,intake,official,https://www.usiu.ac.ke/intake/,Scan documents,Application > Scan documents,93,1,,draft,pending_verification
+WEB-P026-S18,intake,official,https://www.usiu.ac.ke/intake/,Processing,Application > Processing,126,1,,draft,pending_verification
+WEB-P026-S19,intake,official,https://www.usiu.ac.ke/intake/,Application Info,Application > Application Info,177,1,,draft,pending_verification
+WEB-P026-S20,intake,official,https://www.usiu.ac.ke/intake/,Financial Aid,Application > Financial Aid,164,1,,draft,pending_verification
+WEB-P026-S21,intake,official,https://www.usiu.ac.ke/intake/,Tuition & Fees,Application > Tuition & Fees,152,1,,draft,pending_verification
+WEB-P026-S22,intake,official,https://www.usiu.ac.ke/intake/,Our Programs,Application > Our Programs,102,1,,draft,pending_verification
+WEB-P026-S23,intake,official,https://www.usiu.ac.ke/intake/,Undergraduate Programs,Application > Our Programs > Undergraduate Programs,599,1,,draft,pending_verification
+WEB-P026-S24,intake,official,https://www.usiu.ac.ke/intake/,Masters Programs,Application > Our Programs > Masters Programs,732,1,,draft,pending_verification
+WEB-P026-S25,intake,official,https://www.usiu.ac.ke/intake/,Doctorate Programs,Application > Our Programs > Doctorate Programs,198,1,,draft,pending_verification
+WEB-P026-S26,intake,official,https://www.usiu.ac.ke/intake/,Undergraduate Application Forms,Application > Application Documents > Undergraduate Application Forms,62,0,,draft,pending_verification
+WEB-P026-S27,intake,official,https://www.usiu.ac.ke/intake/,Masters Application Forms,Application > Application Documents > Masters Application Forms,126,0,,draft,pending_verification
+WEB-P026-S28,intake,official,https://www.usiu.ac.ke/intake/,Doctoral Application Forms,Application > Application Documents > Doctoral Application Forms,274,0,,draft,pending_verification
+WEB-P026-S29,intake,official,https://www.usiu.ac.ke/intake/,Talk To Us,Application > Talk To Us,152,1,W05,draft,pending_verification
+WEB-P026-S30,intake,official,https://www.usiu.ac.ke/intake/,Find USIU-Africa on Social Media,Application > Find USIU-Africa on Social Media,66,1,,draft,pending_verification
+WEB-P027-S01,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,International Applicants,International Applicants,130,1,,draft,pending_verification
+WEB-P027-S02,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,International Applicants,International Applicants > International Applicants,879,1,,draft,pending_verification
+WEB-P027-S03,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,Transfer Admissions,International Applicants > Transfer Admissions,1293,2,,draft,pending_verification
+WEB-P027-S04,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,Transfer Credit Limits,International Applicants > Transfer Credit Limits,1921,3,W11,draft,pending_verification
+WEB-P027-S05,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,Transfer of Credits,International Applicants > Transfer of Credits,3274,5,W11,draft,pending_verification
+WEB-P027-S06,international-applicants,official,https://www.usiu.ac.ke/international-applicants/,Contact Our Offices,International Applicants > Contact Our Offices,169,1,,draft,pending_verification

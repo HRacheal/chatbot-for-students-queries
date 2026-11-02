@@ -1,0 +1,99 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-cover,usiu_student_handbook,not numbered (cover page),Cover page: accreditation statement,1,1,205,1,,V07; V23,draft,pending_verification
+HB-1.0,usiu_student_handbook,1.0,Vice Chancellor's Message,5,5,1947,2,,V07; V23; V25,draft,pending_verification
+HB-1.1,usiu_student_handbook,1.1,"Message from the Deputy Vice Chancellor, Student Life",6,6,1249,2,,V07; V23; V25,draft,pending_verification
+HB-2,usiu_student_handbook,not printed,"Mission, Vision and Core Values; Our Schools",7,7,1242,2,layout_order_uncertain; reconstructed_from_two_column_layout,V07; V23; V24,draft,pending_verification
+HB-5.0,usiu_student_handbook,5.0,Student Life (introduction),15,16,1900,3,placeholder_text_in_source; reconstructed_from_two_column_layout,V06; V07; V23,draft,pending_verification
+HB-5.3,usiu_student_handbook,5.3,Student Housing,18,18,468,1,,V07; V23,draft,pending_verification
+HB-5.4,usiu_student_handbook,5.4,The Dean of Students Office,18,18,327,1,,V07; V23,draft,pending_verification
+HB-5.4.1,usiu_student_handbook,5.4.1,The Student Activities Offices,18,18,374,1,,V07; V23,draft,pending_verification
+HB-5.4.1.1,usiu_student_handbook,5.4.1.1,Sporting Activities,18,19,1315,2,,V07; V23,draft,pending_verification
+HB-5.4.1.2,usiu_student_handbook,5.4.1.2,Clubs and Societies,19,19,709,1,,V07; V23,draft,pending_verification
+HB-5.4.2,usiu_student_handbook,5.4.2,The Yearbook,19,19,251,1,,V07; V23,draft,pending_verification
+HB-5.4.3,usiu_student_handbook,5.4.3,USIU-Africa Student Association (SA),19,19,470,1,,V07; V23,draft,pending_verification
+HB-5.4.4,usiu_student_handbook,5.4.4,Student Association Cabinet (SAC),19,20,948,1,duplicate_section_number_in_source,V07; V23,draft,pending_verification
+HB-5.4.4-dup2,usiu_student_handbook,5.4.4,The International Students Affairs,20,20,788,1,duplicate_section_number_in_source,V07; V23,draft,pending_verification
+HB-5.5,usiu_student_handbook,5.5,The USIU-Africa Counseling Center,20,20,350,1,,V07; V23,draft,pending_verification
+HB-5.5.1,usiu_student_handbook,5.5.1,Services provided at the Counseling Center include: -,20,20,692,1,,V07; V23,draft,pending_verification
+HB-5.5.2,usiu_student_handbook,5.5.2,HIV Counseling and Testing - The HIV/ VCT,20,21,1199,2,,V07; V23,draft,pending_verification
+HB-5.6,usiu_student_handbook,5.6,Student Bereavement,21,22,2944,4,,V07; V23,draft,pending_verification
+HB-5.7,usiu_student_handbook,5.7,Disability Inclusion,22,22,624,1,,V07; V23,draft,pending_verification
+HB-5.7.1,usiu_student_handbook,5.7.1,Supporting Students with Disabilities and Special Needs (SWD & SN),22,22,535,1,,V07; V23,draft,pending_verification
+HB-5.7.2,usiu_student_handbook,5.7.2,The University’s Commitment to Supporting SWD & SN Will Be:,22,22,530,1,,V07; V23,draft,pending_verification
+HB-5.7.3,usiu_student_handbook,5.7.3,SWD & SN’s Rights and Privileges,22,22,1009,2,,V07; V23,draft,pending_verification
+HB-5.7.4,usiu_student_handbook,5.7.4,Students with Disability: SWD & other SN’s Responsibilities,23,23,2008,3,,V07; V23,draft,pending_verification
+HB-5.7.5,usiu_student_handbook,5.7.5,"Privacy, Confidentiality and Disclosure",23,23,354,1,,V07; V23,draft,pending_verification
+HB-5.8,usiu_student_handbook,5.8,"Gender, Equity, and Protection",23,24,1547,2,,V07; V12; V13; V14; V23,draft,pending_verification
+HB-5.9,usiu_student_handbook,5.9,The Placement and Career Services Department,24,24,330,1,,V07; V13; V23,draft,pending_verification
+HB-5.9.1,usiu_student_handbook,5.9.1,Services Offered,24,24,1217,2,,V07; V23,draft,pending_verification
+HB-6.1,usiu_student_handbook,6.1,Guidelines on Posters and Use of Official Electronic Media on Campus,25,25,1186,2,,V07; V23,draft,pending_verification
+HB-6.1.1,usiu_student_handbook,6.1.1,"Use of Surfaces, Bulletin Boards & Spaces",25,26,1670,2,,V07; V23,draft,pending_verification
+HB-6.2,usiu_student_handbook,6.2,Policy on Use of University Facilities or Services,26,26,928,1,,V07; V23,draft,pending_verification
+HB-6.2.1,usiu_student_handbook,6.2.1,Guidelines Apply When Reserving A Facility (Open Spaces and Sports Fields),26,26,1071,2,,V07; V23,draft,pending_verification
+HB-7.1,usiu_student_handbook,7.1,Library and Information Center,27,27,345,1,,V07; V23,draft,pending_verification
+HB-7.2,usiu_student_handbook,7.2,Library and Information System Access and Support,27,27,149,1,,V07; V23,draft,pending_verification
+HB-7.3,usiu_student_handbook,7.3,Library Rules and Regulations,27,27,0,0,,V07; V23,draft,pending_verification
+HB-7.3.1,usiu_student_handbook,7.3.1,Admission,27,27,248,1,,V07; V23,draft,pending_verification
+HB-7.3.2,usiu_student_handbook,7.3.2,Access,27,27,161,1,,V07; V23,draft,pending_verification
+HB-7.3.3,usiu_student_handbook,7.3.3,Borrowing (General),27,27,980,1,,V07; V23,draft,pending_verification
+HB-7.3.4,usiu_student_handbook,7.3.4,Period of Loan,28,28,694,1,,V07; V23,draft,pending_verification
+HB-7.3.5,usiu_student_handbook,7.3.5,Penalties/Fines,28,28,387,1,,V07; V23,draft,pending_verification
+HB-7.3.6,usiu_student_handbook,7.3.6,Inter-Library Loan,28,28,211,1,,V07; V23,draft,pending_verification
+HB-7.3.7,usiu_student_handbook,7.3.7,Sanctions,28,28,98,1,,V07; V23,draft,pending_verification
+HB-7.4,usiu_student_handbook,7.4,Library Discipline,28,29,2717,3,,V07; V23,draft,pending_verification
+HB-7.5,usiu_student_handbook,7.5,Library Opening Hours,29,29,380,1,,V07; V23,draft,pending_verification
+HB-7.6,usiu_student_handbook,7.6,Key Library Links,29,29,539,1,,V07; V23,draft,pending_verification
+HB-7.7,usiu_student_handbook,7.7,Contacts,29,29,246,1,,V07; V23,draft,pending_verification
+HB-8.0,usiu_student_handbook,8.0,Information and Communication Technology (ICT) (introduction),31,31,155,1,,V07; V23,draft,pending_verification
+HB-8.1,usiu_student_handbook,8.1,Serviced Provided by ICT,31,31,602,1,,V07; V23,draft,pending_verification
+HB-8.2,usiu_student_handbook,8.2,Other services available include.,31,31,557,1,,V07; V23,draft,pending_verification
+HB-8.3,usiu_student_handbook,8.3,List of ICT Labs Available to Students,31,31,425,1,,V07; V23,draft,pending_verification
+HB-8.4,usiu_student_handbook,8.4,ICT support services are available by: -,32,32,506,1,,V07; V23,draft,pending_verification
+HB-8.5,usiu_student_handbook,8.5,Computer Lab Regulations,32,32,1205,2,,V07; V23,draft,pending_verification
+HB-8.6,usiu_student_handbook,8.6,Data Security and Ethics,32,32,327,1,,V07; V23,draft,pending_verification
+HB-8.7,usiu_student_handbook,8.7,Data Security Guidelines,32,33,1332,2,,V07; V23,draft,pending_verification
+HB-8.8,usiu_student_handbook,8.8,Bring Your Device (BYOD) Guidelines on Campus.,33,33,1283,2,,V07; V23,draft,pending_verification
+HB-10.1,usiu_student_handbook,10.1,Conduct Jurisdiction,37,37,1383,2,,V07; V23,draft,pending_verification
+HB-10.2,usiu_student_handbook,10.2,University Disciplinary Authority Promotes,37,37,731,1,,V07; V23,draft,pending_verification
+HB-10.3,usiu_student_handbook,10.3,Conduct Regulations,38,38,574,1,,V07; V23,draft,pending_verification
+HB-10.4,usiu_student_handbook,10.4,Disciplinary Sanctions,38,38,686,1,,V07; V23,draft,pending_verification
+HB-10.5,usiu_student_handbook,10.5,Disciplinary Warning,38,38,246,1,,V07; V23,draft,pending_verification
+HB-10.6,usiu_student_handbook,10.6,Disciplinary Probations,38,39,4097,5,,V07; V23,draft,pending_verification
+HB-10.7,usiu_student_handbook,10.7,Conduct Regulations,39,41,7386,9,,V07; V08; V23,draft,pending_verification
+HB-10.8,usiu_student_handbook,10.8,"Scope, Authority, and Jurisdiction on Discipline",41,42,1327,2,,V07; V23,draft,pending_verification
+HB-10.9,usiu_student_handbook,10.9,Disciplinary Procedures,42,42,1419,2,,V07; V23,draft,pending_verification
+HB-10.10,usiu_student_handbook,10.10,Disciplinary Charges,42,43,2107,3,,V07; V23,draft,pending_verification
+HB-10.11,usiu_student_handbook,10.11,Hearing Procedures,43,43,1837,2,,V07; V23,draft,pending_verification
+HB-10.12,usiu_student_handbook,10.12,Order of Proceedings at Disciplinary Hearings.,43,44,1321,2,,V07; V23,draft,pending_verification
+HB-10.13,usiu_student_handbook,10.13,Appeal Procedure,44,44,1358,2,,V07; V23,draft,pending_verification
+HB-10.14,usiu_student_handbook,10.14,Alcohol and Drug Policy,44,45,2108,3,,V07; V08; V09; V23,draft,pending_verification
+HB-10.15,usiu_student_handbook,10.15,"Littering, Graffiti, and Public Nuisance/ Disturbance",45,45,954,1,,V07; V23,draft,pending_verification
+HB-10.16,usiu_student_handbook,10.16,Policy of Non-Discrimination,45,45,933,1,,V07; V23,draft,pending_verification
+HB-10.16.1,usiu_student_handbook,10.16.1,Complaints against the University or an Employee,45,46,919,1,,V07; V23,draft,pending_verification
+HB-10.16.2,usiu_student_handbook,10.16.2,Complaints Against Students,46,46,686,1,,V07; V23,draft,pending_verification
+HB-10.16.4,usiu_student_handbook,10.16.4,Confidentiality,46,46,327,1,,V07; V23,draft,pending_verification
+HB-10.16.5,usiu_student_handbook,10.16.5,Co-operation,46,46,125,1,,V07; V23,draft,pending_verification
+HB-10.16.6,usiu_student_handbook,10.16.6,Aspects of Investigation,46,46,206,1,,V07; V23,draft,pending_verification
+HB-10.16.7,usiu_student_handbook,10.16.7,False Accusation,46,46,272,1,duplicate_section_number_in_source,V07; V10; V23,draft,pending_verification
+HB-10.16.7-dup2,usiu_student_handbook,10.16.7,Appeals,46,46,172,1,duplicate_section_number_in_source,V07; V10; V23,draft,pending_verification
+HB-10.16.8,usiu_student_handbook,10.16.8,Maintaining a Written Record of the Grievance,46,46,192,1,,V07; V23,draft,pending_verification
+HB-10.17,usiu_student_handbook,10.17,Sexual and Gender-Based Violence Policy,46,47,1088,2,,V07; V23,draft,pending_verification
+HB-10.17.1,usiu_student_handbook,10.17.1,Sexual Misconduct,47,47,1134,2,,V07; V23,draft,pending_verification
+HB-10.17.2,usiu_student_handbook,10.17.2,Sexual and Gender-Based Violence Assault,47,47,266,1,,V07; V23,draft,pending_verification
+HB-10.17.3,usiu_student_handbook,10.17.3,What should you do if you are a victim of sexual assault?,47,48,1182,2,,V07; V13; V23; V31,draft,pending_verification
+HB-11.1,usiu_student_handbook,11.1,Catering Services,49,49,378,1,placeholder_text_in_source,V06; V07; V23,draft,pending_verification
+HB-11.2,usiu_student_handbook,11.2,Transport Service,50,50,749,1,,V07; V23,draft,pending_verification
+HB-11.3,usiu_student_handbook,11.3,Health Services,50,50,1075,2,,V07; V12; V23,draft,pending_verification
+HB-11.4,usiu_student_handbook,11.4,Insurance Services,50,51,2701,3,,V07; V12; V23; V27; V30,draft,pending_verification
+HB-12.0,usiu_student_handbook,12.0,Campus Safety and Security,53,53,1962,3,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-lost-and-found-items,usiu_student_handbook,12.0,Lost and Found items,54,54,771,1,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-motor-vehicle-parking-manageme,usiu_student_handbook,12.0,Motor Vehicle Parking Management,54,54,925,1,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-photos-and-videos,usiu_student_handbook,12.0,Photos and Videos,54,54,154,1,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-reporting-security-incidents,usiu_student_handbook,12.0,Reporting Security incidents,54,54,625,1,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-general-guidelines-on-security,usiu_student_handbook,12.0,General Guidelines on security of self and Possessions,54,54,677,1,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-guidelines-for-fire-safety,usiu_student_handbook,12.0,Guidelines for Fire Safety,55,55,1817,2,,V07; V13; V14; V23,draft,pending_verification
+HB-12.0-campus-security-policy-and-sta,usiu_student_handbook,12.0,Campus Security Policy and Standard Operating Procedures,55,55,342,1,,V07; V13; V14; V23,draft,pending_verification
+HB-14.0,usiu_student_handbook,14.0,Alumni Relations Office,59,59,973,1,,V07; V15; V23,draft,pending_verification
+CAL-p2,usiu_academic_calendar_2026_2027,not numbered (calendar page),Fall Semester 2026,2,2,2816,3,,V04; V17; V18; V19; V22,draft,pending_verification
+CAL-p3,usiu_academic_calendar_2026_2027,not numbered (calendar page),Spring Semester 2027,3,3,2647,3,,V04; V17; V22,draft,pending_verification
+CAL-p4,usiu_academic_calendar_2026_2027,not numbered (calendar page),Summer Semester 2027,4,4,2235,3,,V04; V21; V22,draft,pending_verification

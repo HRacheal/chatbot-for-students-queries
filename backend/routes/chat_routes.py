@@ -5,13 +5,13 @@ from utils.auth import login_required
 from utils.rate_limit import rate_limit
 
 
-def create_chat_routes(knowledge_base, settings):
+def create_chat_routes(chat_service):
     """Create chat routes.
 
     Admin answers to queries are handled by the admin blueprints, not here.
     """
     chat_bp = Blueprint('chat', __name__, url_prefix='/api')
-    chat_controller = ChatController(knowledge_base, settings)
+    chat_controller = ChatController(chat_service)
 
     chat_bp.add_url_rule(
         '/query', 'query',

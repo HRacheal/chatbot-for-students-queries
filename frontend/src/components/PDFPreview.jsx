@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RiCloseLine, RiDownloadLine, RiLoader4Line } from 'react-icons/ri';
+import PropTypes from "prop-types";
 
 // Previews a knowledge-base PDF in the browser's built-in viewer.
 // Documents are not sent to third-party viewers (e.g. Google Docs) because
@@ -63,5 +64,10 @@ function PDFPreview({ url, onClose }) {
     </div>
   );
 }
+
+PDFPreview.propTypes = {
+  url: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default PDFPreview;

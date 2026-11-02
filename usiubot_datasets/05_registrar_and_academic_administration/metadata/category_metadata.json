@@ -1,0 +1,111 @@
+{
+  "category_id": "05",
+  "category_name": "Registrar and Academic Administration",
+  "folder": "05_registrar_and_academic_administration",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_academic_calendar_2026_2027",
+    "usiu_student_handbook"
+  ],
+  "section_records": 6,
+  "knowledge_chunks": 9,
+  "structured_files": {
+    "calendar_events.csv": 48,
+    "registrar_services.csv": 11
+  },
+  "coverage": [
+    {
+      "information": "Transcript requests",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "The Registrar processes transcripts (4.1, 4.3); M-PESA code TSPT exists; no procedure or fee."
+    },
+    {
+      "information": "Results slips",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not mentioned."
+    },
+    {
+      "information": "Examination regulations",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Only exam dates (calendar). No exam rules."
+    },
+    {
+      "information": "Course registration and add/drop",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Calendar dates; handbook add/drop procedure (3.9)."
+    },
+    {
+      "information": "Deferred / special examinations",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Special exam dates only; no rules."
+    },
+    {
+      "information": "Graduation requirements",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not stated; the handbook refers to the Academic Catalog."
+    },
+    {
+      "information": "Graduation application and commencement dates",
+      "status": "Extracted",
+      "documents": [
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Graduation application windows, rehearsals and Commencement Day (conflict V17)."
+    },
+    {
+      "information": "Academic progression / probation",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Only financial-aid GPA probation (5.2.6)."
+    },
+    {
+      "information": "Deferment / leave of absence",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Leave of absence maximum one academic year (5.2.2); processed by the Registrar (4.3)."
+    },
+    {
+      "information": "Withdrawal",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Last withdrawal dates; withdrawal/charge waiver procedure (3.9)."
+    },
+    {
+      "information": "Academic appeals",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Only non-academic disciplinary appeals (10.13)."
+    },
+    {
+      "information": "Student records",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Record access and disclosure (4.2); certificate replacement (4.5); ID card (4.4)."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

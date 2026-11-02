@@ -1,0 +1,148 @@
+{
+ "web_pages_collected": 79,
+ "web_pages_official": 76,
+ "web_pages_external": 3,
+ "sources_not_collected": 8,
+ "fetch_attempts": 85,
+ "fetch_attempts_failed": 5,
+ "web_record_files": {
+  "02_academic_programmes/official/web_programmes.csv": 42,
+  "03_admissions_and_applications/external/external_records.csv": 2,
+  "03_admissions_and_applications/official/web_admission_rules.csv": 23,
+  "04_fees_and_payments/official/web_bank_and_mobile_payment_details.csv": 10,
+  "04_fees_and_payments/official/web_fee_policy_rules.csv": 30,
+  "04_fees_and_payments/official/web_financial_aid_programmes.csv": 19,
+  "04_fees_and_payments/official/web_other_and_general_charges.csv": 30,
+  "04_fees_and_payments/official/web_tuition_fee_tables.csv": 390,
+  "06_department_contacts_and_query_routing/official/web_department_contacts.csv": 54,
+  "07_academic_documents_results_and_verified_eligibility/external/external_records.csv": 2,
+  "07_academic_documents_results_and_verified_eligibility/official/programme_entry_requirements.csv": 42,
+  "07_academic_documents_results_and_verified_eligibility/official/web_english_proficiency_requirements.csv": 6,
+  "07_academic_documents_results_and_verified_eligibility/official/web_transfer_credit_rules.csv": 16,
+  "08_questions_answers_and_unresolved_enquiries/official/official_faq_pairs.csv": 28
+ },
+ "web_records_total": 694,
+ "web_sections": {
+  "01/official": 205,
+  "02/official": 63,
+  "03/external": 2,
+  "03/official": 80,
+  "04/official": 83,
+  "05/official": 20,
+  "06/official": 10,
+  "07/external": 1
+ },
+ "web_sections_total": 464,
+ "web_chunks": {
+  "01/official": 228,
+  "02/official": 145,
+  "03/external": 2,
+  "03/official": 91,
+  "04/official": 98,
+  "05/official": 34,
+  "06/official": 10,
+  "07/external": 1
+ },
+ "web_chunks_total": 609,
+ "web_duplicate_chunks_removed": 16,
+ "web_oversize_chunks": [],
+ "programme_pages": 42,
+ "fee_tables": 37,
+ "fee_table_rows": 390,
+ "fee_tables_arithmetic_pass": 37,
+ "fee_tables_total_found_in_pdf": 31,
+ "other_and_general_charge_rows": 30,
+ "official_faq_pairs": 28,
+ "open_questions": 22,
+ "missing_information_items": 38,
+ "register_issues_total": 54,
+ "register_issue_status": {
+  "partially_resolved": 6,
+  "updated": 3,
+  "unresolved": 6,
+  "resolved": 3,
+  "open": 36
+ },
+ "bank_comparison_rows": 10,
+ "routing_departments": 13,
+ "layout_checks": [
+  "heading directly above block",
+  "heading directly above block",
+  "heading directly above block"
+ ],
+ "source_register_rows": 90,
+ "all_records_index_rows": 1050,
+ "all_records_by_category": {
+  "01": 74,
+  "02": 48,
+  "03": 36,
+  "04": 607,
+  "05": 59,
+  "06": 105,
+  "07": 71,
+  "08": 50
+ },
+ "all_records_by_source_type": {
+  "official": 1024,
+  "external": 4,
+  "derived": 22
+ },
+ "sections_and_chunks_by_category": {
+  "01": {
+   "stage2_sections": 98,
+   "stage2_chunks": 157,
+   "web_sections": 205,
+   "web_chunks": 228,
+   "external_sections": 0,
+   "external_chunks": 0
+  },
+  "02": {
+   "stage2_sections": 5,
+   "stage2_chunks": 6,
+   "web_sections": 63,
+   "web_chunks": 145,
+   "external_sections": 0,
+   "external_chunks": 0
+  },
+  "03": {
+   "stage2_sections": 4,
+   "stage2_chunks": 4,
+   "web_sections": 80,
+   "web_chunks": 91,
+   "external_sections": 2,
+   "external_chunks": 2
+  },
+  "04": {
+   "stage2_sections": 23,
+   "stage2_chunks": 27,
+   "web_sections": 83,
+   "web_chunks": 98,
+   "external_sections": 0,
+   "external_chunks": 0
+  },
+  "05": {
+   "stage2_sections": 6,
+   "stage2_chunks": 9,
+   "web_sections": 20,
+   "web_chunks": 34,
+   "external_sections": 0,
+   "external_chunks": 0
+  },
+  "06": {
+   "stage2_sections": 3,
+   "stage2_chunks": 5,
+   "web_sections": 10,
+   "web_chunks": 10,
+   "external_sections": 0,
+   "external_chunks": 0
+  },
+  "07": {
+   "stage2_sections": 0,
+   "stage2_chunks": 0,
+   "web_sections": 0,
+   "web_chunks": 0,
+   "external_sections": 1,
+   "external_chunks": 1
+  }
+ }
+}

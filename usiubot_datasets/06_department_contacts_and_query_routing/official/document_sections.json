@@ -1,0 +1,118 @@
+[
+  {
+    "record_id": "HB-13.0",
+    "record_type": "document_section",
+    "section_id": "HB-13.0",
+    "category_id": "06",
+    "category_name": "Department Contacts and Query Routing",
+    "data_origin": "official",
+    "source_institution": "United States International University-Africa (USIU-Africa)",
+    "document_id": "usiu_student_handbook",
+    "document_title": "USIU-Africa Student Handbook",
+    "document_file": "Student-Handbook.pdf",
+    "source_url": null,
+    "source_url_status": "Local copy — no public official URL found (candidate URL returns HTTP 404, 2026-11-01)",
+    "candidate_source_url": "https://www.usiu.ac.ke/assets/file/266ac45d-student-handbook.pdf",
+    "publication_date": "Not stated in the document",
+    "academic_year": "Not stated in the document",
+    "extraction_date": "2026-11-01",
+    "page_start": 57,
+    "page_end": 57,
+    "pages": [
+      57
+    ],
+    "section_number": "13.0",
+    "section_heading": "University Communication",
+    "parent_section_heading": "UNIVERSITY COMMUNICATION",
+    "content": "USIU-Africa appreciates that communicating, frequently, and with consistency is key to sustaining a successful engagement within and without the university. USIU-Africa has a Strategic marketing and communication division in place to support the communication agenda. The division is responsible for managing its marketing and communications channels, including its website and corporate social media presence on various platforms. It also manages the University’s brand, including the development of brand guidelines to ensure a uniform look and feel in terms of brand application. Services offered:\n● Disseminate university information to the public, media, parents, and the general public through advertising, press statements, press releases, and a mix of traditional and new media.\n● Dissemination of information or news to all internal stakeholders, including students, staff, and faculty, through internal channels.\n● Assists schools and departments in developing advertisements and purchasing media space for placement.\n● Provides creative design services for various formats like booklets, magazines, brochures, posters, invitations, pull-up banners, advertisements, merchandise, and promotional items.\n● Collaborates with stakeholders to maintain the University’s reputation through consistent media engagement strategies and managing potential issues.\n● Collaborates with the School of Communications, Cinematic and Creative Arts to offer photography and videography services for university events, requiring booking at least a week in advance.\n● Manages Campus This Week, a weekly newsletter.\n● Oversee the University’s marketing and communications channels, including its website and corporate social media presence on various platforms.\n● Support various university events and provide guidance on event planning to maximize visibility and effectiveness.\n● Brand custodian Location and contacts The Strategic Marketing and Communications Team Email: marketing@usiu.ac.ke, pr@usiu.ac.ke Telephone: +254-730 116 562",
+    "content_chars": 2026,
+    "chunk_count": 3,
+    "review_status": "draft",
+    "verification_status": "pending_verification",
+    "approval_status": "not_approved",
+    "flags": [],
+    "issue_ids": [
+      "V07",
+      "V23"
+    ],
+    "processing_notes": []
+  },
+  {
+    "record_id": "HB-contact",
+    "record_type": "document_section",
+    "section_id": "HB-contact",
+    "category_id": "06",
+    "category_name": "Department Contacts and Query Routing",
+    "data_origin": "official",
+    "source_institution": "United States International University-Africa (USIU-Africa)",
+    "document_id": "usiu_student_handbook",
+    "document_title": "USIU-Africa Student Handbook",
+    "document_file": "Student-Handbook.pdf",
+    "source_url": null,
+    "source_url_status": "Local copy — no public official URL found (candidate URL returns HTTP 404, 2026-11-01)",
+    "candidate_source_url": "https://www.usiu.ac.ke/assets/file/266ac45d-student-handbook.pdf",
+    "publication_date": "Not stated in the document",
+    "academic_year": "Not stated in the document",
+    "extraction_date": "2026-11-01",
+    "page_start": 60,
+    "page_end": 60,
+    "pages": [
+      60
+    ],
+    "section_number": "not numbered",
+    "section_heading": "Contact Us",
+    "parent_section_heading": "CONTACT US",
+    "content": "CONTACT US\nP .O. Box 14634-00800 USIU Road, Off Thika Road (Exit 7) Nairobi, Kenya Tel: +254 730 116 218 /500 /107 /148 /521 /303 /567 www.usiu.ac.ke",
+    "content_chars": 149,
+    "chunk_count": 1,
+    "review_status": "draft",
+    "verification_status": "pending_verification",
+    "approval_status": "not_approved",
+    "flags": [],
+    "issue_ids": [
+      "V07",
+      "V23"
+    ],
+    "processing_notes": []
+  },
+  {
+    "record_id": "CAL-p7",
+    "record_type": "document_section",
+    "section_id": "CAL-p7",
+    "category_id": "06",
+    "category_name": "Department Contacts and Query Routing",
+    "data_origin": "official",
+    "source_institution": "United States International University-Africa (USIU-Africa)",
+    "document_id": "usiu_academic_calendar_2026_2027",
+    "document_title": "USIU-Africa Academic Calendar 2026-2027",
+    "document_file": "Academic-Calendar-2026-2027.pdf",
+    "source_url": "https://www.usiu.ac.ke/wp-content/uploads/2026/04/Academic-Calendar-2026-2027.pdf",
+    "source_url_status": "Confirmed 2026-11-01: the file at this official URL has the same SHA-256 as the local copy (landing page https://www.usiu.ac.ke/documents/academic-calendar-2026-2027/)",
+    "candidate_source_url": null,
+    "publication_date": "Not stated in the document",
+    "academic_year": "2026-2027",
+    "extraction_date": "2026-11-01",
+    "page_start": 7,
+    "page_end": 7,
+    "pages": [
+      7
+    ],
+    "section_number": "not numbered (calendar page)",
+    "section_heading": "Contacts",
+    "parent_section_heading": "Academic Calendar 2026-2027",
+    "content": "For more information, use the contacts below:\nUnited States International University-Africa\nP .O. Box 14634-00800, Nairobi - Kenya\nTelephone: +254 730 116 290/ 300/ 397\nWhatsApp: +254 755 844 849\nAdmissions Email: admit@usiu.ac.ke\nRegistrar’s Email: registra@usiu.ac.ke\nFinance Email: finance@usiu.ac.ke",
+    "content_chars": 303,
+    "chunk_count": 1,
+    "review_status": "draft",
+    "verification_status": "pending_verification",
+    "approval_status": "not_approved",
+    "flags": [],
+    "issue_ids": [
+      "V22",
+      "V26"
+    ],
+    "processing_notes": [
+      "Line breaks kept as printed (calendar tables). Bullet characters normalised."
+    ]
+  }
+]

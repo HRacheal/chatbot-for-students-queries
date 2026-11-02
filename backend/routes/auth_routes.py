@@ -4,8 +4,8 @@ from controllers.auth_controller import AuthController
 from utils.rate_limit import rate_limit
 
 
-def create_auth_routes(app, email_service=None):
-    """Create authentication routes"""
+def create_auth_routes(app, email_service=None, staff_service=None, audit=None):
+    """Create authentication routes (public users; staff sign in through routes/staff_routes.py)."""
     auth_bp = Blueprint('auth', __name__, url_prefix='/api')
     auth_controller = AuthController(app, email_service)
 
@@ -15,9 +15,13 @@ def create_auth_routes(app, email_service=None):
     auth_bp.add_url_rule('/signup', 'signup', limit("signup")(auth_controller.signup), methods=['POST'])
     auth_bp.add_url_rule('/login', 'login', limit("login")(auth_controller.login), methods=['POST'])
 
-    # Admin authentication routes
-    auth_bp.add_url_rule(
-        '/admin/login', 'admin_login', limit("admin_login")(auth_controller.admin_login), methods=['POST']
-    )
+    # Staff sign-in (older URL kept for compatibility; same handler as /api/staff/login).
+    if staff_service is not None:
+        from routes.staff_routes import staff_login
+
+        admin_login = staff_login(staff_service, audit)
+    else:
+        admin_login = auth_controller.admin_login
+    auth_bp.add_url_rule('/admin/login', 'admin_login', limit("admin_login")(admin_login), methods=['POST'])
 
     return auth_bp

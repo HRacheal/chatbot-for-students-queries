@@ -57,12 +57,16 @@ class Query:
     def __init__(self):
         self.collection = db_instance.get_collection("queries")
     
-    def create_query(self, question, user_id=None, answered=False):
-        """Create a new query"""
+    def create_query(self, question, user_id=None, answered=False, scope="usiu", department=None):
+        """Create a new query. ``department``: suggested routing department of an unresolved question."""
         query_data = {
+            "department": department,
             "question": question,
             "answered": answered,
             "user_id": to_object_id(user_id),
+            # "usiu" = about the university; "unclear" = could not be classified
+            # (shown to the user as out of scope, but kept for staff review).
+            "scope": scope,
             "timestamp": _utcnow()
         }
         result = self.collection.insert_one(query_data)
@@ -100,12 +104,13 @@ class ChatHistory:
     def __init__(self):
         self.collection = db_instance.get_collection("chat_history")
     
-    def create_chat(self, user_id, question, answer):
-        """Create a new chat entry"""
+    def create_chat(self, user_id, question, answer, citations=None):
+        """Create a new chat entry (with the citations shown alongside the answer)"""
         chat_data = {
             "user_id": to_object_id(user_id),
             "question": question,
             "answer": answer,
+            "citations": list(citations or []),
             "timestamp": _utcnow()
         }
         result = self.collection.insert_one(chat_data)
@@ -115,7 +120,7 @@ class ChatHistory:
         """Get chat history for a specific user"""
         return list(self.collection.find(
             {"user_id": to_object_id(user_id)},
-            {"_id": 1, "question": 1, "answer": 1, "timestamp": 1}
+            {"_id": 1, "question": 1, "answer": 1, "citations": 1, "timestamp": 1}
         ).sort("timestamp", -1))
     
     def get_all_history_with_users(self):
@@ -136,6 +141,7 @@ class ChatHistory:
                 "$project": {
                     "question": 1,
                     "answer": 1,
+                    "citations": 1,
                     "timestamp": 1,
                     "username": "$user.username"
                 }
@@ -153,6 +159,35 @@ class ChatHistory:
     def get_all_questions_with_timestamps(self):
         """Get all questions with timestamps for analytics"""
         return list(self.collection.find({}, {"question": 1, "timestamp": 1}))
+
+
+class QueryLog:
+    """One record per question asked (for totals and analytics).
+
+    Stores the outcome, the routed department and the kind of evidence used, but not
+    the question text or any user identifier, so it holds no personal data.
+    """
+
+    def __init__(self):
+        self.collection = db_instance.get_collection("query_log")
+
+    def record(self, status, department=None, evidence=None, authenticated=False):
+        self.collection.insert_one({
+            "status": status,
+            "department": department,
+            "evidence": list(evidence or []),
+            "authenticated": bool(authenticated),
+            "timestamp": _utcnow(),
+        })
+
+    def summary(self):
+        totals = {"total": 0, "by_status": {}, "by_department": {}}
+        for row in self.collection.aggregate([{"$group": {"_id": "$status", "n": {"$sum": 1}}}]):
+            totals["by_status"][row["_id"] or "unknown"] = row["n"]
+            totals["total"] += row["n"]
+        for row in self.collection.aggregate([{"$group": {"_id": "$department", "n": {"$sum": 1}}}]):
+            totals["by_department"][row["_id"] or "unclassified"] = row["n"]
+        return totals
 
 
 class PDF:

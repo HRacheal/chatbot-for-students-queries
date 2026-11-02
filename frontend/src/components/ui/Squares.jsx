@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import PropTypes from "prop-types";
 
 const Squares = ({
 direction = 'right',
@@ -128,6 +129,14 @@ useEffect(() => {
 }, [direction, speed, borderColor, hoverFillColor, hoveredSquare, squareSize]);
 
 return <canvas ref={canvasRef} className="w-full h-full border-none block"></canvas>;
+};
+
+Squares.propTypes = {
+  direction: PropTypes.oneOf(["right", "left", "up", "down", "diagonal"]),
+  speed: PropTypes.number,
+  borderColor: PropTypes.string,
+  squareSize: PropTypes.number,
+  hoverFillColor: PropTypes.string,
 };
 
 export default Squares;

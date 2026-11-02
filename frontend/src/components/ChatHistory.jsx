@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from "../lib/api";
 import { format } from 'date-fns';
 import SpotlightCard from './ui/SpotlightCard';
 import SafeMarkdown from './SafeMarkdown';
+import Citations from './Citations';
 
 function ChatHistory() {
   const [chatHistory, setChatHistory] = useState([]);
@@ -51,6 +52,7 @@ function ChatHistory() {
                   className="text-white chat-response"
                   text={chat.answer}
                 />
+                <Citations citations={chat.citations} />
               </div>
             </div>
           </SpotlightCard>

@@ -1,0 +1,160 @@
+{
+  "description": "The five USIUBOT enquiry departments, with what the two official documents say about them. Draft; nothing here is verified.",
+  "data_origin": "official",
+  "source_institution": "United States International University-Africa (USIU-Africa)",
+  "document_id": "usiu_student_handbook",
+  "document_title": "USIU-Africa Student Handbook",
+  "document_file": "Student-Handbook.pdf",
+  "source_url": null,
+  "source_url_status": "Local copy — no public official URL found (candidate URL returns HTTP 404, 2026-11-01)",
+  "candidate_source_url": "https://www.usiu.ac.ke/assets/file/266ac45d-student-handbook.pdf",
+  "publication_date": "Not stated in the document",
+  "academic_year": "Not stated in the document",
+  "extraction_date": "2026-11-01",
+  "documents_used": [
+    "usiu_student_handbook",
+    "usiu_academic_calendar_2026_2027"
+  ],
+  "departments": {
+    "admissions": {
+      "usiubot_department_key": "admissions",
+      "department_name": "Admissions",
+      "documented_responsibilities": [
+        {
+          "quote": "The department is responsible for the recruitment and admission of new students and administering the financial aid program.",
+          "document_id": "usiu_student_handbook",
+          "page": 16,
+          "section_number": "5.2"
+        },
+        {
+          "quote": "Admissions support new students in the admission process.",
+          "document_id": "usiu_student_handbook",
+          "page": 16,
+          "section_number": "5.2.1"
+        },
+        {
+          "quote": "To develop and execute student admission and enrolment strategy and financial aid.",
+          "document_id": "usiu_student_handbook",
+          "page": 15,
+          "section_number": "5.0"
+        }
+      ],
+      "contact_record_ids": [
+        "CON-CAL-07",
+        "CON-HB-03"
+      ],
+      "official_email_verified": false,
+      "official_telephone_verified": false,
+      "working_hours": "Not stated in either document",
+      "escalation_procedure": "Not stated in either document",
+      "verification_status": "pending_verification",
+      "review_status": "draft",
+      "notes": "",
+      "see_also": ""
+    },
+    "registrar": {
+      "usiubot_department_key": "registrar",
+      "department_name": "Registrar",
+      "documented_responsibilities": [
+        {
+          "quote": "The University Registrar is responsible for academic registration, processing, and safekeeping of all students’ academic records.",
+          "document_id": "usiu_student_handbook",
+          "page": 13,
+          "section_number": "4.0"
+        },
+        {
+          "quote": "To access the services of updating contact information, requesting transcripts, taking leave, applying for graduation, or obtaining clearance, students should contact the Registrar’s Office",
+          "document_id": "usiu_student_handbook",
+          "page": 13,
+          "section_number": "4.1"
+        }
+      ],
+      "contact_record_ids": [
+        "CON-CAL-08",
+        "CON-HB-01"
+      ],
+      "official_email_verified": false,
+      "official_telephone_verified": false,
+      "working_hours": "Not stated in either document",
+      "escalation_procedure": "Not stated in either document",
+      "verification_status": "pending_verification",
+      "review_status": "draft",
+      "notes": "",
+      "see_also": "05_registrar_and_academic_administration/official/registrar_services.csv"
+    },
+    "marketing": {
+      "usiubot_department_key": "marketing",
+      "department_name": "Marketing",
+      "documented_responsibilities": [
+        {
+          "quote": "The division is responsible for managing its marketing and communications channels, including its website and corporate social media presence on various platforms.",
+          "document_id": "usiu_student_handbook",
+          "page": 57,
+          "section_number": "13.0"
+        },
+        {
+          "quote": "Disseminate university information to the public, media, parents, and the general public through advertising, press statements, press releases, and a mix of traditional and new media.",
+          "document_id": "usiu_student_handbook",
+          "page": 57,
+          "section_number": "13.0"
+        }
+      ],
+      "contact_record_ids": [
+        "CON-HB-35",
+        "CON-HB-36",
+        "CON-HB-37"
+      ],
+      "official_email_verified": false,
+      "official_telephone_verified": false,
+      "working_hours": "Not stated in either document",
+      "escalation_procedure": "Not stated in either document",
+      "verification_status": "pending_verification",
+      "review_status": "draft",
+      "notes": "",
+      "see_also": ""
+    },
+    "academic_programmes": {
+      "usiubot_department_key": "academic_programmes",
+      "department_name": "Academic Programmes",
+      "documented_responsibilities": [
+        {
+          "quote": "is responsible for all academic processes and services in the university",
+          "document_id": "usiu_student_handbook",
+          "page": 13,
+          "section_number": "4.0"
+        }
+      ],
+      "contact_record_ids": [],
+      "official_email_verified": false,
+      "official_telephone_verified": false,
+      "working_hours": "Not stated in either document",
+      "escalation_procedure": "Not stated in either document",
+      "verification_status": "pending_verification",
+      "review_status": "draft",
+      "notes": "Neither document names an 'Academic Programmes' office. The quoted responsibility belongs to the academic division headed by the Deputy Vice Chancellor, Academics (handbook page 13). The six schools are listed in 02_academic_programmes/official/schools.csv. No contact is printed.",
+      "see_also": ""
+    },
+    "general_university": {
+      "usiubot_department_key": "general_university",
+      "department_name": "General University Information",
+      "documented_responsibilities": [],
+      "contact_record_ids": [
+        "CON-CAL-04",
+        "CON-CAL-05",
+        "CON-CAL-06",
+        "CON-HB-40",
+        "CON-HB-41",
+        "CON-HB-42"
+      ],
+      "official_email_verified": false,
+      "official_telephone_verified": false,
+      "working_hours": "Not stated in either document",
+      "escalation_procedure": "Not stated in either document",
+      "verification_status": "pending_verification",
+      "review_status": "draft",
+      "notes": "This is a USIUBOT routing category, not a university office. The general contact details printed in both documents are listed.",
+      "see_also": ""
+    }
+  },
+  "observation": "The documents also name a Finance Office (finance@usiu.ac.ke, calendar pages 6-7) and many student-life offices that are not USIUBOT enquiry departments."
+}

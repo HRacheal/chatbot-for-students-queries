@@ -68,11 +68,11 @@ class EmailService:
         """Send welcome email to new users"""
         body = (
             f"Hello {username},\n\n"
-            "Welcome! Your account for the student query assistant has been created.\n\n"
+            "Welcome! Your USIUBOT account has been created.\n\n"
             "You can now:\n"
             "- Ask questions at any time\n"
             "- Access your chat history\n"
             "- Receive email notifications when staff answer your questions\n\n"
             "- The Support Team\n"
         )
-        return self.send(user_email, "Welcome to the student query assistant", body)
+        return self.send(user_email, "Welcome to USIUBOT", body)

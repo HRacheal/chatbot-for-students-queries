@@ -1,0 +1,7 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-4.0,usiu_student_handbook,4.0,Registration and Academic Information (introduction),13,13,349,1,,V07; V23,draft,pending_verification
+HB-4.1,usiu_student_handbook,4.1,Academic Catalog,13,13,843,1,,V05; V07; V23,draft,pending_verification
+HB-4.2,usiu_student_handbook,4.2,Disclosure and Change of Student Information,13,13,1209,2,,V07; V23,draft,pending_verification
+HB-4.3,usiu_student_handbook,4.3,Services offered by the Registrar.,14,14,698,1,,V07; V23,draft,pending_verification
+HB-4.4,usiu_student_handbook,4.4,USIU-Africa Identification Card,14,14,1020,2,,V07; V23,draft,pending_verification
+HB-4.5,usiu_student_handbook,4.5,Degree Certificate Replacement Policy,14,14,1014,2,,V07; V23,draft,pending_verification

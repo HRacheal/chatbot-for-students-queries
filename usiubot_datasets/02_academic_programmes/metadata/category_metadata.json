@@ -1,0 +1,66 @@
+{
+  "category_id": "02",
+  "category_name": "Academic Programmes",
+  "folder": "02_academic_programmes",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_student_handbook"
+  ],
+  "section_records": 5,
+  "knowledge_chunks": 6,
+  "structured_files": {
+    "schools.csv": 6
+  },
+  "coverage": [
+    {
+      "information": "Programme list / programme ID / programme name",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "No programmes are listed in either document."
+    },
+    {
+      "information": "Degree level",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Only the general statement that programmes are Undergraduate, Graduate or Short Professional courses (p5)."
+    },
+    {
+      "information": "School or department",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Six schools (schools.csv, handbook p7)."
+    },
+    {
+      "information": "Programme description, duration, specialisations, curriculum, career opportunities",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document; the handbook refers to the Academic Catalog (2021-2023 link, issue V05)."
+    },
+    {
+      "information": "Mode of study",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "USIU-Online e-learning information (handbook section 9). No per-programme mode."
+    },
+    {
+      "information": "Programme admission requirements",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Not in either document."
+    },
+    {
+      "information": "Official programme source URL",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Only the outdated Academic Catalog 2021-2023 link."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

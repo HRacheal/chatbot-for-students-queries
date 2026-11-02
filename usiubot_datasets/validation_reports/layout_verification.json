@@ -1,0 +1,80 @@
+{
+ "document": "Student-Handbook.pdf",
+ "page": 7,
+ "method": "pypdf text-matrix positions (PDF points, origin bottom-left; larger y = higher on the page). No rendering tool is installed, so positions are used instead of an image.",
+ "positions": {
+  "OUR VISION": {
+   "text_start": "OUR VISION",
+   "x": 38,
+   "y": 405
+  },
+  "To be a premier": {
+   "text_start": "To be a premier institution of",
+   "x": 49,
+   "y": 361
+  },
+  "OUR MISSION": {
+   "text_start": "OUR MISSION",
+   "x": 28,
+   "y": 143
+  },
+  "Promote": {
+   "text_start": "Promote the discovery and application",
+   "x": 31,
+   "y": 113
+  },
+  "OUR SCHOOLS": {
+   "text_start": "OUR SCHOOLS",
+   "x": 311,
+   "y": 143
+  },
+  "Chandaria": {
+   "text_start": "Chandaria School of Business (CSOB)",
+   "x": 283,
+   "y": 103
+  }
+ },
+ "checks": [
+  {
+   "heading": "OUR VISION",
+   "block": "To be a premier",
+   "heading_xy": [
+    38,
+    405
+   ],
+   "block_xy": [
+    49,
+    361
+   ],
+   "result": "heading directly above block"
+  },
+  {
+   "heading": "OUR MISSION",
+   "block": "Promote",
+   "heading_xy": [
+    28,
+    143
+   ],
+   "block_xy": [
+    31,
+    113
+   ],
+   "result": "heading directly above block"
+  },
+  {
+   "heading": "OUR SCHOOLS",
+   "block": "Chandaria",
+   "heading_xy": [
+    311,
+    143
+   ],
+   "block_xy": [
+    283,
+    103
+   ],
+   "result": "heading directly above block"
+  }
+ ],
+ "issue": "V24",
+ "checked_at": "2026-11-01"
+}

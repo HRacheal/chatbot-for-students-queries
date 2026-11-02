@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-02T00:07:04",
+  "files": {
+    "Academic-Calendar-2026-2027.pdf": {
+      "baseline_sha256": "618711f96eb9efd55d744341175a0b39a75087e8d2c8f692340bc0bb9067512f",
+      "before_run": "618711f96eb9efd55d744341175a0b39a75087e8d2c8f692340bc0bb9067512f",
+      "after_run": "618711f96eb9efd55d744341175a0b39a75087e8d2c8f692340bc0bb9067512f",
+      "unchanged": true,
+      "size_bytes": 735918,
+      "modified": "2026-11-01T22:10:33"
+    },
+    "Student-Handbook.pdf": {
+      "baseline_sha256": "610a3da82992e0c392ac69c317cbf1bd99679313acce8090fab3b9924ef87c15",
+      "before_run": "610a3da82992e0c392ac69c317cbf1bd99679313acce8090fab3b9924ef87c15",
+      "after_run": "610a3da82992e0c392ac69c317cbf1bd99679313acce8090fab3b9924ef87c15",
+      "unchanged": true,
+      "size_bytes": 3201594,
+      "modified": "2026-11-01T22:10:11"
+    }
+  },
+  "access_mode": "read-only ('rb'); files were not copied, renamed or written"
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 const Magnet = ({
 children,
@@ -77,6 +78,17 @@ return (
     </div>
   </div>
 );
+};
+
+Magnet.propTypes = {
+  children: PropTypes.node,
+  padding: PropTypes.number,
+  disabled: PropTypes.bool,
+  magnetStrength: PropTypes.number,
+  activeTransition: PropTypes.string,
+  inactiveTransition: PropTypes.string,
+  wrapperClassName: PropTypes.string,
+  innerClassName: PropTypes.string,
 };
 
 export default Magnet;

@@ -1,92 +1,145 @@
-import React, { useState } from "react";
-import { RiAdminLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import GradientText from "./ui/GradientText";
-import { api, getErrorMessage } from "../lib/api";
+import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { RiShieldUserLine } from "react-icons/ri";
+import {
+  changeStaffPassword,
+  clearStaffSession,
+  getErrorMessage,
+  getStaffProfile,
+  saveStaffSession,
+  staffLogin,
+} from "../lib/api";
 
+const inputClass =
+  "mt-1 block w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-white placeholder-slate-500 " +
+  "focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/40";
+
+// Sign-in for authorised USIU-Africa staff (all roles). There is no public registration:
+// accounts are created by a Super Administrator. A temporary password must be changed
+// before the dashboard can be used (the API enforces this too).
 function LoginAdmin() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [params] = useSearchParams();
+  const pendingProfile = getStaffProfile();
+  const [step, setStep] = useState(
+    params.get("change-password") && pendingProfile?.must_change_password ? "password" : "login");
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [pw, setPw] = useState({ current: "", next: "", repeat: "" });
   const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-
+    setBusy(true);
     try {
-      const response = await api.post("/api/admin/login", {
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (response.data.token) {
-        localStorage.setItem("adminToken", response.data.token);
+      const data = await staffLogin({ email: form.email, password: form.password });
+      saveStaffSession(data.token, data.staff);
+      if (data.staff?.must_change_password) {
+        setPw({ current: form.password, next: "", repeat: "" });
+        setStep("password");
+      } else {
         navigate("/admin/dashboard");
       }
     } catch (err) {
-      setError(err.response?.status === 401 ? "Invalid credentials" : getErrorMessage(err));
+      setError(getErrorMessage(err, "Sign-in failed. Please try again."));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const handlePassword = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (pw.next !== pw.repeat) {
+      setError("The new passwords do not match.");
+      return;
+    }
+    setBusy(true);
+    try {
+      const data = await changeStaffPassword({ current_password: pw.current, new_password: pw.next });
+      saveStaffSession(null, data.staff);
+      navigate("/admin/dashboard");
+    } catch (err) {
+      setError(getErrorMessage(err, "The password could not be changed."));
+    } finally {
+      setBusy(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
-      <div className="max-w-md w-full space-y-8">
-        <div className="flex flex-col items-center">
-          <RiAdminLine className="text-8xl text-blue-700" />
-          <GradientText className="mt-6 text-center text-3xl font-extrabold">
-            Admin Login
-          </GradientText>
+    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
+      <div className="w-full max-w-md">
+        <div className="mb-6 flex flex-col items-center text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-900 ring-2 ring-amber-400/70">
+            <RiShieldUserLine className="text-4xl text-amber-300" aria-hidden="true" />
+          </div>
+          <h1 className="mt-4 text-2xl font-bold text-white">USIUBOT Staff Portal</h1>
+          <p className="mt-1 text-sm text-slate-400">USIU-Africa enquiry management · authorised personnel only</p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {error && (
-            <div className="text-red-500 text-center text-sm">{error}</div>
-          )}
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <input
-                type="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
-              />
-            </div>
-          </div>
 
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
-            >
-              Sign in
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate("/")}
-              className="mt-2 w-full flex justify-center py-2 px-4 border border-indigo-600 text-indigo-600 rounded-md hover:bg-indigo-700 hover:text-white transition-colors duration-200"
-            >
-              Go Back
-            </button>
-          </div>
-        </form>
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl">
+          {step === "login" ? (
+            <form className="space-y-4" onSubmit={handleLogin}>
+              <h2 className="text-lg font-semibold text-white">Sign in</h2>
+              <label className="block text-sm text-slate-300">
+                Work email
+                <input type="email" required autoComplete="username" className={inputClass} value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })} />
+              </label>
+              <label className="block text-sm text-slate-300">
+                Password
+                <input type="password" required autoComplete="current-password" className={inputClass}
+                  value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+              </label>
+              {error && <p className="rounded-lg bg-red-900/50 px-3 py-2 text-sm text-red-200" role="alert">{error}</p>}
+              <button type="submit" disabled={busy}
+                className="w-full rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 disabled:opacity-60">
+                {busy ? "Signing in…" : "Sign in"}
+              </button>
+              <p className="text-xs text-slate-500">
+                No account? Staff accounts are created by the USIUBOT Super Administrator. Sessions end
+                automatically after a few hours.
+              </p>
+            </form>
+          ) : (
+            <form className="space-y-4" onSubmit={handlePassword}>
+              <h2 className="text-lg font-semibold text-white">Choose your own password</h2>
+              <p className="text-sm text-slate-400">
+                You signed in with a temporary password. Choose a new one (at least 10 characters, with letters
+                and numbers) to continue.
+              </p>
+              <label className="block text-sm text-slate-300">
+                Current (temporary) password
+                <input type="password" required autoComplete="current-password" className={inputClass}
+                  value={pw.current} onChange={(e) => setPw({ ...pw, current: e.target.value })} />
+              </label>
+              <label className="block text-sm text-slate-300">
+                New password
+                <input type="password" required minLength={10} autoComplete="new-password" className={inputClass}
+                  value={pw.next} onChange={(e) => setPw({ ...pw, next: e.target.value })} />
+              </label>
+              <label className="block text-sm text-slate-300">
+                Repeat new password
+                <input type="password" required minLength={10} autoComplete="new-password" className={inputClass}
+                  value={pw.repeat} onChange={(e) => setPw({ ...pw, repeat: e.target.value })} />
+              </label>
+              {error && <p className="rounded-lg bg-red-900/50 px-3 py-2 text-sm text-red-200" role="alert">{error}</p>}
+              <button type="submit" disabled={busy}
+                className="w-full rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 disabled:opacity-60">
+                {busy ? "Saving…" : "Save password and continue"}
+              </button>
+              <button type="button" onClick={() => { clearStaffSession(); setStep("login"); }}
+                className="w-full text-sm text-slate-400 underline hover:text-slate-200">
+                Cancel and sign out
+              </button>
+            </form>
+          )}
+        </div>
+        <button type="button" onClick={() => navigate("/")}
+          className="mt-4 w-full text-center text-sm text-slate-400 hover:text-white">
+          ← Back to the USIUBOT assistant
+        </button>
       </div>
     </div>
   );

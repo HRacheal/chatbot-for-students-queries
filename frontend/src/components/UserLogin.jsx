@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserGraduate } from "react-icons/fa";
 import GradientText from "./ui/GradientText";
@@ -90,7 +90,7 @@ function UserLogin() {
           </button>
           </div>
           <div className="text-center text-sm">
-            <span className="text-gray-500">Don't have an account? </span>
+            <span className="text-gray-500">Don&apos;t have an account? </span>
             <Link to="/signup" className="text-indigo-500 hover:text-indigo-400">
               Sign up
             </Link>

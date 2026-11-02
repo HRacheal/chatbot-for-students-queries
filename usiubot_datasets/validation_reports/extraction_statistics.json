@@ -1,0 +1,133 @@
+{
+  "extraction_date": "2026-11-01",
+  "documents": {
+    "usiu_academic_calendar_2026_2027": {
+      "file": "Academic-Calendar-2026-2027.pdf",
+      "pages": 7,
+      "sections": 6,
+      "chunks": 14,
+      "content_chars": 11764
+    },
+    "usiu_student_handbook": {
+      "file": "Student-Handbook.pdf",
+      "pages": 60,
+      "sections": 133,
+      "chunks": 194,
+      "content_chars": 114907
+    }
+  },
+  "calendar_events": 111,
+  "calendar_terms": 3,
+  "structured_rows": {
+    "01/calendar_events.csv": 36,
+    "01/semester_terms.csv": 3,
+    "01/university_profile.csv": 16,
+    "01/service_hours.csv": 12,
+    "01/library_loan_periods.csv": 7,
+    "05/calendar_events.csv": 48,
+    "05/registrar_services.csv": 11,
+    "04/calendar_events.csv": 24,
+    "04/fee_policy_rules.csv": 30,
+    "04/financial_aid_programmes.csv": 20,
+    "04/bank_and_mobile_payment_details.csv": 16,
+    "04/mpesa_purpose_codes.csv": 38,
+    "03/calendar_events.csv": 3,
+    "03/admission_conditions.csv": 8,
+    "02/schools.csv": 6,
+    "06/department_contacts.csv": 51,
+    "07/english_proficiency_requirements.csv": 5
+  },
+  "structured_rows_total": 334,
+  "routing_reference_departments": 5,
+  "sections_total": 139,
+  "chunks_total": 208,
+  "chunk_size_max_chars": 1000,
+  "largest_chunk_chars": 997,
+  "duplicate_chunk_hashes": 0,
+  "evidence_quotes_checked": 237,
+  "evidence_failures": 0,
+  "emails_in_pdfs": 15,
+  "emails_without_contact_record": [],
+  "issues_total": 32,
+  "issues_by_severity": {
+    "high": 6,
+    "medium": 11,
+    "low": 15
+  },
+  "issues_requiring_admin_decision": 18,
+  "per_category": {
+    "01": {
+      "sections": 98,
+      "chunks": 157,
+      "structured": {
+        "calendar_events.csv": 36,
+        "semester_terms.csv": 3,
+        "university_profile.csv": 16,
+        "service_hours.csv": 12,
+        "library_loan_periods.csv": 7
+      }
+    },
+    "02": {
+      "sections": 5,
+      "chunks": 6,
+      "structured": {
+        "schools.csv": 6
+      }
+    },
+    "03": {
+      "sections": 4,
+      "chunks": 4,
+      "structured": {
+        "calendar_events.csv": 3,
+        "admission_conditions.csv": 8
+      }
+    },
+    "04": {
+      "sections": 23,
+      "chunks": 27,
+      "structured": {
+        "calendar_events.csv": 24,
+        "fee_policy_rules.csv": 30,
+        "financial_aid_programmes.csv": 20,
+        "bank_and_mobile_payment_details.csv": 16,
+        "mpesa_purpose_codes.csv": 38
+      }
+    },
+    "05": {
+      "sections": 6,
+      "chunks": 9,
+      "structured": {
+        "calendar_events.csv": 48,
+        "registrar_services.csv": 11
+      }
+    },
+    "06": {
+      "sections": 3,
+      "chunks": 5,
+      "structured": {
+        "department_contacts.csv": 51
+      }
+    },
+    "07": {
+      "sections": 0,
+      "chunks": 0,
+      "structured": {
+        "english_proficiency_requirements.csv": 5
+      }
+    },
+    "08": {
+      "sections": 0,
+      "chunks": 0,
+      "structured": {}
+    }
+  },
+  "records_by_status": {
+    "draft": 681,
+    "approved": 0
+  },
+  "data_origin": {
+    "official": "all records",
+    "external": 0,
+    "synthetic": 0
+  }
+}

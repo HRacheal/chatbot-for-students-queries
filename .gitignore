@@ -131,6 +131,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # Deployment specific
 .vercel

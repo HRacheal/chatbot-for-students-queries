@@ -1,0 +1,78 @@
+{
+  "category_id": "04",
+  "category_name": "Fees and Payments",
+  "folder": "04_fees_and_payments",
+  "extraction_date": "2026-11-01",
+  "documents_contributing": [
+    "usiu_academic_calendar_2026_2027",
+    "usiu_student_handbook"
+  ],
+  "section_records": 23,
+  "knowledge_chunks": 27,
+  "structured_files": {
+    "calendar_events.csv": 24,
+    "fee_policy_rules.csv": 30,
+    "financial_aid_programmes.csv": 20,
+    "bank_and_mobile_payment_details.csv": 16,
+    "mpesa_purpose_codes.csv": 38
+  },
+  "coverage": [
+    {
+      "information": "Tuition fees (amounts, by programme, by semester)",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "The handbook says fees are published in the University Fee Schedule (3.1); no amounts in either document."
+    },
+    {
+      "information": "Application fee, registration charges, examination fees (amounts)",
+      "status": "Unavailable",
+      "documents": [],
+      "notes": "Late registration and add/drop fees exist, but no amounts are given."
+    },
+    {
+      "information": "Other compulsory charges",
+      "status": "Partially extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Returned-cheque charge, medical insurance, fines (conduct section) — mostly without amounts."
+    },
+    {
+      "information": "Payment procedures",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Bank, M-PESA, online card payment, purpose codes (high-risk data, issues V01-V03)."
+    },
+    {
+      "information": "Payment deadlines and interest",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Calendar fee dates per semester; handbook rules (issue V28)."
+    },
+    {
+      "information": "Scholarships and financial assistance",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook"
+      ],
+      "notes": "Financial aid programmes, eligibility and provisions (5.2.4-5.2.10)."
+    },
+    {
+      "information": "Refund policy",
+      "status": "Extracted",
+      "documents": [
+        "usiu_student_handbook",
+        "usiu_academic_calendar_2026_2027"
+      ],
+      "notes": "Charge waiver schedule and refund procedure (conflict V04)."
+    }
+  ],
+  "review_status": "draft",
+  "verification_status": "pending_verification"
+}

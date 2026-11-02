@@ -1,0 +1,991 @@
+{
+  "document_id": "usiu_student_handbook",
+  "file": "Student-Handbook.pdf",
+  "title": "USIU-Africa Student Handbook",
+  "academic_year": "Not stated in the document",
+  "academic_year_basis": "No academic year or edition is printed. The latest year mentioned in the text is 2024 ('valid as at May 2024', page 9).",
+  "publication_date": "Not stated in the document",
+  "source_url": null,
+  "source_url_status": "Local copy — no public official URL found (candidate URL returns HTTP 404, 2026-11-01)",
+  "candidate_source_url": "https://www.usiu.ac.ke/assets/file/266ac45d-student-handbook.pdf",
+  "candidate_source_note": "Listed in backend/config/official_pages.json as 'Student Handbook - Nairobi' (reviewed: false). Not confirmed to be the same file as the local copy: it was not downloaded or compared in Stage 2. Re-checked 2026-11-01: the URL returns HTTP 404.",
+  "printed_page_numbers": true,
+  "source_institution": "United States International University-Africa (USIU-Africa)",
+  "data_origin": "official",
+  "file_location": "project root / Student-Handbook.pdf",
+  "sha256": "610a3da82992e0c392ac69c317cbf1bd99679313acce8090fab3b9924ef87c15",
+  "size_bytes": 3201594,
+  "page_count": 60,
+  "encrypted": false,
+  "pdf_creation_date": "D:20250730125843+03'00'",
+  "pdf_modification_date": "D:20250813162235+03'00'",
+  "pdf_producer": "Adobe PDF Library 17.0",
+  "pdf_creation_date_parsed": "2025-07-30",
+  "pdf_modification_date_parsed": "2025-08-13",
+  "pdf_metadata_note": "PDF file metadata dates describe the file, not an official publication date.",
+  "pages_with_text": 60,
+  "pages_without_text": [],
+  "extraction_tool": "pypdf (text layer only; no OCR)",
+  "extraction_date": "2026-11-01",
+  "review_status": "draft",
+  "verification_status": "pending_verification",
+  "approval_status": "not_approved",
+  "table_of_contents": [
+    {
+      "title_as_printed": "VICE CHANCELLORS MESSAGE",
+      "toc_page": 5,
+      "actual_start_page": 5
+    },
+    {
+      "title_as_printed": "MISSION, VISION AND CORE VALUES",
+      "toc_page": 7,
+      "actual_start_page": 7
+    },
+    {
+      "title_as_printed": "FEES AND FEE PAYMENT POLICY",
+      "toc_page": 9,
+      "actual_start_page": 9
+    },
+    {
+      "title_as_printed": "REGISTRATION AND ACADEMIC INFORMATION",
+      "toc_page": 13,
+      "actual_start_page": 13
+    },
+    {
+      "title_as_printed": "STUDENT LIFE",
+      "toc_page": 15,
+      "actual_start_page": 15
+    },
+    {
+      "title_as_printed": "POLICIES AND REGULATIONS FOR STUDENT ACTIVITIES",
+      "toc_page": 25,
+      "actual_start_page": 25
+    },
+    {
+      "title_as_printed": "THE UNIVERSITY LIBRARY AND INFORMATION CENTER",
+      "toc_page": 27,
+      "actual_start_page": 27
+    },
+    {
+      "title_as_printed": "INFORMATION AND COMMUNICATION TECH. (ICT)",
+      "toc_page": 31,
+      "actual_start_page": 31
+    },
+    {
+      "title_as_printed": "USIU - ONLINE",
+      "toc_page": 35,
+      "actual_start_page": 35
+    },
+    {
+      "title_as_printed": "THE STUDENT CODE OF CONDUCT: NON-ACADEMIC",
+      "toc_page": 37,
+      "actual_start_page": 37
+    },
+    {
+      "title_as_printed": "STUDENT SUPPORT AND AUXILIARY SERVICES",
+      "toc_page": 49,
+      "actual_start_page": 49
+    },
+    {
+      "title_as_printed": "CAMPUS SAFETY AND SECURITY",
+      "toc_page": 53,
+      "actual_start_page": 53
+    },
+    {
+      "title_as_printed": "UNIVERSITY COMMUNICATION",
+      "toc_page": 57,
+      "actual_start_page": 57
+    },
+    {
+      "title_as_printed": "ALUMNI RELATIONS OFFICE",
+      "toc_page": 58,
+      "actual_start_page": 59
+    }
+  ],
+  "layout_processing": {
+    "top_level_headings_in_text": [
+      {
+        "page": 5,
+        "heading_as_printed": "1.0 VICE CHANCELLOR’S MESSAGE"
+      },
+      {
+        "page": 9,
+        "heading_as_printed": "3.0 FEES AND FEE PAYMENT POLICY"
+      },
+      {
+        "page": 13,
+        "heading_as_printed": "4.0 REGISTRATION AND ACADEMIC INFORMATION"
+      },
+      {
+        "page": 15,
+        "heading_as_printed": "5.0 STUDENT LIFE"
+      },
+      {
+        "page": 25,
+        "heading_as_printed": "6.0 POLICIES AND REGULATIONS FOR STUDENT ACTIVITIES"
+      },
+      {
+        "page": 27,
+        "heading_as_printed": "7.0 THE UNIVERSITY LIBRARY AND INFORMATION CENTER"
+      },
+      {
+        "page": 31,
+        "heading_as_printed": "8.0 INFORMATION AND COMMUNICATION TECHNOLOGY"
+      },
+      {
+        "page": 35,
+        "heading_as_printed": "9.0 USIU-ONLINE"
+      },
+      {
+        "page": 37,
+        "heading_as_printed": "10.0 THE STUDENT CODE OF CONDUCT: NON-ACADEMIC"
+      },
+      {
+        "page": 49,
+        "heading_as_printed": "11.0 STUDENT SUPPORT AND AUXILIARY SERVICES"
+      },
+      {
+        "page": 53,
+        "heading_as_printed": "12.0 CAMPUS SAFETY AND SECURITY"
+      },
+      {
+        "page": 57,
+        "heading_as_printed": "13.0 UNIVERSITY COMMUNICATION"
+      },
+      {
+        "page": 59,
+        "heading_as_printed": "14.0 ALUMNI RELATIONS OFFICE"
+      }
+    ],
+    "placeholders_found": [
+      {
+        "page": 15,
+        "text": "MISSING INFOMATION",
+        "section": "5.0"
+      },
+      {
+        "page": 49,
+        "text": "TABLE TO BE INSERTED",
+        "section": "11.1"
+      }
+    ],
+    "relocations": [
+      {
+        "page": 10,
+        "start": "U.S Correspondent/Intermediary bank name",
+        "end": "5. Enter your PIN and click send.",
+        "to": "3.4",
+        "reason": "Continuation of the 3.4 bank list printed in the right-hand column of page 10.",
+        "lines_moved": 32
+      },
+      {
+        "page": 16,
+        "start": "Student Life Division has seven departments",
+        "end": "7. The Office of Disability and Inclusion",
+        "to": "5.0",
+        "reason": "Boxed list of Student Life departments printed at the foot of page 16; it continues 'Departments under the Student Life Division' on page 15.",
+        "lines_moved": 9
+      }
+    ],
+    "sections_detected": [
+      {
+        "section_number": "not numbered (cover page)",
+        "section_heading": "Cover page: accreditation statement",
+        "page_start": 1,
+        "category_id": "01"
+      },
+      {
+        "section_number": "1.0",
+        "section_heading": "Vice Chancellor's Message",
+        "page_start": 5,
+        "category_id": "01"
+      },
+      {
+        "section_number": "1.1",
+        "section_heading": "Message from the Deputy Vice Chancellor, Student Life",
+        "page_start": 6,
+        "category_id": "01"
+      },
+      {
+        "section_number": "not printed",
+        "section_heading": "Mission, Vision and Core Values; Our Schools",
+        "page_start": 7,
+        "category_id": "01"
+      },
+      {
+        "section_number": "3.1",
+        "section_heading": "Tuition and Fees",
+        "page_start": 9,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.2",
+        "section_heading": "Payments of Fees",
+        "page_start": 9,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.3",
+        "section_heading": "Checks/Cheques",
+        "page_start": 9,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.4",
+        "section_heading": "Payment Information (valid as at May 2024 )",
+        "page_start": 9,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.5",
+        "section_heading": "Online Card Payments",
+        "page_start": 10,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.6",
+        "section_heading": "Financial Clearance",
+        "page_start": 10,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.7",
+        "section_heading": "USIU–Africa Hostels Room & Board Payments",
+        "page_start": 10,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.8",
+        "section_heading": "Institutional Charge Waiver/ Refund Policy",
+        "page_start": 10,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.9",
+        "section_heading": "Procedure for Withdrawing/Requesting a Charge Waiver",
+        "page_start": 11,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.10",
+        "section_heading": "Installment Payments",
+        "page_start": 11,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.11",
+        "section_heading": "Interest Charge",
+        "page_start": 11,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.12",
+        "section_heading": "Tuition Refund",
+        "page_start": 11,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.13",
+        "section_heading": "Debt Collection",
+        "page_start": 12,
+        "category_id": "04"
+      },
+      {
+        "section_number": "3.14",
+        "section_heading": "Other services offered by the Finance Office",
+        "page_start": 12,
+        "category_id": "04"
+      },
+      {
+        "section_number": "4.0",
+        "section_heading": "Registration and Academic Information (introduction)",
+        "page_start": 13,
+        "category_id": "05"
+      },
+      {
+        "section_number": "4.1",
+        "section_heading": "Academic Catalog",
+        "page_start": 13,
+        "category_id": "05"
+      },
+      {
+        "section_number": "4.2",
+        "section_heading": "Disclosure and Change of Student Information",
+        "page_start": 13,
+        "category_id": "05"
+      },
+      {
+        "section_number": "4.3",
+        "section_heading": "Services offered by the Registrar.",
+        "page_start": 14,
+        "category_id": "05"
+      },
+      {
+        "section_number": "4.4",
+        "section_heading": "USIU-Africa Identification Card",
+        "page_start": 14,
+        "category_id": "05"
+      },
+      {
+        "section_number": "4.5",
+        "section_heading": "Degree Certificate Replacement Policy",
+        "page_start": 14,
+        "category_id": "05"
+      },
+      {
+        "section_number": "5.0",
+        "section_heading": "Student Life (introduction)",
+        "page_start": 15,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.2",
+        "section_heading": "The Admissions and Financial Aid Department",
+        "page_start": 16,
+        "category_id": "03"
+      },
+      {
+        "section_number": "5.2.1",
+        "section_heading": "Admissions",
+        "page_start": 16,
+        "category_id": "03"
+      },
+      {
+        "section_number": "5.2.2",
+        "section_heading": "Re-Admission",
+        "page_start": 16,
+        "category_id": "03"
+      },
+      {
+        "section_number": "5.2.3",
+        "section_heading": "Returning USIU-Africa Graduates",
+        "page_start": 16,
+        "category_id": "03"
+      },
+      {
+        "section_number": "5.2.4",
+        "section_heading": "The Financial Aid Office",
+        "page_start": 16,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.5",
+        "section_heading": "Eligibility Criteria",
+        "page_start": 17,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.6",
+        "section_heading": "General Provisions on Financial Aid Policy and Regulations",
+        "page_start": 17,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.7",
+        "section_heading": "Financial Aid Programs for Undergraduate Students",
+        "page_start": 17,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.8",
+        "section_heading": "Financial Aid Programs for Graduate Students",
+        "page_start": 17,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.9",
+        "section_heading": "Financial Aid Programs for Undergraduate and Graduate Students",
+        "page_start": 17,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.2.10",
+        "section_heading": "Externally Funded Financial Aid Programs",
+        "page_start": 18,
+        "category_id": "04"
+      },
+      {
+        "section_number": "5.3",
+        "section_heading": "Student Housing",
+        "page_start": 18,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4",
+        "section_heading": "The Dean of Students Office",
+        "page_start": 18,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.1",
+        "section_heading": "The Student Activities Offices",
+        "page_start": 18,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.1.1",
+        "section_heading": "Sporting Activities",
+        "page_start": 18,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.1.2",
+        "section_heading": "Clubs and Societies",
+        "page_start": 19,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.2",
+        "section_heading": "The Yearbook",
+        "page_start": 19,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.3",
+        "section_heading": "USIU-Africa Student Association (SA)",
+        "page_start": 19,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.4",
+        "section_heading": "Student Association Cabinet (SAC)",
+        "page_start": 19,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.4.4",
+        "section_heading": "The International Students Affairs",
+        "page_start": 20,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.5",
+        "section_heading": "The USIU-Africa Counseling Center",
+        "page_start": 20,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.5.1",
+        "section_heading": "Services provided at the Counseling Center include: -",
+        "page_start": 20,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.5.2",
+        "section_heading": "HIV Counseling and Testing - The HIV/ VCT",
+        "page_start": 20,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.6",
+        "section_heading": "Student Bereavement",
+        "page_start": 21,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7",
+        "section_heading": "Disability Inclusion",
+        "page_start": 22,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7.1",
+        "section_heading": "Supporting Students with Disabilities and Special Needs (SWD & SN)",
+        "page_start": 22,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7.2",
+        "section_heading": "The University’s Commitment to Supporting SWD & SN Will Be:",
+        "page_start": 22,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7.3",
+        "section_heading": "SWD & SN’s Rights and Privileges",
+        "page_start": 22,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7.4",
+        "section_heading": "Students with Disability: SWD & other SN’s Responsibilities",
+        "page_start": 23,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.7.5",
+        "section_heading": "Privacy, Confidentiality and Disclosure",
+        "page_start": 23,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.8",
+        "section_heading": "Gender, Equity, and Protection",
+        "page_start": 23,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.9",
+        "section_heading": "The Placement and Career Services Department",
+        "page_start": 24,
+        "category_id": "01"
+      },
+      {
+        "section_number": "5.9.1",
+        "section_heading": "Services Offered",
+        "page_start": 24,
+        "category_id": "01"
+      },
+      {
+        "section_number": "6.1",
+        "section_heading": "Guidelines on Posters and Use of Official Electronic Media on Campus",
+        "page_start": 25,
+        "category_id": "01"
+      },
+      {
+        "section_number": "6.1.1",
+        "section_heading": "Use of Surfaces, Bulletin Boards & Spaces",
+        "page_start": 25,
+        "category_id": "01"
+      },
+      {
+        "section_number": "6.2",
+        "section_heading": "Policy on Use of University Facilities or Services",
+        "page_start": 26,
+        "category_id": "01"
+      },
+      {
+        "section_number": "6.2.1",
+        "section_heading": "Guidelines Apply When Reserving A Facility (Open Spaces and Sports Fields)",
+        "page_start": 26,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.1",
+        "section_heading": "Library and Information Center",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.2",
+        "section_heading": "Library and Information System Access and Support",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3",
+        "section_heading": "Library Rules and Regulations",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.1",
+        "section_heading": "Admission",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.2",
+        "section_heading": "Access",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.3",
+        "section_heading": "Borrowing (General)",
+        "page_start": 27,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.4",
+        "section_heading": "Period of Loan",
+        "page_start": 28,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.5",
+        "section_heading": "Penalties/Fines",
+        "page_start": 28,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.6",
+        "section_heading": "Inter-Library Loan",
+        "page_start": 28,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.3.7",
+        "section_heading": "Sanctions",
+        "page_start": 28,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.4",
+        "section_heading": "Library Discipline",
+        "page_start": 28,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.5",
+        "section_heading": "Library Opening Hours",
+        "page_start": 29,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.6",
+        "section_heading": "Key Library Links",
+        "page_start": 29,
+        "category_id": "01"
+      },
+      {
+        "section_number": "7.7",
+        "section_heading": "Contacts",
+        "page_start": 29,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.0",
+        "section_heading": "Information and Communication Technology (ICT) (introduction)",
+        "page_start": 31,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.1",
+        "section_heading": "Serviced Provided by ICT",
+        "page_start": 31,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.2",
+        "section_heading": "Other services available include.",
+        "page_start": 31,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.3",
+        "section_heading": "List of ICT Labs Available to Students",
+        "page_start": 31,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.4",
+        "section_heading": "ICT support services are available by: -",
+        "page_start": 32,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.5",
+        "section_heading": "Computer Lab Regulations",
+        "page_start": 32,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.6",
+        "section_heading": "Data Security and Ethics",
+        "page_start": 32,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.7",
+        "section_heading": "Data Security Guidelines",
+        "page_start": 32,
+        "category_id": "01"
+      },
+      {
+        "section_number": "8.8",
+        "section_heading": "Bring Your Device (BYOD) Guidelines on Campus.",
+        "page_start": 33,
+        "category_id": "01"
+      },
+      {
+        "section_number": "9.0",
+        "section_heading": "USIU-Online (introduction)",
+        "page_start": 35,
+        "category_id": "02"
+      },
+      {
+        "section_number": "9.1",
+        "section_heading": "Online Student’s Expectations:",
+        "page_start": 35,
+        "category_id": "02"
+      },
+      {
+        "section_number": "9.2",
+        "section_heading": "Student Commitment:",
+        "page_start": 35,
+        "category_id": "02"
+      },
+      {
+        "section_number": "9.3",
+        "section_heading": "Computer Requirements:",
+        "page_start": 36,
+        "category_id": "02"
+      },
+      {
+        "section_number": "9.4",
+        "section_heading": "Technology Support",
+        "page_start": 36,
+        "category_id": "02"
+      },
+      {
+        "section_number": "10.1",
+        "section_heading": "Conduct Jurisdiction",
+        "page_start": 37,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.2",
+        "section_heading": "University Disciplinary Authority Promotes",
+        "page_start": 37,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.3",
+        "section_heading": "Conduct Regulations",
+        "page_start": 38,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.4",
+        "section_heading": "Disciplinary Sanctions",
+        "page_start": 38,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.5",
+        "section_heading": "Disciplinary Warning",
+        "page_start": 38,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.6",
+        "section_heading": "Disciplinary Probations",
+        "page_start": 38,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.7",
+        "section_heading": "Conduct Regulations",
+        "page_start": 39,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.8",
+        "section_heading": "Scope, Authority, and Jurisdiction on Discipline",
+        "page_start": 41,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.9",
+        "section_heading": "Disciplinary Procedures",
+        "page_start": 42,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.10",
+        "section_heading": "Disciplinary Charges",
+        "page_start": 42,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.11",
+        "section_heading": "Hearing Procedures",
+        "page_start": 43,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.12",
+        "section_heading": "Order of Proceedings at Disciplinary Hearings.",
+        "page_start": 43,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.13",
+        "section_heading": "Appeal Procedure",
+        "page_start": 44,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.14",
+        "section_heading": "Alcohol and Drug Policy",
+        "page_start": 44,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.15",
+        "section_heading": "Littering, Graffiti, and Public Nuisance/ Disturbance",
+        "page_start": 45,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16",
+        "section_heading": "Policy of Non-Discrimination",
+        "page_start": 45,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.1",
+        "section_heading": "Complaints against the University or an Employee",
+        "page_start": 45,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.2",
+        "section_heading": "Complaints Against Students",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.4",
+        "section_heading": "Confidentiality",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.5",
+        "section_heading": "Co-operation",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.6",
+        "section_heading": "Aspects of Investigation",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.7",
+        "section_heading": "False Accusation",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.7",
+        "section_heading": "Appeals",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.16.8",
+        "section_heading": "Maintaining a Written Record of the Grievance",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.17",
+        "section_heading": "Sexual and Gender-Based Violence Policy",
+        "page_start": 46,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.17.1",
+        "section_heading": "Sexual Misconduct",
+        "page_start": 47,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.17.2",
+        "section_heading": "Sexual and Gender-Based Violence Assault",
+        "page_start": 47,
+        "category_id": "01"
+      },
+      {
+        "section_number": "10.17.3",
+        "section_heading": "What should you do if you are a victim of sexual assault?",
+        "page_start": 47,
+        "category_id": "01"
+      },
+      {
+        "section_number": "11.1",
+        "section_heading": "Catering Services",
+        "page_start": 49,
+        "category_id": "01"
+      },
+      {
+        "section_number": "11.2",
+        "section_heading": "Transport Service",
+        "page_start": 50,
+        "category_id": "01"
+      },
+      {
+        "section_number": "11.3",
+        "section_heading": "Health Services",
+        "page_start": 50,
+        "category_id": "01"
+      },
+      {
+        "section_number": "11.4",
+        "section_heading": "Insurance Services",
+        "page_start": 50,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Campus Safety and Security",
+        "page_start": 53,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Lost and Found items",
+        "page_start": 54,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Motor Vehicle Parking Management",
+        "page_start": 54,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Photos and Videos",
+        "page_start": 54,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Reporting Security incidents",
+        "page_start": 54,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "General Guidelines on security of self and Possessions",
+        "page_start": 54,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Guidelines for Fire Safety",
+        "page_start": 55,
+        "category_id": "01"
+      },
+      {
+        "section_number": "12.0",
+        "section_heading": "Campus Security Policy and Standard Operating Procedures",
+        "page_start": 55,
+        "category_id": "01"
+      },
+      {
+        "section_number": "13.0",
+        "section_heading": "University Communication",
+        "page_start": 57,
+        "category_id": "06"
+      },
+      {
+        "section_number": "14.0",
+        "section_heading": "Alumni Relations Office",
+        "page_start": 59,
+        "category_id": "01"
+      },
+      {
+        "section_number": "not numbered",
+        "section_heading": "Contact Us",
+        "page_start": 60,
+        "category_id": "06"
+      }
+    ]
+  }
+}

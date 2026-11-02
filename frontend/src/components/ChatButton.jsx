@@ -1,4 +1,3 @@
-import React from "react";
 import { RiChatAiFill } from "react-icons/ri";
 import Magnet from "./ui/Magnet";
 

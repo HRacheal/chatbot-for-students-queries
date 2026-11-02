@@ -1,0 +1,5 @@
+﻿record_id,document_id,section_number,section_heading,page_start,page_end,content_chars,chunk_count,flags,issue_ids,review_status,verification_status
+HB-5.2,usiu_student_handbook,5.2,The Admissions and Financial Aid Department,16,16,264,1,,V07; V23,draft,pending_verification
+HB-5.2.1,usiu_student_handbook,5.2.1,Admissions,16,16,525,1,,V07; V16; V23,draft,pending_verification
+HB-5.2.2,usiu_student_handbook,5.2.2,Re-Admission,16,16,433,1,,V07; V23,draft,pending_verification
+HB-5.2.3,usiu_student_handbook,5.2.3,Returning USIU-Africa Graduates,16,16,344,1,,V07; V23,draft,pending_verification

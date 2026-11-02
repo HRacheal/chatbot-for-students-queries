@@ -1,0 +1,21 @@
+﻿record_id,document_id,data_origin,source_url,section_heading,heading_path,content_chars,chunk_count,issue_ids,review_status,verification_status
+WEB-P001-S01,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,2026 48th Commencement – USIU-Africa,2026 48th Commencement – USIU-Africa,35,1,,draft,pending_verification
+WEB-P001-S02,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Welcome Message,Welcome Message,910,1,,draft,pending_verification
+WEB-P001-S03,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Important Dates,Important Dates,206,1,,draft,pending_verification
+WEB-P001-S04,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Security Advisory,Security Advisory,154,1,,draft,pending_verification
+WEB-P001-S05,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,1. Access Control and Parking Management,1. Access Control and Parking Management,3431,4,,draft,pending_verification
+WEB-P001-S06,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,2. Security Coverage,2. Security Coverage,229,1,,draft,pending_verification
+WEB-P001-S07,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,3. Photography and Videography,3. Photography and Videography,78,1,,draft,pending_verification
+WEB-P001-S08,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,4. Personal Belongings and Security Measures,4. Personal Belongings and Security Measures,471,1,,draft,pending_verification
+WEB-P001-S09,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,5. On-Site Safety,5. On-Site Safety,452,1,,draft,pending_verification
+WEB-P001-S10,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,6. General Information,6. General Information,368,1,,draft,pending_verification
+WEB-P001-S11,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,7. Lost & Found Items,7. Lost & Found Items,142,1,,draft,pending_verification
+WEB-P001-S12,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,8. Emergency Services & Procedures:,8. Emergency Services & Procedures:,239,1,,draft,pending_verification
+WEB-P001-S13,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,9. Emergency Contacts,9. Emergency Contacts,273,1,,draft,pending_verification
+WEB-P001-S14,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Alumni Registration,Alumni Registration,100,1,,draft,pending_verification
+WEB-P001-S15,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Lifelong Rewards and Benefits,Lifelong Rewards and Benefits,3901,5,W12,draft,pending_verification
+WEB-P001-S16,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Apply for Masters or Doctoral Program,Apply for Masters or Doctoral Program,237,1,,draft,pending_verification
+WEB-P001-S19,2026-48th-commencement,official,https://www.usiu.ac.ke/2026-48th-commencement/,Connect With Us,Mastercard Foundation Scholars Graduation Booklet 2026 > Connect With Us,276,1,,draft,pending_verification
+WEB-P007-S01,academics__academic-calendar,official,https://www.usiu.ac.ke/academics/academic-calendar/,Academic Calendar,Academic Calendar,82,1,,draft,pending_verification
+WEB-P007-S02,academics__academic-calendar,official,https://www.usiu.ac.ke/academics/academic-calendar/,Current,Academic Calendar > Current,36,1,W25,draft,pending_verification
+WEB-P075-S01,resource-downloads,official,https://www.usiu.ac.ke/resource-downloads/,Resource Downloads,Resource Downloads,7329,8,,draft,pending_verification

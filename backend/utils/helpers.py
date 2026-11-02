@@ -16,7 +16,7 @@ SMALL_TALK = [
     (
         {"hi", "hello", "hey", "hiya", "greetings", "good morning", "good afternoon",
          "good evening", "hi there", "hello there", "hey there"},
-        "Hello! How can I help you today?",
+        "Hello! I'm USIUBOT. Ask me about USIU-Africa admissions, programmes, registration or campus life.",
     ),
     (
         {"bye", "goodbye", "bye bye", "see you", "see you later", "good night"},

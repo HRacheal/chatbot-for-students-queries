@@ -1,0 +1,68 @@
+[
+ {
+  "record_id": "WEB-P029-S01",
+  "record_type": "web_document_section",
+  "section_id": "WEB-P029-S01",
+  "category_id": "03",
+  "category_name": "Admissions and Applications",
+  "data_origin": "external",
+  "publisher": "Kenya Universities and Colleges Central Placement Service (KUCCPS)",
+  "document_id": "kuccps.net__frequently-asked-questions",
+  "document_title": "Frequently Asked Questions | KUCCPS",
+  "source_url": "https://kuccps.net/frequently-asked-questions",
+  "source_file": "web_sources/snapshots/kuccps.net__frequently-asked-questions.md",
+  "publication_date": "Publication date not stated",
+  "academic_year": "Not stated",
+  "sitemap_lastmod": "",
+  "collection_date": "2026-11-01",
+  "last_checked": "2026-11-01",
+  "page": null,
+  "section_heading": "Frequently Asked Questions | KUCCPS",
+  "heading_path": [
+   "Frequently Asked Questions | KUCCPS"
+  ],
+  "content": "(c) FAQ page, question \"Does KUCCPS also place students to private universities?\":\n\"KUCCPS also places students to private universities. Students placed to private universities are eligible for government loans only. The full list of all eligible institutions are available on the Student's Portal.\"\n\nFAQ page, question \"Can IGCSE graduates apply to KUCCPS for placement to universities and colleges?\":\n\"The placement of students is based on KCSE examination grades only.\"\n\nFAQ page, question \"How does the current funding system work?\" (relevant bullet, verbatim):\n\"Beginning with the 2022 cohort, students joining public universities and public TVET institutes are eligible for the government loan (HELB) and scholarship, while those joining private universities are eligible for the loan only.\"",
+  "content_chars": 797,
+  "chunk_count": 1,
+  "content_fidelity": "relevant passages only, verbatim",
+  "review_status": "draft",
+  "verification_status": "pending_verification",
+  "approval_status": "not_approved",
+  "issue_ids": [
+   "W24"
+  ]
+ },
+ {
+  "record_id": "WEB-P030-S01",
+  "record_type": "web_document_section",
+  "section_id": "WEB-P030-S01",
+  "category_id": "03",
+  "category_name": "Admissions and Applications",
+  "data_origin": "external",
+  "publisher": "Kenya Universities and Colleges Central Placement Service (KUCCPS)",
+  "document_id": "kuccps.net__home",
+  "document_title": "Homepage | KUCCPS",
+  "source_url": "https://kuccps.net/",
+  "source_file": "web_sources/snapshots/kuccps.net__home.md",
+  "publication_date": "Publication date not stated",
+  "academic_year": "Not stated",
+  "sitemap_lastmod": "",
+  "collection_date": "2026-11-01",
+  "last_checked": "2026-11-01",
+  "page": null,
+  "section_heading": "Homepage | KUCCPS",
+  "heading_path": [
+   "Homepage | KUCCPS"
+  ],
+  "content": "(a) Homepage, \"Registered Institutions\" section:\n\"The following higher education and training institutions have registered for listing on the KUCCPS website. Public universities, public university constituent colleges and Technical and Vocational Education and Training (TVET) institutions are eligible for placement of students by KUCCPS. Private colleges that are listed are accredited to offer various approved programmes and are published here for information and publicity. Currently, KUCCPS does not place students to the private colleges.\"",
+  "content_chars": 546,
+  "chunk_count": 1,
+  "content_fidelity": "relevant passages only, verbatim",
+  "review_status": "draft",
+  "verification_status": "pending_verification",
+  "approval_status": "not_approved",
+  "issue_ids": [
+   "W24"
+  ]
+ }
+]

@@ -18,3 +18,5 @@ tests/
 pytest.ini
 requirements-dev.txt
 .env.example
+tools/
+resources/
