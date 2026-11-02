@@ -45,6 +45,17 @@ def _env_list(name, default):
     return [item.strip() for item in value.split(",") if item.strip()]
 
 
+def normalise_origins(values):
+    """Browsers send an Origin without a trailing slash or quotes, so a value pasted as
+    "https://usiubot.vercel.app/" (or quoted) is normalised; otherwise it would never match."""
+    origins = []
+    for value in values:
+        origin = value.strip().strip("'\"").strip().rstrip("/")
+        if origin and origin not in origins:
+            origins.append(origin)
+    return origins
+
+
 class Config:
     """Base configuration shared by every environment."""
 
@@ -67,8 +78,8 @@ class Config:
 
     # Browser origins allowed to call the API. Bearer tokens are used, not cookies,
     # so credentialed CORS is not needed.
-    CORS_ORIGINS = _env_list(
-        "CORS_ORIGINS", ["http://localhost:5173", "http://127.0.0.1:5173"]
+    CORS_ORIGINS = normalise_origins(
+        _env_list("CORS_ORIGINS", ["http://localhost:5173", "http://127.0.0.1:5173"])
     )
 
     # Debug endpoints are never registered in production, and require an admin token.

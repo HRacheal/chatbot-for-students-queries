@@ -59,6 +59,34 @@ def test_cors_allows_configured_origin_only(client):
     assert "Access-Control-Allow-Credentials" not in allowed.headers
 
 
+def test_cors_origin_values_are_normalised():
+    from config.config import normalise_origins
+
+    assert normalise_origins([" https://usiubot.vercel.app/ ", '"https://usiubot.vercel.app"', "",
+                              "http://localhost:5173"]) == ["https://usiubot.vercel.app", "http://localhost:5173"]
+
+
+def test_staff_login_preflight_and_post_allow_the_hosted_frontend(make_app):
+    client = make_app(CORS_ORIGINS=["https://usiubot.vercel.app"]).test_client()
+    origin = {"Origin": "https://usiubot.vercel.app"}
+    preflight = client.options("/api/staff/login", headers={
+        **origin, "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "content-type,authorization"})
+    assert preflight.status_code == 200
+    assert preflight.headers.get("Access-Control-Allow-Origin") == "https://usiubot.vercel.app"
+    assert "POST" in preflight.headers.get("Access-Control-Allow-Methods", "")
+    allowed_headers = preflight.headers.get("Access-Control-Allow-Headers", "").lower()
+    assert "content-type" in allowed_headers and "authorization" in allowed_headers
+    # The sign-in response itself (here a refused one) carries the header too, so the browser can read it.
+    response = client.post("/api/staff/login", json={"email": "nobody@example.test", "password": "wrong-pass-1"},
+                           headers=origin)
+    assert response.status_code == 401
+    assert response.headers.get("Access-Control-Allow-Origin") == "https://usiubot.vercel.app"
+    other = client.options("/api/staff/login", headers={"Origin": "https://evil.vercel.app",
+                                                       "Access-Control-Request-Method": "POST"})
+    assert "Access-Control-Allow-Origin" not in other.headers
+
+
 def test_login_rate_limit(make_app):
     app = make_app(AUTH_RATE_LIMIT_PER_MINUTE=3)
     client = app.test_client()
